@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>介護マッチングサービスにおけるマッチング精度向上の提案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yu Gothic', 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .authors {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        .affiliation {
+            font-size: 1em;
+            color: #888;
+            margin-top: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #764ba2;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .diagram {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .diagram-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #764ba2;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-box {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .flow-arrow {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .participants {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .participant {
+            background: white;
+            border: 2px solid #764ba2;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(118, 75, 162, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 18px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tbody tr:hover {
+            background-color: #f5f7fa;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .highlight-row {
+            background-color: #fff3cd !important;
+            font-weight: bold;
+        }
+        
+        .method-list {
+            background: #f5f7fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .method-list li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        
+        .experiment-section {
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-value {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .chart-container {
+            background: white;
+            border: 2px solid #764ba2;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .bar-label {
+            min-width: 250px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .bar {
+            height: 35px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .considerations {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .considerations h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .future-work {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .future-work h4 {
+            color: #1565c0;
+            margin-top: 0;
+        }
+        
+        ul {
+            margin-left: 30px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .references {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 50px;
+        }
+        
+        .references h2 {
+            color: #333;
+            border-bottom-color: #999;
+        }
+        
+        .reference-item {
+            margin: 15px 0;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        
+        .formula {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>介護マッチングサービスにおける<br>マッチング精度向上の提案</h1>
+            <div class="affiliation">北海道大学 情報科学院</div>
+            <div class="authors">星子祐哉　土橋宜典</div>
+        </header>
+
+        <!-- 事業概要 -->
+        <section id="overview">
+            <h2>01. 事業概要</h2>
+            
+            <div class="diagram">
+                <div class="diagram-title">介護特化型マッチングアプリの仕組み</div>
+                <div class="flow-diagram">
+                    <div class="flow-box">
+                        介護事業者<br><br>
+                        求人情報の登録
+                    </div>
+                    <div class="flow-arrow">⇄</div>
+                    <div class="flow-box" style="border-color: #764ba2; min-width: 300px;">
+                        介護特化型<br>マッチングアプリ<br><br>
+                        希望の場所や時間<br>職種等を入力<br>↓<br>
+                        仕事内容の取得・マッチング
+                    </div>
+                    <div class="flow-arrow">⇄</div>
+                    <div class="flow-box">
+                        ワーカー
+                    </div>
+                </div>
+                <div class="participants">
+                    <div class="participant">潜在介護士</div>
+                    <div class="participant">副業したい介護士</div>
+                    <div class="participant">その他の就労希望者</div>
+                </div>
+            </div>
+
+            <h3>事業の背景</h3>
+            
+            <h4>1. 2040年問題と深刻化する介護人材不足</h4>
+            <p>厚労省の資料によると、介護人材は2040年までに約<strong>69万人不足</strong>する見込みです。一方で、有資格でありながら介護職に従事していない「潜在介護士」が約<strong>37万人</strong>存在し、供給可能な人材が活用されていない現状があります。</p>
+
+            <h4>2. 人材ミスマッチと経営危機</h4>
+            <p>介護事業者は以下の複合的な課題を抱えています：</p>
+            <ul>
+                <li>応募者が集まらない</li>
+                <li>採用コストの高騰</li>
+                <li>採用後の定着率の低さ</li>
+            </ul>
+            <p>人材のミスマッチが常態化しており、人材不足によるサービス低下や廃業に至るケースも増加中です。</p>
+
+            <h4>3. 北海道の特殊事情</h4>
+            <p>北海道の高齢化率は全国平均を上回る増加予定にあり、<strong>2025年には33.5％</strong>に達する見込みです。人口の2/3が札幌市付近に集中しており、他の市町村は広大な地域の中で点在・過疎化しています。移動距離も長く、他都府県と比較してハンデが大きい状況です。</p>
+        </section>
+
+        <!-- 研究の目的 -->
+        <section id="purpose">
+            <h2>02. 研究の目的</h2>
+            
+            <div class="note">
+                <h3>当サービスの課題</h3>
+                <h4>望む仕事を見つけられない</h4>
+                <p>現状のマッチングは「<strong>勤務地</strong>」「<strong>日程</strong>」「<strong>資格要件</strong>」などの定型条件マッチが中心であり、希望職種や過去の職務経験と求人内容の意味的な一致は評価されていません。</p>
+                <p>そのため、ワーカーと求人の潜在的な親和性が見逃される可能性が存在します。</p>
+                <p>また、いちいちワーカーが自分で条件を指定しなければならず、検索するのに多大な時間がかかります。</p>
+            </div>
+
+            <div class="diagram">
+                <div class="diagram-title">研究目的</div>
+                <div style="text-align: center; font-size: 1.5em; color: #667eea; font-weight: bold; padding: 20px;">
+                    マッチングの手間を最小限にする
+                </div>
+                <p style="text-align: center; margin-top: 20px;">
+                    ワーカーも現状では自分の望む仕事を検索するのに時間がかかる。<br>
+                    また、介護事業所側にもスカウト機能があり、<br>
+                    その際にその事業所とマッチするワーカーを探すのに多くの時間がかかる。<br>
+                    <strong>これらの課題を解決するための手法を勘案する。</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- 提案手法 -->
+        <section id="method">
+            <h2>03. 提案手法</h2>
+            
+            <p>以下の手法を組み合わせて重み付けを行います。本研究では、最初の実験として自然言語処理モデルの精度を確かめました。</p>
+
+            <h3>3.1 自然言語処理モデルを利用した距離計算</h3>
+            <div class="method-list">
+                <p>自然言語処理モデルを利用することで、テキストをベクトル化し、距離計算を行うことが可能になります。文章をベクトル化し、文章間で距離を測ることで、以下の評価が可能です：</p>
+                <ul>
+                    <li><strong>職種的距離：</strong>希望職種と実際の職種の一致度</li>
+                    <li><strong>スキル的距離：</strong>職務経歴と求められているスキルの類似度</li>
+                </ul>
+            </div>
+
+            <h3>3.2 時間的距離と勤務時間</h3>
+            <div class="method-list">
+                <p>勤務時間の希望や勤務地、資格等からワーカーと事業所の差分を抽出します。</p>
+            </div>
+
+            <h3>3.3 過去の応募等の履歴</h3>
+            <div class="method-list">
+                <p>過去どのような求人がある中で、どれに応募したか、承認されたか否かなどの履歴を参照します。また、就労傾向（短期志向か長期志向か等）を考慮します。</p>
+            </div>
+        </section>
+
+        <!-- 実験 -->
+        <section id="experiment">
+            <h2>04. 実験</h2>
+
+            <!-- 予備実験 -->
+            <h3>予備実験：BERTモデルの横断的評価</h3>
+            
+            <div class="experiment-section">
+                <h4>概要</h4>
+                <p>複数のBERTモデルを横断的に評価しました。Cl-tohokuの日本語BERTモデルに加え、そのモデルをベースにより多くのデータで学習し、精度を向上させたLargeモデルを実験に利用しました。また、文としての評価に特化した<strong>Sentence-BERT</strong>という手法のモデルも利用しました。こちらは日本語とマルチリンガルモデルに対して評価を行いました。</p>
+
+                <h4>評価手法：分離度の評価</h4>
+                <p>複数のアンカー職種、それに似た職種と大きく離れている職種を5つ用意しました。それぞれに対し、アンカー職種とのコサイン類似度を計測し、類似職種グループと非類似職種グループの平均スコアを計算しました。その後、以下の式で分離度を計算しました：</p>
+                <div class="formula">
+                    分離度 = 類似職種の平均スコア − 非類似職種の平均スコア
+                </div>
+            </div>
+
+            <div class="result-box">
+                <h4>予備実験の結果</h4>
+                <p style="font-size: 1.2em; color: #764ba2; font-weight: bold; text-align: center; margin-bottom: 20px;">
+                    日本語Sentence-BERTモデルが最も良い結果に
+                </p>
+                <p>今回は単語間での計算にもかかわらず、文章での評価が得意なSentence-BERTの日本語モデルが一番良い結果となりました。</p>
+            </div>
+
+            <div class="chart-container">
+                <h4 style="text-align: center; margin-bottom: 30px;">BERTモデル別の分離度スコア</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>モデル</th>
+                            <th>分離度スコア</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Sentence-BERT (Japanese)</td>
+                            <td><span class="result-value">0.398</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sentence-BERT (Multilingual)</td>
+                            <td><span class="result-value">0.349</span></td>
+                        </tr>
+                        <tr>
+                            <td>BERT-large (Mean Pooling)</td>
+                            <td><span class="result-value">0.111</span></td>
+                        </tr>
+                        <tr>
+                            <td>BERT-large (CLS)</td>
+                            <td><span class="result-value">0.063</span></td>
+                        </tr>
+                        <tr>
+                            <td>BERT (Mean Pooling)</td>
+                            <td><span class="result-value">0.039</span></td>
+                        </tr>
+                        <tr>
+                            <td>BERT (CLS)</td>
+                            <td><span class="result-value">0.019</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="bar-chart" style="margin-top: 30px;">
+                    <div class="bar-item">
+                        <div class="bar-label">Sentence-BERT (Japanese)</div>
+                        <div class="bar" style="width: 100%;">0.398</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">Sentence-BERT (Multilingual)</div>
+                        <div class="bar" style="width: 88%;">0.349</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">BERT-large (Mean Pooling)</div>
+                        <div class="bar" style="width: 28%;">0.111</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">BERT-large (CLS)</div>
+                        <div class="bar" style="width: 16%;">0.063</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">BERT (Mean Pooling)</div>
+                        <div class="bar" style="width: 10%;">0.039</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">BERT (CLS)</div>
+                        <div class="bar" style="width: 5%;">0.019</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 本実験1 -->
+            <h3>本実験1：過去の応募履歴から正答を導く</h3>
+            
+            <div class="experiment-section">
+                <h4>概要</h4>
+                <p>過去にワーカーが応募した求人データのタイトルから、次にワーカーが選択する求人を推測します。実際の応募履歴から<strong>30件を学習データ</strong>として平均ベクトルを作成し、<strong>10件をテストデータ</strong>として利用しました。</p>
+
+                <h4>実験の流れ</h4>
+                <ol>
+                    <li><strong>過去の求人データ収集：</strong>ユーザーが過去に応募・閲覧した求人情報を取得（タイトルのみ）</li>
+                    <li><strong>BERTによるベクトル化：</strong>各求人テキストをBERTモデルでベクトルに変換（各求人 → 768次元ベクトル）</li>
+                    <li><strong>平均ベクトル算出：</strong>過去の求人ベクトルを足し合わせて平均化 ((V₁+V₂+...+Vₙ) / n)</li>
+                    <li><strong>現在の求人ベクトル化：</strong>最新の求人情報をBERTでベクトル化</li>
+                    <li><strong>コサイン類似度計算：</strong>平均ベクトルと各求人の類似度を算出</li>
+                    <li><strong>おすすめ求人表示：</strong>類似度スコアの高い順にランキング表示（上位N件をユーザーに提示）</li>
+                </ol>
+            </div>
+
+            <div class="result-box">
+                <h4>本実験1の結果</h4>
+                <p>求人タイトルで次の応募を推測したところ、以下のような結果となりました。多く働いている人は高い精度で予測できますが、データが少ない人は数値が低い結果となりました。様々な要望の人に対応するには、もっと複雑な重み付けをする必要があります。</p>
+                
+                <div style="margin-top: 30px;">
+                    <h4 style="text-align: center;">10名のワーカーに対する全体平均</h4>
+                    <table style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th>評価指標</th>
+                                <th>精度</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Top-1精度（最上位の推薦が正解）</td>
+                                <td><span class="result-value">39.0%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Top-3精度（上位3件に正解が含まれる）</td>
+                                <td><span class="result-value">60.0%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Top-5精度（上位5件に正解が含まれる）</td>
+                                <td><span class="result-value">67.0%</span></td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>複合スコア（総合評価）</td>
+                                <td><span class="result-value">0.5090</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 本実験2 -->
+            <h3>本実験2：複数項目を用いた精度向上</h3>
+            
+            <div class="experiment-section">
+                <h4>概要</h4>
+                <p>過去にワーカーが応募した求人データから以下の<strong>7項目</strong>を抽出します：</p>
+                <ul>
+                    <li>求人タイトル</li>
+                    <li>業務内容</li>
+                    <li>介護項目</li>
+                    <li>施設</li>
+                    <li>勤務時間</li>
+                    <li>時給</li>
+                    <li>勤務日</li>
+                </ul>
+                <p>学習データ30件の上記の項目から平均のベクトルを作成し、別の10件をテストデータとしました。また、各項目について重み付けを様々に行い、結果を比較しました。</p>
+            </div>
+
+            <div class="result-box">
+                <h4>本実験2の結果：20件学習</h4>
+                <p style="text-align: center; margin-bottom: 20px; color: #888;">※複合スコアは平均値</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>重み付けパターン</th>
+                            <th>Top-1</th>
+                            <th>Top-3</th>
+                            <th>Top-5</th>
+                            <th>複合スコア</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>総合重視 (comprehensive)</td>
+                            <td>40%</td>
+                            <td>63%</td>
+                            <td>71%</td>
+                            <td><strong>0.5430</strong></td>
+                        </tr>
+                        <tr>
+                            <td>時給×勤務時間強化</td>
+                            <td>38%</td>
+                            <td>62%</td>
+                            <td>70%</td>
+                            <td>0.5380</td>
+                        </tr>
+                        <tr>
+                            <td>業務×介護×時給</td>
+                            <td>37%</td>
+                            <td>61%</td>
+                            <td>69%</td>
+                            <td>0.5250</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="result-box">
+                <h4>本実験2の結果：30件学習</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>重み付けパターン</th>
+                            <th>Top-1</th>
+                            <th>Top-3</th>
+                            <th>Top-5</th>
+                            <th>複合スコア</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>総合重視</td>
+                            <td>35%</td>
+                            <td>58%</td>
+                            <td>66%</td>
+                            <td>0.5010</td>
+                        </tr>
+                        <tr>
+                            <td>時給×勤務時間強化</td>
+                            <td>34%</td>
+                            <td>57%</td>
+                            <td>65%</td>
+                            <td>0.4980</td>
+                        </tr>
+                        <tr>
+                            <td>業務×介護×時給</td>
+                            <td>33%</td>
+                            <td>56%</td>
+                            <td>64%</td>
+                            <td>0.4850</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-container">
+                <h4 style="text-align: center; margin-bottom: 30px;">学習データ数による精度推移</h4>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">上位3パターンの重み付けにおける複合スコアの変化</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>学習データ数</th>
+                            <th>総合重視</th>
+                            <th>時給×勤務時間強化</th>
+                            <th>業務×介護×時給</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5件</td>
+                            <td>0.4520</td>
+                            <td>0.4480</td>
+                            <td>0.4350</td>
+                        </tr>
+                        <tr>
+                            <td>10件</td>
+                            <td>0.4920</td>
+                            <td>0.4890</td>
+                            <td>0.4780</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>15件</td>
+                            <td><strong>0.5480</strong></td>
+                            <td><strong>0.5450</strong></td>
+                            <td><strong>0.5320</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>20件</td>
+                            <td><strong>0.5430</strong></td>
+                            <td><strong>0.5380</strong></td>
+                            <td><strong>0.5250</strong></td>
+                        </tr>
+                        <tr>
+                            <td>25件</td>
+                            <td>0.5180</td>
+                            <td>0.5140</td>
+                            <td>0.5020</td>
+                        </tr>
+                        <tr>
+                            <td>30件</td>
+                            <td>0.5010</td>
+                            <td>0.4980</td>
+                            <td>0.4850</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note" style="margin-top: 30px;">
+                    <h4>重要な発見：学習量が多すぎると精度が悪化</h4>
+                    <p>推移グラフを見ると、学習データが<strong>20件を超えたあたり</strong>から、顕著に精度が悪くなっています。</p>
+                    <p>上位10パターンの重み付け全てで、学習データが<strong>15件か20件</strong>のときに最高値を取っていることから、自動マッチングにおけるBERTによる重み付けは、このあたりが限界であると考えられます。</p>
+                    <p>しかし、学習データが20件程度の際には、一定の精度が出ており、<strong>実務でも活用できる範疇</strong>なのではないかと思われます。</p>
+                </div>
+            </div>
+
+            <!-- 実験3 -->
+            <h3>実験3：TF-IDFとBERTの比較</h3>
+            
+            <div class="experiment-section">
+                <h4>概要</h4>
+                <p>過去に応募した求人データと現在の新規求人データを比較し、類似した求人を自動で見つけるアルゴリズムを検証しました。</p>
+                <p>以下の3つの手法を比較：</p>
+                <ul>
+                    <li><strong>ルールベース：</strong>単純な単語一致</li>
+                    <li><strong>TF-IDF：</strong>単語の出現頻度に基づく類似度計算（単語間のつながりは考慮しない）</li>
+                    <li><strong>BERT：</strong>深層学習による意味的類似度計算</li>
+                </ul>
+
+                <h4>実験方法</h4>
+                <p>過去の求人応募を10件作成し、その中から一部の要素をランダムに変更したものを正解データとして、現在の求人を5件作成しました。現在の求人に対して、各手法による数値を算出し、最も類似度が高いものと正解データが一致するか調べました。</p>
+            </div>
+
+            <div class="result-box">
+                <h4>実験3の結果</h4>
+                <div class="chart-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>手法</th>
+                                <th>精度</th>
+                                <th>特徴</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ルールベース（単語一致）</td>
+                                <td><span class="result-value">0.8</span></td>
+                                <td>シンプルだが精度に限界</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>BERT（意味的類似度）</td>
+                                <td><span class="result-value">1.0</span></td>
+                                <td>最高精度だが計算コスト高</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>TF-IDF（頻度ベース）</td>
+                                <td><span class="result-value">1.0</span></td>
+                                <td>BERTと同等の精度で計算コスト低</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note" style="margin-top: 30px;">
+                    <h4>驚きの結果：TF-IDFの有効性</h4>
+                    <p>最初は長文の検証等を行う必要があると思い、BERTを検証していましたが、もっとシンプルな<strong>TF-IDFでも高い精度</strong>を出せる可能性があることが分かりました。</p>
+                    <p>BERTと比較し、<strong>計算量が低い</strong>ためUXを鑑み、こちらも今後の比較検討対象としたいと考えています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 考察 -->
+        <section id="considerations">
+            <h2>05. 考察</h2>
+
+            <div class="considerations">
+                <h4>1. 多く働いている人とそうでない人で傾向が異なる</h4>
+                <p>サービスがスタートして間もないので、データ数が多いユーザーと少ないユーザーで応募数に大きく差があります。その中でも上位のユーザーとあまり働いていないユーザーには応募の傾向に差が見られました。</p>
+                <p>利用が多いユーザーは同じ求人に応募することが多く、これはある特定の求人に慣れ、選び続けていると考えられます。</p>
+                <p><strong>提案：</strong>どれくらいの頻度でこのサービスを利用しているかで重み付けを変更するほうが良いのではないでしょうか。</p>
+            </div>
+
+            <div class="considerations">
+                <h4>2. ユーザーの時間的な変化が大きい</h4>
+                <p>学習データを増加することによっての精度の向上は、<strong>15件から20件で限度</strong>を迎えました。これは過度に過去のデータを学習させると現在の嗜好と異なる過去のデータを学習してしまうためであると考えられます。</p>
+                <p><strong>提案：</strong>学習データが現在からどれだけ離れているかの時間的重み付けも、学習の際に加えると良いのではないでしょうか。</p>
+            </div>
+
+            <div class="considerations">
+                <h4>3. TF-IDFでも意外と行けるのでは？</h4>
+                <p>最初は長文の検証等を行う必要があると思い、BERTを検証していましたが、もっとシンプルなTF-IDFでも高い精度を出せる可能性もあります。</p>
+                <p>BERTと比較し、<strong>計算量が低い</strong>ためUXを鑑み、こちらも今後の比較検討対象としたいです。また、BERTはモデルによる精度の差異が大きかったため、更に多くのモデルを検証する必要がありそうです。</p>
+            </div>
+        </section>
+
+        <!-- ユーザースタディ -->
+        <section id="user-study">
+            <h2>06. ユーザースタディ</h2>
+
+            <div class="diagram">
+                <h3>進捗報告：候補者の選定と2件のインタビューを実行</h3>
+                <p>カスタマーサービスと連携し、インタビュー可能な候補者を<strong>13名選定</strong>しました。また、アンケート項目とインタビュー項目を勘案しました。</p>
+                <p>30分程度のユーザーインタビュー2件を行い、2名ともに引き続きご協力いただけることとなりました。ここからは件数が伸びにくいと思うので、nを増やすために、アンケートで対応する予定です。</p>
+            </div>
+
+            <div class="result-box">
+                <h3>ユーザースタディから得られた学び</h3>
+                <h4 style="color: #764ba2;">特定の業務内容をどう扱うかが肝</h4>
+                
+                <p style="margin-top: 20px;">重要視されている点として、以下が挙げられました：</p>
+                <ol style="font-size: 1.1em; margin-top: 15px;">
+                    <li><strong>働いたことがあるか</strong>（過去の経験の有無）</li>
+                    <li><strong>駐車場の有無</strong>（通勤の利便性）</li>
+                    <li><strong>特定の業務内容がないかどうか</strong>（避けたい業務の確認）</li>
+                </ol>
+
+                <div class="note" style="margin-top: 25px;">
+                    <p style="font-size: 1.2em;"><strong>重要な発見：</strong></p>
+                    <p>特にこの3つについては<strong>時給よりも高い重要度</strong>であると考えられます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今後の展望 -->
+        <section id="future">
+            <h2>07. 今後の展望</h2>
+
+            <div class="future-work">
+                <h4>1. 本実験2の精度のさらなる向上</h4>
+                <p>考察2つから、より良い重み付けの洞察が得られました。現時点として全体として統一的な傾向を分析するのは非常に難しいので、<strong>ユーザーの利用頻度</strong>と<strong>どれくらい前に求人に応募したか</strong>の指標を学習に取り入れて、結果を見てみたいと考えています。</p>
+            </div>
+
+            <div class="future-work">
+                <h4>2. 実験3の精度のさらなる向上</h4>
+                <p>実験3はまだ実データを用いた検証や、横断的なBERTでの比較検討を行えていません。また、私の直感と結果とも大きく異なっていました。今後は一般には精度が劣るとされている<strong>TF-IDF</strong>も含め、BERTと共に様々な角度から検証をしていきたいです。</p>
+            </div>
+
+            <div class="future-work">
+                <h4>3. 実験2,3を組み合わせたより高い精度のマッチング手法の開発</h4>
+                <p>実験2では、複数の職種間での類似度、分離度を計測しました。実験3では、過去の職種から今回応募する職種を予想しました。そのため、これらの手法を<strong>組み合わせて重み付け</strong>し、よりワーカー様の現在の希望にそぐう形での手法を開発したいと考えています。</p>
+            </div>
+
+            <div class="future-work">
+                <h4>4. サービスへの実装とインタビュー</h4>
+                <p>本実験1, 2で選定した重み付けのパラメータを参考に、引き続きユーザーインタビューとアンケートを図ります。ワーカーがどの部分を重要視しているかを聞き出し、実際におすすめを出してみて、どれが良いかを伺います。それを元に<strong>重み付けの改善サイクル</strong>を回していきます。</p>
+            </div>
+        </section>
+
+        <!-- 参考文献 -->
+        <div class="references">
+            <h2>参考文献</h2>
+            <div class="reference-item">
+                [1] VGG16の転移学習を利用した病的音声の検出, 星子 祐哉, 青木 直史, 土橋 宜典, 電気・情報関係学会北海道支部連合大会, オンライン開催, November 5-6, 2022.
+            </div>
+            <div class="reference-item">
+                [2] 介護マッチングサービスにおけるマッチング精度向上の提案と実装（星子 祐哉, 土橋 宜典）- 令和7年度 電気・情報関係学会北海道支部連合大会（2025/11/2-3）
+            </div>
+        </div>
+
+        <!-- 付録 -->
+        <section id="appendix" style="margin-top: 50px; padding-top: 30px; border-top: 2px solid #ddd;">
+            <h2>付録：行列間コサイン類似度について</h2>
+            <p>ここでは行列間のコサイン類似度を測る上で一般的な、行列をベクトルとして扱い、ベクトル間のコサイン類似度を計算する方法を用いました。</p>
+            
+            <h4>具体的な手順</h4>
+            <ol>
+                <li><strong>行列のベクトル化：</strong><br>
+                各行列を1つの長いベクトルに変換します。これは、行列の行を順番に並べるか、列を順番に並べることで行います。例えば、m×nの行列Aは、mn次元のベクトルaに変換されます。同様に、p×qの行列BはpQ次元のベクトルbに変換されます。</li>
+                
+                <li><strong>コサイン類似度の計算：</strong><br>
+                ベクトル化された2つのベクトルaとbの間のコサイン類似度を以下の式で計算します：</li>
+            </ol>
+
+            <div class="formula" style="margin: 30px 0; font-size: 1.5em;">
+                cos(θ) = (a · b) / (||a|| × ||b||) = (Σ aᵢbᵢ) / (√Σ aᵢ² × √Σ bᵢ²)
+            </div>
+
+            <p>ここで、Nはベクトルの次元数（つまり、mnまたはpq）、a·bはベクトルの内積、||a||と||b||はそれぞれのベクトルのノルムを表します。</p>
+        </section>
+
+        <footer style="margin-top: 60px; padding-top: 30px; border-top: 2px solid #ddd; text-align: center; color: #888;">
+            <p>St.Arkid K.K. | hoshiko@st.arkid.jp</p>
+            <p style="margin-top: 10px;">北海道大学 情報科学院 2024年度研究発表</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+本節では本研究で実施した予備実験および本実験の設計と結果を示す。
+
+\section*{予備実験：BERTモデルの横断評価}
+複数のBERT系モデル（日本語Sentence-BERT、マルチリンガルSentence-BERT、BERT-largeなど）を比較し、職種間の分離度を評価した。分離度は類似職種グループと非類似職種グループの平均スコア差で定義する。
+
+\begin{table}[htbp]
+\centering
+\caption{BERTモデル別の分離度スコア}
+\begin{tabular}{l r}
+\hline
+モデル & 分離度スコア \\
+\hline
+Sentence-BERT (Japanese) & 0.398 \\
+Sentence-BERT (Multilingual) & 0.349 \\
+BERT-large (Mean Pooling) & 0.111 \\
+BERT-large (CLS) & 0.063 \\
+BERT (Mean Pooling) & 0.039 \\
+BERT (CLS) & 0.019 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{本実験1：過去の応募履歴からの推定}
+学習データとして過去30件、テストデータ10件を用い、過去応募の平均ベクトルから次に選択される求人を推測した。評価指標としてTop-1/Top-3/Top-5精度および複合スコアを算出した。
+
+\begin{table}[htbp]
+\centering
+\caption{本実験1の評価（10名平均）}
+\begin{tabular}{l r}
+\hline
+評価指標 & 値 \\
+\hline
+Top-1精度 & 39.0\% \\
+Top-3精度 & 60.0\% \\
+Top-5精度 & 67.0\% \\
+複合スコア & 0.5090 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{本実験2：複数項目の重み付けによる精度向上}
+求人タイトル、業務内容、介護項目、施設、勤務時間、時給、勤務日など7項目を抽出し、各項目に重みを付与して評価した。以下に一部結果を示す。
+
+\begin{table}[htbp]
+\centering
+\caption{本実験2（20件学習）の代表結果}
+\begin{tabular}{l c c c c}
+\hline
+重み付けパターン & Top-1 & Top-3 & Top-5 & 複合スコア \\
+\hline
+総合重視 (comprehensive) & 40\% & 63\% & 71\% & 0.5430 \\
+時給×勤務時間強化 & 38\% & 62\% & 70\% & 0.5380 \\
+業務×介護×時給 & 37\% & 61\% & 69\% & 0.5250 \\
+\hline
+\end{tabular}
+\end{table}
+
+学習データ数を変化させた場合の精度推移では、学習データが15件〜20件の時点で最高値を示し、それを超えると精度が悪化する傾向が観察された。
+
+\section*{実験3：TF-IDFとBERTの比較}
+単語出現頻度に基づくTF-IDF、ルールベース（単語一致）、およびBERTによる意味的類似度を比較した結果、短文やタイトルレベルの比較ではTF-IDFが実用上十分な精度を出す場合があり、計算コストの点で有利であることがわかった。
+
+\begin{table}[htbp]
+\centering
+\caption{実験3の結果（概略）}
+\begin{tabular}{l c l}
+\hline
+手法 & 精度 & 特徴 \\
+\hline
+ルールベース（単語一致） & 0.8 & シンプルだが限界あり \\
+BERT（意味的類似度） & 1.0 & 最高精度だが計算コスト高 \\
+TF-IDF（頻度ベース） & 1.0 & 計算コスト低で有効な場合あり \\
+\hline
+\end{tabular}
+\end{table}
