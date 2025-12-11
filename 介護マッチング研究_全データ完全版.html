@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>介護マッチングサービスにおけるマッチング精度向上の提案 - 完全版データ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yu Gothic', 'Meiryo', 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .authors {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        .affiliation {
+            font-size: 1em;
+            color: #888;
+            margin-top: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #764ba2;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.95em;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        tbody tr:hover {
+            background-color: #f5f7fa;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .highlight-row {
+            background-color: #fff9c4 !important;
+            font-weight: bold;
+        }
+        
+        .rank-1 {
+            background-color: #fff9c4 !important;
+        }
+        
+        .rank-2 {
+            background-color: #e1f5fe !important;
+        }
+        
+        .rank-3 {
+            background-color: #ffe0b2 !important;
+        }
+        
+        .perfect-score {
+            background-color: #c8e6c9 !important;
+            font-weight: bold;
+        }
+        
+        .weights-col {
+            text-align: left !important;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .score-high {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .score-low {
+            color: #c62828;
+        }
+        
+        .result-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .table-caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #764ba2;
+            text-align: center;
+            margin: 30px 0 15px 0;
+        }
+        
+        .table-note {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>介護マッチングサービスにおける<br>マッチング精度向上の提案</h1>
+            <div class="affiliation">北海道大学 情報科学院</div>
+            <div class="authors">星子祐哉　土橋宜典</div>
+            <div style="margin-top: 20px; font-size: 1.1em; color: #764ba2; font-weight: bold;">全実験データ完全版</div>
+        </header>
+
+        <!-- 予備実験結果 -->
+        <section id="preliminary">
+            <h2>予備実験：BERTモデルの横断的評価</h2>
+            
+            <div class="table-caption">各BERTモデルの分離度スコア比較</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 60%;">モデル</th>
+                        <th style="width: 40%;">分離度スコア</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td style="text-align: left; padding-left: 20px;">Sentence-BERT (Japanese)</td>
+                        <td class="score-high">0.398</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">Sentence-BERT (Multilingual)</td>
+                        <td>0.349</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">BERT-large (Mean Pooling)</td>
+                        <td>0.111</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">BERT-large (CLS)</td>
+                        <td>0.063</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">BERT (Mean Pooling)</td>
+                        <td>0.039</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">BERT (CLS)</td>
+                        <td class="score-low">0.019</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><strong>結論：</strong>日本語Sentence-BERTモデルが最も高い分離度（0.398）を達成しました。今回は単語間での計算にもかかわらず、文章での評価が得意なSentence-BERTの日本語モデルが最良の結果となりました。</p>
+            </div>
+        </section>
+
+        <!-- 本実験1結果 -->
+        <section id="experiment1">
+            <h2>本実験1：過去の応募履歴から正答を導く（求人タイトルのみ）</h2>
+            
+            <div class="table-caption">ワーカー別の推薦精度（30件学習、10件テスト）</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>順位</th>
+                        <th>ワーカー名</th>
+                        <th>Top-1精度</th>
+                        <th>Top-3精度</th>
+                        <th>Top-5精度</th>
+                        <th>複合スコア</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="perfect-score">
+                        <td>🥇 1</td>
+                        <td>ワーカー A</td>
+                        <td>100.0%</td>
+                        <td>100.0%</td>
+                        <td>100.0%</td>
+                        <td>1.0000</td>
+                    </tr>
+                    <tr class="perfect-score">
+                        <td>🥈 2</td>
+                        <td>ワーカー B</td>
+                        <td>100.0%</td>
+                        <td>100.0%</td>
+                        <td>100.0%</td>
+                        <td>1.0000</td>
+                    </tr>
+                    <tr>
+                        <td>🥉 3</td>
+                        <td>ワーカー C</td>
+                        <td>60.0%</td>
+                        <td>80.0%</td>
+                        <td>80.0%</td>
+                        <td>0.7000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>ワーカー D</td>
+                        <td>60.0%</td>
+                        <td>60.0%</td>
+                        <td>60.0%</td>
+                        <td>0.6000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>ワーカー E</td>
+                        <td>20.0%</td>
+                        <td>80.0%</td>
+                        <td>80.0%</td>
+                        <td>0.5000</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>ワーカー F</td>
+                        <td>10.0%</td>
+                        <td>80.0%</td>
+                        <td>80.0%</td>
+                        <td>0.4500</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>ワーカー G</td>
+                        <td>20.0%</td>
+                        <td>30.0%</td>
+                        <td>40.0%</td>
+                        <td>0.2700</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>ワーカー H</td>
+                        <td>10.0%</td>
+                        <td>30.0%</td>
+                        <td>60.0%</td>
+                        <td>0.2600</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>ワーカー I</td>
+                        <td>0.0%</td>
+                        <td>30.0%</td>
+                        <td>40.0%</td>
+                        <td>0.1700</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>ワーカー J</td>
+                        <td>10.0%</td>
+                        <td>10.0%</td>
+                        <td>30.0%</td>
+                        <td>0.1400</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td colspan="2">📊 全体平均（10名）</td>
+                        <td><strong>39.0%</strong></td>
+                        <td><strong>60.0%</strong></td>
+                        <td><strong>67.0%</strong></td>
+                        <td><strong>0.5090</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><strong>重要な発見：</strong>多く働いている人（ワーカーA、B）は100%の精度で予測できますが、データが少ない人（ワーカーI、J）は数値が低くなっています。利用頻度によって予測精度に大きな差が生じることが確認されました。</p>
+            </div>
+        </section>
+
+        <!-- 本実験2結果（20件学習） -->
+        <section id="experiment2-20">
+            <h2>本実験2：複数項目を用いた精度向上（20件学習）</h2>
+            
+            <div class="table-caption">重み付けパターン別の推薦精度比較（TOP 10パターン）</div>
+            <div class="table-note">※複合スコアは平均値</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">順位</th>
+                        <th style="width: 15%;">パターン名</th>
+                        <th style="width: 35%;">重み付け詳細</th>
+                        <th style="width: 9%;">複合スコア</th>
+                        <th style="width: 9%;">TOP-5</th>
+                        <th style="width: 9%;">TOP-5 STD</th>
+                        <th style="width: 9%;">TOP-3</th>
+                        <th style="width: 9%;">TOP-3 STD</th>
+                        <th style="width: 9%;">TOP-1</th>
+                        <th style="width: 9%;">TOP-1 STD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rank-1">
+                        <td>1</td>
+                        <td><strong>均等 (equal)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td class="score-high">0.7112</td>
+                        <td>0.7706</td>
+                        <td>0.2114</td>
+                        <td>0.7059</td>
+                        <td>0.2249</td>
+                        <td>0.5706</td>
+                        <td>0.2494</td>
+                    </tr>
+                    <tr class="rank-2">
+                        <td>2</td>
+                        <td><strong>介護・施設重視<br>(care_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:2, 施設:2, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td class="score-high">0.7094</td>
+                        <td>0.7765</td>
+                        <td>0.1855</td>
+                        <td>0.6824</td>
+                        <td>0.2351</td>
+                        <td>0.5824</td>
+                        <td>0.2481</td>
+                    </tr>
+                    <tr class="rank-3">
+                        <td>3</td>
+                        <td><strong>勤務時間重視<br>(work_time_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:3, 時給:1, 勤務日:1</td>
+                        <td class="score-high">0.6959</td>
+                        <td>0.7706</td>
+                        <td>0.2201</td>
+                        <td>0.6824</td>
+                        <td>0.2378</td>
+                        <td>0.5294</td>
+                        <td>0.2733</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>時給×勤務時間強化<br>(salary_time_strong)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:4, 時給:4, 勤務日:1</td>
+                        <td>0.6959</td>
+                        <td>0.7588</td>
+                        <td>0.1938</td>
+                        <td>0.6941</td>
+                        <td>0.1919</td>
+                        <td>0.5412</td>
+                        <td>0.3104</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>時給重視<br>(salary_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:3, 勤務日:1</td>
+                        <td>0.6941</td>
+                        <td>0.7647</td>
+                        <td>0.2029</td>
+                        <td>0.6941</td>
+                        <td>0.2358</td>
+                        <td>0.5176</td>
+                        <td>0.2856</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>勤務条件重視<br>(conditions_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:3, 時給:3, 勤務日:1</td>
+                        <td>0.6929</td>
+                        <td>0.7588</td>
+                        <td>0.2063</td>
+                        <td>0.6765</td>
+                        <td>0.2306</td>
+                        <td>0.5529</td>
+                        <td>0.2809</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>極度時給重視<br>(extreme_salary)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:5, 勤務日:1</td>
+                        <td>0.6753</td>
+                        <td>0.7471</td>
+                        <td>0.2478</td>
+                        <td>0.6529</td>
+                        <td>0.2764</td>
+                        <td>0.5294</td>
+                        <td>0.3274</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>高バランス型<br>(balanced_high)</strong></td>
+                        <td class="weights-col">求人タイトル:2, 業務内容:2, 介護項目:1, 施設:1, 勤務時間:1, 時給:2, 勤務日:1</td>
+                        <td>0.6653</td>
+                        <td>0.7412</td>
+                        <td>0.1770</td>
+                        <td>0.6529</td>
+                        <td>0.2649</td>
+                        <td>0.4941</td>
+                        <td>0.2989</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>業務内容×時給<br>(content_salary)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:3, 介護項目:1, 施設:1, 勤務時間:1, 時給:3, 勤務日:1</td>
+                        <td>0.6629</td>
+                        <td>0.7412</td>
+                        <td>0.2033</td>
+                        <td>0.6294</td>
+                        <td>0.2592</td>
+                        <td>0.5176</td>
+                        <td>0.3226</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>求人タイトル重視<br>(job_title_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:3, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.6618</td>
+                        <td>0.7000</td>
+                        <td>0.2236</td>
+                        <td>0.6706</td>
+                        <td>0.2469</td>
+                        <td>0.5529</td>
+                        <td>0.2896</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><strong>結論：</strong>20件学習では「均等(equal)」パターンが最も高い複合スコア（0.7112）を達成しました。すべての項目に均等な重みを与えることで、バランスの取れた推薦が可能になることが示されました。</p>
+            </div>
+        </section>
+
+        <!-- 本実験2結果（30件学習） -->
+        <section id="experiment2-30">
+            <h2>本実験2：複数項目を用いた精度向上（30件学習）</h2>
+            
+            <div class="table-caption">重み付けパターン別の推薦精度比較（TOP 10パターン）</div>
+            <div class="table-note">※30件学習による結果</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">順位</th>
+                        <th style="width: 15%;">パターン名</th>
+                        <th style="width: 35%;">重み付け詳細</th>
+                        <th style="width: 9%;">複合スコア</th>
+                        <th style="width: 9%;">TOP-5</th>
+                        <th style="width: 9%;">TOP-5 STD</th>
+                        <th style="width: 9%;">TOP-3</th>
+                        <th style="width: 9%;">TOP-3 STD</th>
+                        <th style="width: 9%;">TOP-1</th>
+                        <th style="width: 9%;">TOP-1 STD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rank-1">
+                        <td>1</td>
+                        <td><strong>総合重視<br>(comprehensive)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:3, 介護項目:2, 施設:2, 勤務時間:2, 時給:3, 勤務日:1</td>
+                        <td class="score-high">0.5430</td>
+                        <td>0.6300</td>
+                        <td>0.2869</td>
+                        <td>0.5600</td>
+                        <td>0.2914</td>
+                        <td>0.3000</td>
+                        <td>0.3399</td>
+                    </tr>
+                    <tr class="rank-2">
+                        <td>2</td>
+                        <td><strong>時給×勤務時間強化<br>(salary_time_strong)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:4, 時給:4, 勤務日:1</td>
+                        <td class="score-high">0.5380</td>
+                        <td>0.6300</td>
+                        <td>0.3093</td>
+                        <td>0.4900</td>
+                        <td>0.3510</td>
+                        <td>0.3800</td>
+                        <td>0.3521</td>
+                    </tr>
+                    <tr class="rank-3">
+                        <td>3</td>
+                        <td><strong>業務×介護×時給<br>(content_care_salary)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:3, 介護項目:2, 施設:2, 勤務時間:1, 時給:2, 勤務日:1</td>
+                        <td class="score-high">0.5250</td>
+                        <td>0.6100</td>
+                        <td>0.2998</td>
+                        <td>0.5200</td>
+                        <td>0.3048</td>
+                        <td>0.3200</td>
+                        <td>0.3084</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>求人タイトル重視<br>(job_title_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:3, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.5240</td>
+                        <td>0.5900</td>
+                        <td>0.2961</td>
+                        <td>0.5100</td>
+                        <td>0.3542</td>
+                        <td>0.3800</td>
+                        <td>0.3645</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>実務重視<br>(practical_focus)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:3, 介護項目:3, 施設:3, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.5170</td>
+                        <td>0.6000</td>
+                        <td>0.2867</td>
+                        <td>0.5500</td>
+                        <td>0.3240</td>
+                        <td>0.2600</td>
+                        <td>0.3098</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>業務内容×時給<br>(content_salary)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:3, 介護項目:1, 施設:1, 勤務時間:1, 時給:3, 勤務日:1</td>
+                        <td>0.5090</td>
+                        <td>0.5700</td>
+                        <td>0.3093</td>
+                        <td>0.5000</td>
+                        <td>0.3055</td>
+                        <td>0.3700</td>
+                        <td>0.3335</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>高バランス型<br>(balanced_high)</strong></td>
+                        <td class="weights-col">求人タイトル:2, 業務内容:2, 介護項目:1, 施設:1, 勤務時間:1, 時給:2, 勤務日:1</td>
+                        <td>0.5080</td>
+                        <td>0.5600</td>
+                        <td>0.3565</td>
+                        <td>0.5400</td>
+                        <td>0.3658</td>
+                        <td>0.3300</td>
+                        <td>0.3335</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>介護・施設重視<br>(care_focused)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:2, 施設:2, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.5000</td>
+                        <td>0.5700</td>
+                        <td>0.3020</td>
+                        <td>0.4700</td>
+                        <td>0.3529</td>
+                        <td>0.3700</td>
+                        <td>0.3401</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>超業務内容重視<br>(ultra_content)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:7, 介護項目:1, 施設:1, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.4990</td>
+                        <td>0.5700</td>
+                        <td>0.2983</td>
+                        <td>0.4800</td>
+                        <td>0.3490</td>
+                        <td>0.3500</td>
+                        <td>0.3659</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>均等<br>(equal)</strong></td>
+                        <td class="weights-col">求人タイトル:1, 業務内容:1, 介護項目:1, 施設:1, 勤務時間:1, 時給:1, 勤務日:1</td>
+                        <td>0.4980</td>
+                        <td>0.5600</td>
+                        <td>0.3134</td>
+                        <td>0.5000</td>
+                        <td>0.3399</td>
+                        <td>0.3400</td>
+                        <td>0.3596</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><strong>重要な発見：</strong>30件学習では精度が低下しています。最高スコアは「総合重視(comprehensive)」の0.5430で、20件学習時の0.7112と比較して大きく下がっています。これは学習データが多すぎると、古い嗜好データが現在の嗜好と乖離するためと考えられます。</p>
+            </div>
+        </section>
+
+        <!-- 学習データ数による推移 -->
+        <section id="learning-progression">
+            <h2>学習データ数による精度推移の詳細分析</h2>
+            
+            <div class="table-caption">各重み付けパターンにおける学習データ数別のTOP-5精度推移</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>重み付けパターン</th>
+                        <th>5件学習</th>
+                        <th>10件学習</th>
+                        <th>15件学習</th>
+                        <th>20件学習</th>
+                        <th>25件学習</th>
+                        <th>30件学習</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: left; padding-left: 15px;">時給×勤務時間強化 (salary_time_strong)</td>
+                        <td>0.68</td>
+                        <td>0.64</td>
+                        <td>0.72</td>
+                        <td class="score-high">0.76</td>
+                        <td>0.62</td>
+                        <td>0.63</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 15px;">均等 (equal)</td>
+                        <td>0.69</td>
+                        <td>0.62</td>
+                        <td>0.74</td>
+                        <td class="score-high">0.77</td>
+                        <td>0.62</td>
+                        <td>0.56</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 15px;">高バランス型 (balanced_high)</td>
+                        <td>0.70</td>
+                        <td>0.62</td>
+                        <td>0.72</td>
+                        <td class="score-high">0.74</td>
+                        <td>0.60</td>
+                        <td>0.56</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding-left: 15px;">求人タイトル重視 (job_title_focused)</td>
+                        <td>0.68</td>
+                        <td>0.67</td>
+                        <td>0.72</td>
+                        <td class="score-high">0.70</td>
+                        <td>0.59</td>
+                        <td>0.59</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td style="text-align: left; padding-left: 15px;">介護・施設重視 (care_focused)</td>
+                        <td>0.64</td>
+                        <td>0.64</td>
+                        <td class="score-high">0.77</td>
+                        <td>0.77</td>
+                        <td>0.61</td>
+                        <td>0.57</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="result-box">
+                <h4>グラフから読み取れる重要なパターン</h4>
+                <ul style="margin-left: 30px; margin-top: 15px;">
+                    <li><strong>最適学習データ数：15〜20件</strong> - すべてのパターンでこの範囲が最高精度を示す</li>
+                    <li><strong>5件では不足：</strong>精度0.64〜0.70程度で頭打ち</li>
+                    <li><strong>25件以上で劣化：</strong>20件を超えると全パターンで精度が低下</li>
+                    <li><strong>30件では大幅低下：</strong>0.56〜0.63まで落ち込む（最大約20%の精度低下）</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <p><strong>考察：</strong>学習データが20件を超えると精度が顕著に悪化する理由は、過度に過去のデータを学習させることで、現在の嗜好と異なる古いデータを学習してしまうためと考えられます。ユーザーの嗜好は時間とともに変化するため、直近15〜20件のデータに重点を置くべきです。</p>
+            </div>
+        </section>
+
+        <!-- 実験3：TF-IDF vs BERT -->
+        <section id="experiment3">
+            <h2>実験3：TF-IDFとBERTの比較実験</h2>
+            
+            <div class="table-caption">3つの手法による類似求人検索精度の比較</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">手法</th>
+                        <th style="width: 15%;">精度</th>
+                        <th style="width: 55%;">特徴と考察</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: left; padding-left: 20px;">ルールベース<br>（単語一致）</td>
+                        <td>0.8</td>
+                        <td style="text-align: left; padding-left: 20px;">シンプルな単語マッチング。実装が容易だが精度に限界がある。同義語や表現のバリエーションに対応できない。</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td style="text-align: left; padding-left: 20px;"><strong>BERT</strong><br>（意味的類似度）</td>
+                        <td class="score-high"><strong>1.0</strong></td>
+                        <td style="text-align: left; padding-left: 20px;">深層学習による意味理解。文脈を考慮した高精度な類似度計算が可能。ただし計算コストが高く、推論時間が長い。</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td style="text-align: left; padding-left: 20px;"><strong>TF-IDF</strong><br>（頻度ベース）</td>
+                        <td class="score-high"><strong>1.0</strong></td>
+                        <td style="text-align: left; padding-left: 20px;">単語の出現頻度に基づく計算。BERTと同等の精度を達成しながら、計算コストが大幅に低い。リアルタイム性が要求されるUXに適している。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="result-box">
+                <h4>驚きの結果：TF-IDFの実用性</h4>
+                <p style="margin-top: 15px;">当初は長文の意味理解にBERTが必須と考えていましたが、TF-IDFでもBERTと同等の精度（1.0）を達成できることが判明しました。</p>
+                
+                <h4 style="margin-top: 25px;">TF-IDFの利点</h4>
+                <ul style="margin-left: 30px; margin-top: 15px;">
+                    <li><strong>計算速度：</strong>BERTの約10〜100倍高速</li>
+                    <li><strong>リソース効率：</strong>GPUが不要、CPUのみで動作</li>
+                    <li><strong>実装の簡潔さ：</strong>数十行のコードで実装可能</li>
+                    <li><strong>UX向上：</strong>即座に推薦結果を返せる</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">BERTの利点</h4>
+                <ul style="margin-left: 30px; margin-top: 15px;">
+                    <li><strong>意味理解：</strong>同義語や言い換え表現を理解</li>
+                    <li><strong>文脈考慮：</strong>単語の順序や関係性を把握</li>
+                    <li><strong>汎用性：</strong>様々なドメインに適用可能</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <p><strong>今後の方針：</strong>BERTはモデルによる精度の差異が大きかったため、さらに多くのモデルを検証する必要があります。一方、TF-IDFも実データでの検証を進め、本番環境での採用を検討します。ハイブリッドアプローチ（TF-IDFで高速フィルタリング→BERTで精密ランキング）も有力な選択肢です。</p>
+            </div>
+        </section>
+
+        <!-- 評価データセット -->
+        <section id="evaluation-dataset">
+            <h2>予備実験：職種類似度評価データセット</h2>
+            
+            <div class="table-caption">アンカー職種と類似/非類似職種の組み合わせ</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">アンカー職種</th>
+                        <th style="width: 40%;">類似職種</th>
+                        <th style="width: 40%;">非類似職種</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>レジ打ち</td>
+                        <td>レジ係, キャッシャー, 精算係, 会計担当</td>
+                        <td>プログラマー, 医師, 建築士, 弁護士</td>
+                    </tr>
+                    <tr>
+                        <td>プログラマー</td>
+                        <td>ソフトウェアエンジニア, 開発者, コーダー, システムエンジニア</td>
+                        <td>販売員, 料理人, 運転手, 警備員</td>
+                    </tr>
+                    <tr>
+                        <td>営業職</td>
+                        <td>セールス, 営業担当, 販売推進, 営業マネージャー</td>
+                        <td>経理, 研究員, 保育士, 清掃員</td>
+                    </tr>
+                    <tr>
+                        <td>看護師</td>
+                        <td>ナース, 看護職員, 病棟看護師, 臨床看護師</td>
+                        <td>プログラマー, 営業, デザイナー, 建設作業員</td>
+                    </tr>
+                    <tr>
+                        <td>データサイエンティスト</td>
+                        <td>データアナリスト, 機械学習エンジニア, AIエンジニア, 統計解析担当</td>
+                        <td>事務員, 警備員, 配送ドライバー, 調理師</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><strong>評価方法：</strong>各BERTモデルについて、アンカー職種と各職種とのコサイン類似度を計算し、類似職種グループの平均スコアと非類似職種グループの平均スコアの差（分離度）を算出しました。分離度が高いほど、そのモデルが職種間の意味的な違いを正しく捉えられていることを示します。</p>
+            </div>
+        </section>
+
+        <footer style="margin-top: 60px; padding-top: 30px; border-top: 2px solid #ddd; text-align: center; color: #888;">
+            <p style="font-size: 1.1em; color: #764ba2; font-weight: bold;">北海道大学 情報科学院 2024年度研究発表</p>
+            <p style="margin-top: 10px;">星子祐哉　土橋宜典</p>
+            <p style="margin-top: 15px;">St.Arkid K.K. | hoshiko@st.arkid.jp</p>
+        </footer>
+    </div>
+</body>
+</html>

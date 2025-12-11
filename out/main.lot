@@ -3,10 +3,12 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {5.1}{\ignorespaces BERTモデル別の分離度スコア}}{5}{table.caption.8}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces 本実験1の評価（10名平均）}}{6}{table.caption.10}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces 本実験2（20件学習）の代表結果}}{6}{table.caption.12}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces 実験3の結果（概略）}}{6}{table.caption.14}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces BERTモデル別の分離度スコア}}{6}{table.caption.10}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{7}{table.caption.12}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces 本実験2（20件学習）の上位5パターン}}{7}{table.caption.14}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces 本実験2（30件学習）の上位5パターン}}{7}{table.caption.15}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{8}{table.caption.16}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces 実験3の結果（概略）}}{8}{table.caption.18}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

@@ -2,4 +2,56 @@
 
 とくに本研究の対象としている北海道は高齢化の進行と人口偏在が顕著であり、2025年には高齢化率が約33.5\%に達すると予想される。都市部に人口が集中する一方で、広大な地域に点在する市町村では移動距離や通勤手段の制約が大きく、マッチングの難易度が高い。
 
+\subsection*{介護マッチングアプリの仕組み}
+本研究で対象とする介護特化型マッチングアプリの概要を図\ref{fig:app_overview}に示す。このシステムでは、介護事業者が求人情報を登録し、ワーカー（潜在介護士、副業希望者、その他就労希望者等）が希望の勤務地・時間・職種等を入力することで、システムが自動的にマッチングを行う。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  box/.style={rectangle, draw=black, line width=1.2pt, fill=white, text width=3.5cm, minimum height=2.5cm, align=center},
+  mainbox/.style={rectangle, draw=black, line width=2pt, fill=black!10, text width=4cm, minimum height=3cm, align=center},
+  userbox/.style={rectangle, draw=black, line width=0.8pt, fill=white, text width=2cm, minimum height=0.8cm, align=center},
+  arrow/.style={->, >=stealth, line width=1.5pt}
+]
+
+% 左側：介護事業者
+\node[box] (provider) at (0,0) {
+  \textbf{介護事業者}\\[0.5cm]
+  求人情報登録
+};
+
+% 中央：マッチングアプリ（強調）
+\node[mainbox] (app) at (6,0) {
+  \textbf{\large マッチング}\\
+  \textbf{\large システム}\\[0.5cm]
+  \small 条件解析\\
+  最適化処理
+};
+
+% 右側：ワーカー
+\node[box] (worker) at (12,0) {
+  \textbf{ワーカー}\\[0.5cm]
+  条件入力\\
+  応募
+};
+
+% 下部：ワーカーの種類（整列）
+\node[userbox] (worker1) at (10.2,-2.8) {\footnotesize 潜在介護士};
+\node[userbox] (worker2) at (12,-2.8) {\footnotesize 副業希望者};
+\node[userbox] (worker3) at (13.8,-2.8) {\footnotesize その他};
+
+% 矢印（双方向）
+\draw[arrow, <->] (provider) -- (app);
+\draw[arrow, <->] (app) -- (worker);
+
+% ワーカー種類からの接続（細い線）
+\draw[->, line width=0.8pt] (worker1) -- (worker);
+\draw[->, line width=0.8pt] (worker2) -- (worker);
+\draw[->, line width=0.8pt] (worker3) -- (worker);
+
+\end{tikzpicture}
+\caption{介護特化型マッチングアプリの概要}
+\label{fig:app_overview}
+\end{figure}
+
 これらの課題を踏まえ、本研究では単純な定型条件マッチ（勤務地・日程・資格等）だけでなく、テキストの意味的類似性や履歴情報、時間的要因を組み合わせた重み付けにより、ワーカーと求人の潜在的親和性をより高精度に評価する手法を提案する。
