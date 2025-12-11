@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  12 DEC 2025 00:14
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  12 DEC 2025 00:17
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -1557,11 +1557,25 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 14.58087pt on input line 3.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 14.58087pt on input line 3.
-)
+(load cache: extra_lmromandemi10-regular.luc)
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 7.08789pt on input line 9.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 5.0628pt on input line 9.
+
 
 [5
 
 ]
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+
+(Font)              scaled to size 7.08789pt on input line 28.
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+
+(Font)              scaled to size 5.0628pt on input line 28.
+)
+
+[6]
 第5章
 (./section/4_experiment.tex
 LaTeX Font Info:    Calculating math sizes for size <9.85501> on input line 30.
@@ -1571,6 +1585,12 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 6.37909pt on input line 30.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 
+(Font)              scaled to size 4.55652pt on input line 30.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 9.11305pt on input line 30.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 6.37909pt on input line 30.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 4.55652pt on input line 30.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 
@@ -1599,6 +1619,12 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 
 (Font)              scaled to size 3.54396pt on input line 59.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 7.08792pt on input line 59.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 4.96152pt on input line 59.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
+(Font)              scaled to size 3.54396pt on input line 59.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 
 (Font)              scaled to size 7.08792pt on input line 59.
@@ -1610,7 +1636,7 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 (Font)              scaled to size 3.54396pt on input line 59.
 
 
-[6
+[7
 
 ](load cache: extra_lmroman7-bold.luc)
 LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
@@ -1618,40 +1644,35 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 (Font)              scaled to size 7.08792pt on input line 99.
 
 
-[7])
+[8])
 
-[8]
+[9]
 第6章
 (./section/5_considerations.tex)
 
-[9
+[10
 
 ]
 第7章
 (./section/6_user_study.tex)
 
-[10
+[11
 
 ]
 第8章
 (./section/7_future.tex)
 
-[11
-
-]
-第9章
-(./section/9_conclusion.tex(load cache: extra_lmromandemi10-regular.luc)
-LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 7.08789pt on input line 10.
-LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 5.0628pt on input line 10.
-)
-
 [12
 
 ]
+第9章
+(./section/9_conclusion.tex)
 
 [13
+
+]
+
+[14
 
 
 ](load cache: extra_lmroman10-italic.luc)
@@ -1681,12 +1702,12 @@ undefined
 (Font)              No change on input line 140.
 
 
-[14
+[15
 
 
 ]
 
-[15
+[16
 
 ] (./out/main.aux)
  ***********
@@ -1694,28 +1715,28 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F071995626875BFE2EE21293C1A56DD6;1216.
+(rerunfilecheck)             Checksum: E3C2576B8760A7BB344322664E18C860;1216.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28901 strings out of 475506
- 195703,1144653 words of node,token memory allocated
- 2978 words of node memory still in use:
-   26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 884 attribute, 58 glue_s
-pec, 105 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 16 pdf_colors
+ 28921 strings out of 475506
+ 195700,1144653 words of node,token memory allocated
+ 3002 words of node memory still in use:
+   26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 895 attribute, 58 glue_s
+pec, 106 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 16 pdf_colors
 tack nodes
-   avail lists: 1:42,2:47860,3:553,4:506,5:141,6:41,7:5428,8:30,9:1659,10:22,11:
+   avail lists: 1:43,2:47872,3:553,4:506,5:141,6:41,7:5428,8:39,9:1659,10:22,11:
 134,12:1
- 51009 multiletter control sequences out of 65536+600000
- 171 fonts using 165145447 bytes
+ 51025 multiletter control sequences out of 65536+600000
+ 177 fonts using 165937559 bytes
  130i,9n,131p,1879b,1045s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.ot
-f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromandemi10-reg
-ular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-
-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-b
-old.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-re
-gular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman9-
-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-r
+f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.ot
+f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-bold.otf
+></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.o
+tf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.ot
+f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.
+otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromandemi10-r
 egular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans17
 -regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroma
 n10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lms
@@ -1729,10 +1750,10 @@ st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (20 pages, 279687 bytes).
+Output written on main.pdf (21 pages, 289890 bytes).
 
-PDF statistics: 354 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 72 named destinations out of 1000 (max. 131072)
+PDF statistics: 362 PDF objects out of 1000 (max. 8388607)
+ 275 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 131072)
  280 words of extra memory for PDF output out of 10000 (max. 100000000)
 

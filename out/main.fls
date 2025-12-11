@@ -353,6 +353,8 @@ INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman12-bold.luc
 INPUT ./section/2_purpose.tex
 INPUT ./section/3_method.tex
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmromandemi10-regular.luc
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmromandemi10-regular.luc
 INPUT ./section/4_experiment.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
@@ -404,8 +406,6 @@ INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
 INPUT ./section/7_future.tex
 INPUT ./section/9_conclusion.tex
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmromandemi10-regular.luc
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmromandemi10-regular.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman10-italic.luc
 INPUT ./out/main.aux
