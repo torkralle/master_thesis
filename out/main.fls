@@ -1,6 +1,6 @@
 PWD /Users/torkralle/WorkSpace/Labo/master_thesis
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /Users/torkralle/WorkSpace/Labo/master_thesis/main.tex
+INPUT ./main.tex
 OUTPUT out/main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
