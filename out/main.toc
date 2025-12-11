@@ -2,15 +2,14 @@
 \contentsline {paragraph}{人材ミスマッチと経営危機}{1}{section*.5}%
 \contentsline {paragraph}{北海道の特殊事情}{1}{section*.6}%
 \contentsline {paragraph}{現行マッチングシステムの限界}{1}{section*.7}%
-\contentsline {chapter}{\numberline {第2章}関連研究}{3}{chapter.2}%
-\contentsline {chapter}{\numberline {第3章}研究の目的}{4}{chapter.3}%
-\contentsline {chapter}{\numberline {第4章}提案手法}{5}{chapter.4}%
-\contentsline {chapter}{\numberline {第5章}実験}{7}{chapter.5}%
-\contentsline {chapter}{\numberline {第6章}考察}{10}{chapter.6}%
-\contentsline {chapter}{\numberline {第7章}ユーザースタディ}{11}{chapter.7}%
-\contentsline {chapter}{\numberline {第8章}今後の展望}{12}{chapter.8}%
-\contentsline {chapter}{\numberline {第9章}結論}{13}{chapter.9}%
-\contentsline {chapter}{謝辞}{14}{section*.25}%
-\contentsline {chapter}{参考文献}{15}{chapter*.26}%
-\contentsline {chapter}{参考文献}{15}{chapter*.27}%
-\contentsline {chapter}{研究業績}{16}{chapter*.28}%
+\contentsline {chapter}{\numberline {第2章}研究の目的}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {第3章}提案手法}{4}{chapter.3}%
+\contentsline {chapter}{\numberline {第4章}実験}{6}{chapter.4}%
+\contentsline {chapter}{\numberline {第5章}考察}{9}{chapter.5}%
+\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{10}{chapter.6}%
+\contentsline {chapter}{\numberline {第7章}今後の展望}{11}{chapter.7}%
+\contentsline {chapter}{\numberline {第8章}結論}{12}{chapter.8}%
+\contentsline {chapter}{謝辞}{13}{section*.25}%
+\contentsline {chapter}{参考文献}{14}{chapter*.26}%
+\contentsline {chapter}{参考文献}{14}{chapter*.27}%
+\contentsline {chapter}{研究業績}{15}{chapter*.28}%
