@@ -1,0 +1,161 @@
+% LuaLaTeX用のドキュメントクラス
+\documentclass[11pt,a4paper,report,ja=standard,lualatex]{bxjsreport}
+
+% LuaLaTeX用の日本語設定
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+
+% パッケージ読み込み
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{multirow,array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+% コマンド定義
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% ページレイアウト設定
+\setlength{\textwidth}{40\zw}
+\setlength{\oddsidemargin}{0mm}
+
+% hyperrefパッケージ
+\usepackage[
+bookmarks=true,
+bookmarksnumbered=true,
+bookmarkstype=toc,
+pdfstartview={FitH},
+pdftitle={介護マッチングサービスにおけるマッチング精度向上の提案と実装},
+pdfsubject={修士論文},
+pdfauthor={星子祐哉}
+]{hyperref}
+
+\title{\Large 修士論文\\　\\
+	\LARGE 介護マッチングサービスにおけるマッチング精度向上の提案と実装\\
+	{\small Proposal and Implementation for Improving Matching Accuracy in Elderly Care Matching Services}
+	\\　\\　\\　\\　\\
+}
+\author{\Large 北海道大学 大学院情報科学研究院 \\メディアネットワーク専攻　情報メディア環境学研究室\\　\\\LARGE 星子　祐哉}
+\date{}
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic}
+
+\begin{abstract}
+近年、日本の介護業界は深刻な人材不足に直面している。厚生労働省の資料によると、2040年までに約69万人の介護人材が不足する見込みである。一方で、有資格でありながら介護職に従事していない「潜在介護士」が約37万人存在し、供給可能な人材が活用されていない現状がある。さらに、介護事業者は応募者が集まらない、採用コストの高騰、採用後の定着率の低さといった複合的な課題を抱えており、人材のミスマッチが常態化している。
+
+本研究では、介護特化型マッチングアプリにおけるマッチング精度を向上させるための手法を提案し、実装を行った。現状のマッチングシステムは「勤務地」「日程」「資格要件」などの定型条件マッチが中心であり、希望職種や過去の職務経験と求人内容の意味的な一致は評価されていない。そのため、ワーカーと求人の潜在的な親和性が見逃される可能性が存在する。
+
+提案手法では、自然言語処理モデルを利用した距離計算により、職種的距離（希望職種と実際の職種の一致度）とスキル的距離（職務経歴と求められているスキルの類似度）を測定する。また、時間的距離と勤務時間、過去の応募履歴などの要素を組み合わせて重み付けを行う。実験では、日本語BERTモデルを含む複数の自然言語処理モデルを横断的に評価し、日本語Sentence-BERTモデルが最も優れた分離度（0.398）を示すことを確認した。さらに、過去の求人応募データから新規求人との類似度を計算する手法を検証し、BERTによる意味的類似検索の有効性を示した。
+
+本研究により、介護マッチングサービスにおいて、ワーカーの希望とより適合した求人を効率的に提示できるシステムの基盤が構築された。今後は、実データを用いた検証と、複数の手法を組み合わせたより高精度なマッチングアルゴリズムの開発、実サービスへの実装とユーザーインタビューを通じた改善サイクルの確立が課題である。
+\end{abstract}
+
+\chapter{序論}%
+\label{chap:introduction}
+% \input{./section/1_intro.tex}
+
+\chapter{関連研究}
+\label{chap:realatedwork}
+% \input{./section/2_relatedwork.tex}
+
+\chapter{研究と事業の背景}
+\label{chap:background}
+% \input{./section/3_background.tex}
+
+\chapter{研究の目的}
+\label{chap:purpose}
+% \input{./section/4_purpose.tex}
+
+\chapter{提案手法}
+\label{chap:method}
+% \input{./section/5_method.tex}
+
+\chapter{実験}
+\label{chap:experiment}
+% \input{./section/6_experiment.tex}
+
+\chapter{考察}
+\label{chap:consideration}
+% \input{./section/7_consideration.tex}
+
+\chapter{今後の展望}
+\label{chap:future}
+% \input{./section/8_future.tex}
+
+\chapter{結論}
+\label{chap:conclusion}
+% \input{./section/9_conclusion.tex}
+
+\clearpage
+\addcontentsline{toc}{chapter}{謝辞}
+\chapter*{謝辞}
+
+本研究および本論文の作成に関し、多大なる御指導、御討論を頂きました北海道大学大学院情報科学研究院メディアネットワーク部門、土橋宜典教授に心より感謝いたします。
+また、貴重な御意見、御討論を頂きました北海道大学大学院情報科学研究科メディアネットワーク専攻、青木直史助教に心より感謝いたします。
+
+本研究の実装および実験にご協力いただきましたSt.Arkid株式会社の皆様に深く感謝いたします。
+
+本研究に対して、御助言、御協力を頂いた北海道大学大学院情報科学研究科メディアネットワーク専攻情報メディア学講座情報メディア環境学研究室諸氏に心より御礼を申し上げます。
+
+\clearpage
+\renewcommand{\bibname}{参考文献}
+\addcontentsline{toc}{chapter}{参考文献}
+\begin{thebibliography}{99}
+
+\bibitem{mhlw2040}厚生労働省, "2040年を展望した社会保障・働き方改革本部資料"
+\textit{厚生労働省} (2019)
+
+\bibitem{bert}J.Devlin, M.W.Chang, K.Lee and K.Toutanova, "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+\textit{NAACL-HLT} (2019)
+
+\bibitem{sentencebert}N.Reimers and I.Gurevych, "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"
+\textit{EMNLP} (2019)
+
+\bibitem{cltohoku}東北大学乾・鈴木研究室, "日本語BERTモデル"
+\textit{GitHub} (2020)
+
+\bibitem{tfidf}G.Salton and C.Buckley, "Term-weighting approaches in automatic text retrieval"
+\textit{Information Processing \& Management, Volume 24, Issue 5, pp.513-523} (1988)
+
+\bibitem{cosine}A.Singhal, "Modern Information Retrieval: A Brief Overview"
+\textit{IEEE Data Engineering Bulletin, Volume 24, pp.35-43} (2001)
+
+\bibitem{nlp_matching}M.Kobayashi, Y.Nakamura and T.Suzuki, "Job Matching System using Natural Language Processing"
+\textit{情報処理学会論文誌, Volume 62, No.3, pp.789-798} (2021)
+
+\bibitem{embeddings}T.Mikolov, K.Chen, G.Corrado and J.Dean, "Efficient Estimation of Word Representations in Vector Space"
+\textit{ICLR} (2013)
+
+\end{thebibliography}
+
+\renewcommand{\bibname}{研究業績}
+\begin{thebibliography}{99}
+	
+\bibitem{conf2024}
+星子 祐哉, 土橋 宜典
+``介護マッチングサービスにおける自然言語処理を用いたマッチング精度向上手法の検討''，
+電気・情報関係学会北海道支部連合大会 2024，(November. 2024)．
+
+\bibitem{journal2025}
+星子 祐哉, 土橋 宜典
+``BERTを用いた介護職マッチングシステムの提案と評価''，
+情報処理学会論文誌，(投稿準備中)．
+
+\end{thebibliography}
+
+\end{document}
