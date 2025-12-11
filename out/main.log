@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  12 DEC 2025 00:11
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  12 DEC 2025 00:14
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -1508,34 +1508,35 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 21.00053pt on input line 69.
 (./section/1_intro.tex(load cache: extra_lmsans12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 12.15074pt on input line 5.
+(Font)              scaled to size 12.15074pt on input line 3.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
-(Font)              scaled to size 12.15074pt on input line 5.
-LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
+(Font)              scaled to size 12.15074pt on input line 3.
 
-(Font)              scaled to size 10.12561pt on input line 19.
-(load cache: extra_lmroman12-bold.luc)
-LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
-
-(Font)              scaled to size 12.15074pt on input line 25.
-LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-
-(Font)              scaled to size 8.1005pt on input line 39.
-LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
-
-(Font)              scaled to size 8.1005pt on input line 39.
-
-Overfull \hbox (74.16779pt too wide) in paragraph at lines 52--53
- [][] 
- []
-
-)
 
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 ]
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
+
+(Font)              scaled to size 10.12561pt on input line 29.
+(load cache: extra_lmroman12-bold.luc)
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
+
+(Font)              scaled to size 12.15074pt on input line 35.
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+
+(Font)              scaled to size 8.1005pt on input line 49.
+LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
+
+(Font)              scaled to size 8.1005pt on input line 49.
+
+Overfull \hbox (74.16779pt too wide) in paragraph at lines 62--63
+ [][] 
+ []
+
+)
 
 [2]
 第2章
@@ -1693,21 +1694,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E785A1F8E560D1A686BFC8203886FBFD;1216.
+(rerunfilecheck)             Checksum: F071995626875BFE2EE21293C1A56DD6;1216.
 )
 
 Here is how much of LuaTeX's memory you used:
- 28897 strings out of 475506
- 195705,1144653 words of node,token memory allocated
+ 28901 strings out of 475506
+ 195703,1144653 words of node,token memory allocated
  2978 words of node memory still in use:
    26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 884 attribute, 58 glue_s
 pec, 105 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 16 pdf_colors
 tack nodes
-   avail lists: 1:42,2:47860,3:628,4:506,5:141,6:45,7:5428,8:30,9:1659,10:22,11:
+   avail lists: 1:42,2:47860,3:553,4:506,5:141,6:41,7:5428,8:30,9:1659,10:22,11:
 134,12:1
  51009 multiletter control sequences out of 65536+600000
  171 fonts using 165145447 bytes
- 130i,9n,131p,1879b,1043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 130i,9n,131p,1879b,1045s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.ot
 f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromandemi10-reg
 ular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-
@@ -1728,10 +1729,10 @@ st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (20 pages, 271474 bytes).
+Output written on main.pdf (20 pages, 279687 bytes).
 
-PDF statistics: 350 PDF objects out of 1000 (max. 8388607)
- 264 compressed objects within 3 object streams
- 68 named destinations out of 1000 (max. 131072)
+PDF statistics: 354 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 131072)
  280 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1765465899.55335 "main.tex" "out/main.pdf" "main" 1765465901.55013 0
+["lualatex"] 1765466042.91473 "main.tex" "out/main.pdf" "main" 1765466044.95353 0
   "/Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajigothic-medium.luc" 1765454854.42291 1924615 00e631720a15f814ed6146121037dccf ""
   "/Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajimincho-regular.luc" 1765454853.20013 2011213 f3ef4f31d2fe078f6ff31258426a4ba7 ""
   "/Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono9-regular.luc" 1765454853.29373 81875 5770eaada341be7c3327eb36573a2a7c ""
@@ -339,12 +339,12 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1765454036 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt" 1765453969 5582739 0f176c2d7e7f29954de88c47cac5869b ""
   "main.tex" 1765465578.81165 7220 afec73f53f8528877437467cfcdf10d4 ""
-  "out/main.aux" 1765465901.21179 4448 2e0270c70ba7aae85d07fe1459b83897 "lualatex"
-  "out/main.lof" 1765465901.21256 353 7143f568990d157ac2e7e4e72deba029 "lualatex"
-  "out/main.lot" 1765465901.21258 961 345d37f651c3b9891427c5abf09d887e "lualatex"
-  "out/main.out" 1765465901.21238 1216 e785a1f8e560d1a686bfc8203886fbfd "lualatex"
-  "out/main.toc" 1765465901.21254 881 c0b2622150208ea65e4f0df64f4a65e8 "lualatex"
-  "section/1_intro.tex" 1765465756.89368 3217 114befa8b01dcf429c51414753350fd9 ""
+  "out/main.aux" 1765466044.6106 4805 f61e1f3ef92c981c196a5649abba09ff "lualatex"
+  "out/main.lof" 1765466044.61156 353 689203dd962a5282a227c8d0b40df8ea "lualatex"
+  "out/main.lot" 1765466044.61158 961 3bdaaccd03d4017636e242707cbf2d91 "lualatex"
+  "out/main.out" 1765466044.61135 1216 f071995626875bfe2ee21293c1a56dd6 "lualatex"
+  "out/main.toc" 1765466044.61154 1115 96b2a94a7b453f24f3c8913e9392e8de "lualatex"
+  "section/1_intro.tex" 1765466033.25901 4488 7995b920144ead39d92087bb5acb6978 ""
   "section/2_purpose.tex" 1765459287.96324 831 0f5d7548f952a541f483dc1dde44fb90 ""
   "section/3_method.tex" 1765459287.96324 965 60213cc0eb460bfe4f12d72681f9fb65 ""
   "section/4_experiment.tex" 1765465028.29319 5466 200eddb18ac683f74b136080164a7474 ""
