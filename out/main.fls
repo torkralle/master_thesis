@@ -351,7 +351,11 @@ INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmsans12-regular.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman12-bold.luc
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-bold.luc
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman7-bold.luc
 INPUT ./section/2_purpose.tex
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmmono10-regular.luc
 INPUT ./section/3_method.tex
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmromandemi10-regular.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmromandemi10-regular.luc
@@ -400,14 +404,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-bold.luc
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman7-bold.luc
 INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
 INPUT ./section/7_future.tex
 INPUT ./section/9_conclusion.tex
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
-INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmmono10-regular.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman10-italic.luc
 INPUT ./out/main.aux

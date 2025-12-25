@@ -3,21 +3,21 @@
 \contentsline {paragraph}{国の施策における位置づけ}{2}{section*.8}%
 \contentsline {paragraph}{総合的な人材確保戦略}{2}{section*.10}%
 \contentsline {paragraph}{人材ミスマッチと経営危機}{3}{section*.12}%
-\contentsline {paragraph}{北海道の特殊事情}{3}{section*.13}%
-\contentsline {paragraph}{現行マッチングシステムの限界}{3}{section*.14}%
-\contentsline {chapter}{\numberline {第2章}研究の目的}{6}{chapter.2}%
-\contentsline {chapter}{\numberline {第3章}提案手法}{8}{chapter.3}%
-\contentsline {chapter}{\numberline {第4章}実験}{10}{chapter.4}%
-\contentsline {chapter}{\numberline {第5章}考察}{13}{chapter.5}%
-\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{15}{chapter.6}%
-\contentsline {paragraph}{リピート志向の強さ}{15}{section*.42}%
-\contentsline {paragraph}{駐車場の重要性}{15}{section*.43}%
-\contentsline {paragraph}{業務内容の選好}{16}{section*.44}%
-\contentsline {paragraph}{給与の基準}{16}{section*.45}%
-\contentsline {chapter}{\numberline {第7章}今後の展望}{18}{chapter.7}%
-\contentsline {chapter}{\numberline {第8章}結論}{19}{chapter.8}%
-\contentsline {chapter}{システム構成概要（ディレクトリベース）}{20}{chapter*.50}%
-\contentsline {chapter}{謝辞}{21}{chapter*.50}%
-\contentsline {chapter}{参考文献}{22}{chapter*.51}%
-\contentsline {chapter}{参考文献}{22}{chapter*.52}%
-\contentsline {chapter}{研究業績}{23}{chapter*.53}%
+\contentsline {paragraph}{北海道の特殊事情}{3}{section*.14}%
+\contentsline {paragraph}{現行マッチングシステムの限界}{5}{section*.16}%
+\contentsline {chapter}{\numberline {第2章}研究の目的}{9}{chapter.2}%
+\contentsline {chapter}{\numberline {第3章}提案手法}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {第4章}実験}{13}{chapter.4}%
+\contentsline {chapter}{\numberline {第5章}考察}{16}{chapter.5}%
+\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{18}{chapter.6}%
+\contentsline {paragraph}{リピート志向の強さ}{18}{section*.45}%
+\contentsline {paragraph}{駐車場の重要性}{18}{section*.46}%
+\contentsline {paragraph}{業務内容の選好}{19}{section*.47}%
+\contentsline {paragraph}{給与の基準}{19}{section*.48}%
+\contentsline {chapter}{\numberline {第7章}今後の展望}{21}{chapter.7}%
+\contentsline {chapter}{\numberline {第8章}結論}{22}{chapter.8}%
+\contentsline {chapter}{システム構成概要（ディレクトリベース）}{23}{chapter*.53}%
+\contentsline {chapter}{謝辞}{24}{chapter*.53}%
+\contentsline {chapter}{参考文献}{25}{chapter*.54}%
+\contentsline {chapter}{参考文献}{25}{chapter*.55}%
+\contentsline {chapter}{研究業績}{26}{chapter*.56}%

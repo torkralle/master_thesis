@@ -204,56 +204,35 @@
 \end{figure}
 
 \paragraph{現行マッチングシステムの限界}
-現状のマッチングシステムは「勤務地」「日程」「資格要件」などの定型条件マッチが中心であり、希望職種や過去の職務経験と求人内容の意味的な一致は評価されていない。そのため、ワーカーと求人の潜在的な親和性が見逃される可能性が存在する。また、ワーカーが自ら細かい条件を指定して検索する手間が大きく、望む仕事を見つけられないという課題がある。
+現状のマッチングシステムは、図\ref{fig:current_matching}に示すように「勤務地」「日程」「資格要件」「介護種別」「給与範囲」などの定型条件によるフィルタリングが中心である。具体的には、以下のような検索パラメータでの絞り込みのみが実装されている：
+
+\begin{itemize}
+\item \textbf{地理的条件:} 都道府県（prefecture）、市区町村（city）による完全一致フィルタ
+\item \textbf{時間的条件:} 勤務開始日（start\_date）、終了日（end\_date）による範囲検索
+\item \textbf{資格条件:} 介護福祉士、ヘルパー等の資格種別（qualifications）による完全一致
+\item \textbf{給与条件:} 日給の最低額・最高額（dailySalaryFrom/To）による範囲検索
+\item \textbf{介護種別:} 訪問介護、施設介護等（careType）のカテゴリ一致
+\end{itemize}
+
+この手法には以下の構造的な問題が存在する。第一に、\textbf{希望職種と求人内容の意味的マッチングが欠如}している。例えば、ワーカーが「身体介護中心の業務」を希望していても、求人票に記載された職務内容のテキスト（「入浴介助」「移乗介助」等）との意味的な一致度は評価されない。第二に、\textbf{過去の応募・勤務履歴が活用されていない}。実際のワーカー行動として、良い施設には繰り返し応募する「リピート志向」が観察されるが、このパターンは推薦アルゴリズムに反映されていない。
+
+第三に、\textbf{実質的な利便性要因が考慮されない}。ユーザーインタビューから、「駐車場の有無」が重要な選択基準であることが判明した。交通費が往復500円の場合、駐車場がなければ地下鉄利用で実質赤字となるケースがあり、名目上の給与だけでは判断できない。しかし現システムには駐車場情報フィールド（has\_parking）すら存在しない。第四に、\textbf{業務内容の詳細なマッチングが不可能}である。「入浴介助を避けたい」といった具体的な希望があっても、求人検索では「介護種別」という粗い分類でしか絞り込めない。
+
+その結果、ワーカーは毎回多数の検索条件を手動で指定し、表示された求人リストから個別に内容を確認する必要がある。現在のFlutterアプリ実装（search\_screen.dart）では、条件指定のたびにfetchJobs()が呼ばれ、バックエンドへの問い合わせが発生するため、検索体験の負荷が大きい。また、事業者側のスカウト機能も、同様の定型条件（available\_prefecture、available\_city、qualifications等）でのフィルタリングにとどまり、ワーカーとの潜在的な親和性は評価できていない。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{images/fig_current_matching.svg.png}
+\caption{現行マッチングシステムの定型条件フィルタリング構造}
+\label{fig:current_matching}
+\end{figure}
 
 \subsection*{介護マッチングアプリの仕組み}
 本研究で対象とする介護特化型マッチングアプリの概要を図\ref{fig:app_overview}に示す。このシステムでは、介護事業者が求人情報を登録し、ワーカー（潜在介護士、副業希望者、その他就労希望者等）が希望の勤務地・時間・職種等を入力することで、システムが自動的にマッチングを行う。
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  box/.style={rectangle, draw=black, line width=1.2pt, fill=white, text width=3.5cm, minimum height=2.5cm, align=center},
-  mainbox/.style={rectangle, draw=black, line width=2pt, fill=black!10, text width=4cm, minimum height=3cm, align=center},
-  userbox/.style={rectangle, draw=black, line width=0.8pt, fill=white, text width=2cm, minimum height=0.8cm, align=center},
-  arrow/.style={->, >=stealth, line width=1.5pt}
-]
-
-% 左側：介護事業者
-\node[box] (provider) at (0,0) {
-  \textbf{介護事業者}\\[0.5cm]
-  求人情報登録
-};
-
-% 中央：マッチングアプリ（強調）
-\node[mainbox] (app) at (6,0) {
-  \textbf{\large マッチング}\\
-  \textbf{\large システム}\\[0.5cm]
-  \small 条件解析\\
-  最適化処理
-};
-
-% 右側：ワーカー
-\node[box] (worker) at (12,0) {
-  \textbf{ワーカー}\\[0.5cm]
-  条件入力\\
-  応募
-};
-
-% 下部：ワーカーの種類（整列）
-\node[userbox] (worker1) at (10.2,-2.8) {\footnotesize 潜在介護士};
-\node[userbox] (worker2) at (12,-2.8) {\footnotesize 副業希望者};
-\node[userbox] (worker3) at (13.8,-2.8) {\footnotesize その他};
-
-% 矢印（双方向）
-\draw[arrow, <->] (provider) -- (app);
-\draw[arrow, <->] (app) -- (worker);
-
-% ワーカー種類からの接続（細い線）
-\draw[->, line width=0.8pt] (worker1) -- (worker);
-\draw[->, line width=0.8pt] (worker2) -- (worker);
-\draw[->, line width=0.8pt] (worker3) -- (worker);
-
-\end{tikzpicture}
+\includegraphics[width=0.9\textwidth]{images/fig_app_overview.svg.png}
 \caption{介護特化型マッチングアプリの概要}
 \label{fig:app_overview}
 \end{figure}

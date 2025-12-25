@@ -2,12 +2,12 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {4.1}{\ignorespaces BERTモデル別の分離度スコア}}{10}{table.caption.31}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{11}{table.caption.33}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2（20件学習）の全パターン}}{11}{table.caption.35}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（30件学習）の全パターン}}{12}{table.caption.36}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{12}{table.caption.37}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 実験3の結果（概略）}}{12}{table.caption.39}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces BERTモデル別の分離度スコア}}{13}{table.caption.34}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{14}{table.caption.36}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2（20件学習）の全パターン}}{14}{table.caption.38}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（30件学習）の全パターン}}{15}{table.caption.39}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{15}{table.caption.40}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces 実験3の結果（概略）}}{15}{table.caption.42}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
