@@ -2,44 +2,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  box/.style={rectangle, draw=black, line width=1pt, fill=white, text width=2.8cm, minimum height=3cm, align=center},
-  arrow/.style={->, >=stealth, line width=2pt}
-]
-
-% 3つの年度を横に配置
-\node[box] (y2022) at (0,0) {
-  \textbf{2022年度}\\[0.3cm]
-  {\Large 215万人}\\[0.2cm]
-  \small （現状）
-};
-
-\node[box] (y2026) at (4,0) {
-  \textbf{2026年度}\\[0.3cm]
-  {\Large 240万人}\\[0.2cm]
-  \small 必要数\\[0.1cm]
-  \textcolor{red}{\small +25万人不足}
-};
-
-\node[box] (y2040) at (8,0) {
-  \textbf{2040年度}\\[0.3cm]
-  {\Large 272万人}\\[0.2cm]
-  \small 必要数\\[0.1cm]
-  \textcolor{red}{\small +57万人不足}
-};
-
-% 矢印
-\draw[arrow] (y2022) -- (y2026);
-\draw[arrow] (y2026) -- (y2040);
-
-% 下部に増員ペースの比較
-\node[draw=black, line width=1pt, fill=black!10, text width=11cm, minimum height=2cm, align=left] at (4,-2.5) {
-  \textbf{必要な増員ペース:} 年間6.3万人\\
-  \textbf{現在の増員ペース:} 年間1.0万人\\
-  \textcolor{red}{$\Rightarrow$ 約6倍のペースアップが必要}
-};
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_workforce_shortage.png}
 \caption{介護職員数の推移と必要な増員ペース}
 \label{fig:workforce_shortage}
 \end{figure}
@@ -52,31 +15,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}
-% 円グラフ（より詳細に）
-\draw[fill=black!80] (0,0) -- (0,2) arc (90:270:2) -- cycle;
-\draw[fill=black!30] (0,0) -- (0,2) arc (90:-90:2) -- cycle;
-\draw[line width=1pt] (0,0) circle (2);
-
-% ラベル（白文字で見やすく）
-\node[white, font=\Large\bfseries] at (-0.8,0.5) {27万人};
-\node[white, font=\small] at (-0.8,0) {(57\%)};
-\node[white, font=\scriptsize] at (-0.8,-0.4) {従事中};
-
-\node[white, font=\Large\bfseries] at (0.8,0.5) {20万人};
-\node[white, font=\small] at (0.8,0) {(43\%)};
-\node[white, font=\scriptsize] at (0.8,-0.4) {潜在層};
-
-% 総数表示
-\node[font=\large\bfseries] at (0,-3) {介護福祉士資格保有者: 47万人};
-
-% 凡例
-\node[draw=black, line width=1pt, fill=black!80, minimum width=0.5cm, minimum height=0.3cm] at (5,1) {};
-\node[anchor=west] at (5.3,1) {介護分野で従事};
-\node[draw=black, line width=1pt, fill=black!30, minimum width=0.5cm, minimum height=0.3cm] at (5,0.3) {};
-\node[anchor=west] at (5.3,0.3) {潜在介護福祉士};
-
-\end{tikzpicture}
+\includegraphics[width=0.85\textwidth]{images/fig_latent_workers.png}
 \caption{介護福祉士資格保有者の内訳}
 \label{fig:latent_workers}
 \end{figure}
@@ -86,18 +25,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  box/.style={rectangle, draw=black, line width=1pt, fill=white, text width=10cm, minimum height=1cm, align=left},
-  highlight/.style={rectangle, draw=black, line width=2pt, fill=black!10, text width=10cm, minimum height=1.2cm, align=left}
-]
-
-\node[box] at (0,4) {\textbf{1.} 労働環境・処遇の改善};
-\node[box] at (0,3) {\textbf{2.} キャリアパスの確立等、資質の向上};
-\node[box] at (0,2) {\textbf{3.} 福祉・介護サービスの周知等、理解の促進};
-\node[highlight] at (0,0.9) {\textbf{4. 潜在的有資格者等の参入の促進} ← \textbf{本研究が貢献}};
-\node[box] at (0,-0.2) {\textbf{5.} 多様な人材の参入・参画の促進};
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_policy_framework.png}
 \caption{人材確保のための5つの視点}
 \label{fig:policy_framework}
 \end{figure}
@@ -119,36 +47,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  box/.style={rectangle, draw=black, line width=1pt, fill=white, text width=3cm, minimum height=1.2cm, align=center}
-]
-
-% タイトル
-\node[font=\bfseries] at (5,3.5) {介護事業者が抱える課題};
-
-% 3つの主要課題
-\node[box, fill=black!10] (challenge1) at (0,2) {応募者不足\\約60\%の事業所};
-\node[box, fill=black!10] (challenge2) at (3.5,2) {高い採用コスト\\30〜50万円/人};
-\node[box, fill=black!10] (challenge3) at (7,2) {早期離職\\1年以内3〜4割};
-
-% 結果
-\node[draw=black, line width=2pt, fill=black!5, text width=8cm, minimum height=1cm, align=center] at (3.5,0) {
-  $\Rightarrow$ サービス低下・経営圧迫・廃業リスク
-};
-
-% 根本原因
-\node[draw=red, line width=2pt, fill=red!5, text width=8cm, minimum height=1.2cm, align=center] at (3.5,-1.5) {
-  \textbf{根本原因: マッチング精度の低さ}\\
-  条件・スキル・希望の不一致
-};
-
-% 矢印
-\draw[->, line width=1.5pt] (challenge1) -- (3.5,1);
-\draw[->, line width=1.5pt] (challenge2) -- (3.5,1);
-\draw[->, line width=1.5pt] (challenge3) -- (3.5,1);
-\draw[->, line width=2pt, red] (3.5,-0.5) -- (3.5,-0.9);
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_business_challenges.png}
 \caption{介護事業者が直面する課題の構造}
 \label{fig:business_challenges}
 \end{figure}
@@ -166,39 +65,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  box/.style={rectangle, draw=black, line width=1pt, fill=white, text width=7cm, minimum height=1cm, align=left}
-]
-
-\node[font=\bfseries\large] at (3.5,5) {北海道の介護人材確保における特殊事情};
-
-\node[box, fill=red!10] at (3.5,3.5) {
-  \textbf{1. 高齢化率の高さ}\\
-  2025年: 33.5\% （全国平均30\%を大幅超過）
-};
-
-\node[box, fill=orange!10] at (3.5,2) {
-  \textbf{2. 極端な人口偏在}\\
-  札幌圏: 340万人（65\%） / 地方部: 180万人（35\%）
-};
-
-\node[box, fill=yellow!10] at (3.5,0.5) {
-  \textbf{3. 広大な面積と移動距離}\\
-  市町村間距離: 本州の3〜4倍、冬季移動困難
-};
-
-\node[box, fill=blue!10] at (3.5,-1) {
-  \textbf{4. 公共交通の脆弱性}\\
-  バス・鉄道の廃止・減便 $\Rightarrow$ 通勤困難
-};
-
-\node[draw=black, line width=2pt, fill=black!5, text width=7cm, minimum height=1cm, align=center] at (3.5,-2.7) {
-  \textbf{結果: マッチング選択肢の極端な狭小化}
-};
-
-\draw[->, line width=2pt] (3.5,-2) -- (3.5,-2.4);
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_hokkaido_issues.png}
 \caption{北海道における介護人材確保の特殊事情}
 \label{fig:hokkaido_issues}
 \end{figure}
@@ -222,7 +89,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/fig_current_matching.svg.png}
+\includegraphics[width=0.9\textwidth]{images/fig_current_matching.png}
 \caption{現行マッチングシステムの定型条件フィルタリング構造}
 \label{fig:current_matching}
 \end{figure}
@@ -232,7 +99,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/fig_app_overview.svg.png}
+\includegraphics[width=0.9\textwidth]{images/fig_app_overview.png}
 \caption{介護特化型マッチングアプリの概要}
 \label{fig:app_overview}
 \end{figure}
@@ -244,50 +111,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  comp/.style={rectangle, rounded corners=4pt, draw=black, line width=1pt, fill=white, text width=3.5cm, minimum height=1.8cm, align=center},
-  svc/.style={rectangle, rounded corners=4pt, draw=black, line width=1pt, fill=black!8, text width=4cm, minimum height=1.8cm, align=center},
-  stor/.style={cylinder, draw=black, line width=1pt, fill=white, aspect=0.25, minimum height=1.8cm, minimum width=1.6cm, align=center},
-  arrow/.style={->, >=stealth, line width=1pt}
-]
-
-% Frontends
-\node[comp] (cpfe) at (-4,2) {care-provider-fe\\(Angular)\\求人・勤怠管理};
-\node[comp] (cwfe) at (-4,0) {care-worker-fe\\(Flutter)\\応募・打刻・ウォレット};
-\node[comp] (adfe) at (-4,-2) {kaigo-admin-fe\\(Angular)\\管理コンソール};
-
-% Backend core
-\node[svc] (api) at (1,0) {kaigo-be\\Auth / Job / Attendance\\Reward / Invoice / PDF API};
-
-% Payment
-\node[svc] (pay) at (6,1.2) {kaigo-sevenpay-be\\決済・送金連携};
-
-% PDF
-\node[svc] (pdf) at (6,-1.2) {pdf-generator\\帳票・通知書生成};
-
-% Batch
-\node[svc, text width=3.2cm] (cron) at (1,-3) {cron-jobs\\定期バッチ};
-
-% Storage
-\node[stor] (db) at (10,0) {MongoDB};
-
-% Arrows front -> api
-\draw[arrow] (cpfe) -- (api);
-\draw[arrow] (cwfe) -- (api);
-\draw[arrow] (adfe) -- (api);
-
-% api to services
-\draw[arrow] (api) -- (pay);
-\draw[arrow] (api) -- (pdf);
-\draw[arrow] (cron) -- (api);
-
-% db connections
-\draw[arrow] (api) -- (db);
-\draw[arrow] (pay) -- (db);
-\draw[arrow] (pdf) -- (db);
-\draw[arrow] (cron) -- (db);
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_architecture.png}
 \caption{システムアーキテクチャ概要（主要サービス間の疎結合構成）}
 \label{fig:architecture}
 \end{figure}
@@ -297,31 +121,7 @@
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-  actor/.style={rectangle, rounded corners=4pt, draw=black, line width=1pt, fill=white, text width=3.6cm, minimum height=1.6cm, align=center},
-  proc/.style={rectangle, draw=black, line width=1pt, fill=black!7, text width=3.6cm, minimum height=1.2cm, align=center},
-  arrow/.style={->, >=stealth, line width=1pt}
-]
-
-\node[actor] (provider) at (-5,0) {介護事業者\\求人掲載・勤怠承認};
-\node[proc] (match) at (-1,1.5) {マッチング/推薦\\(NLP, 重み付け)};
-\node[proc] (att) at (-1,-1.5) {勤怠打刻/補正\\(バッファ, 休憩)};
-\node[actor] (worker) at (3,0) {ワーカー\\応募・シフト実行};
-\node[proc] (pay) at (7,0) {支払い/送金\\(手数料回収)};
-
-\draw[arrow] (provider) -- node[above]{求人データ} (match);
-\draw[arrow] (match) -- node[above]{推薦/通知} (worker);
-\draw[arrow] (worker) -- node[below]{応募・出勤} (att);
-\draw[arrow] (att) -- node[below]{実績・賃金計算} (pay);
-\draw[arrow] (pay) -- node[above]{報酬+交通費} (worker);
-\draw[arrow] (pay) -- node[above]{手数料, 分析} (provider);
-
-\node[proc, text width=4cm] (learn) at (1,-3.3) {データ蓄積/学習\\応募履歴, 評価, 勤怠実績};
-\draw[arrow] (att) -- (learn);
-\draw[arrow] (match) -- (learn);
-\draw[arrow] (learn) -- node[right]{モデル更新} (match);
-
-\end{tikzpicture}
+\includegraphics[width=0.95\textwidth]{images/fig_business.png}
 \caption{ビジネスプランと価値循環（データ駆動の改善サイクル）}
 \label{fig:business}
 \end{figure}

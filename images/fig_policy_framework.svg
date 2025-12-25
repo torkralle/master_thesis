@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#000000">厚生労働省「介護人材確保のための5つの視点」</text>
+  
+  <rect x="100" y="80" width="700" height="60" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="8"/>
+  <text x="120" y="115" font-size="18" font-weight="bold" fill="#000000">1. 労働環境・処遇の改善</text>
+  
+  <rect x="100" y="155" width="700" height="60" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="8"/>
+  <text x="120" y="190" font-size="18" font-weight="bold" fill="#000000">2. キャリアパスの確立等、資質の向上</text>
+  
+  <rect x="100" y="230" width="700" height="60" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="8"/>
+  <text x="120" y="265" font-size="18" font-weight="bold" fill="#000000">3. 福祉・介護サービスの周知等、理解の促進</text>
+  
+  <rect x="100" y="305" width="700" height="70" fill="#e8e8e8" stroke="#333333" stroke-width="4" rx="8"/>
+  <rect x="100" y="305" width="700" height="70" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="10,5" rx="8"/>
+  <text x="120" y="340" font-size="20" font-weight="bold" fill="#000000">4. 潜在的有資格者等の参入の促進</text>
+  <text x="120" y="362" font-size="15" font-weight="bold" fill="#333333">← 本研究が貢献する領域</text>
+  
+  <rect x="100" y="390" width="700" height="60" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="8"/>
+  <text x="120" y="425" font-size="18" font-weight="bold" fill="#000000">5. 多様な人材の参入・参画の促進</text>
+  
+  <g transform="translate(720, 315)">
+    <path d="M 0,0 L 150,0 L 150,80 L 75,80 L 60,95 L 60,80 L 0,80 Z" fill="#e8e8e8" stroke="#333333" stroke-width="2"/>
+    <text x="75" y="25" text-anchor="middle" font-size="13" font-weight="bold" fill="#000000">重点施策</text>
+    <text x="75" y="45" text-anchor="middle" font-size="12" fill="#333333">潜在介護福祉士</text>
+    <text x="75" y="62" text-anchor="middle" font-size="12" fill="#333333">約20万人の</text>
+    <text x="75" y="77" text-anchor="middle" font-size="12" fill="#333333">掘り起こし</text>
+  </g>
+</svg>

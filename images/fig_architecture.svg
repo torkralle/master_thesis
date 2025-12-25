@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+  <defs>
+    <marker id="arrow7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666666"/>
+    </marker>
+  </defs>
+  
+  <rect width="1000" height="600" fill="#ffffff"/>
+  <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#000000">システムアーキテクチャ概要（主要サービス間の疎結合構成）</text>
+  
+  <!-- Frontend components -->
+  <rect x="50" y="80" width="180" height="90" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="140" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">事業者向けフロント</text>
+  <text x="140" y="130" text-anchor="middle" font-size="12" fill="#666666">(Webアプリ)</text>
+  <text x="140" y="150" text-anchor="middle" font-size="12" fill="#666666">求人・勤怠管理</text>
+  
+  <rect x="50" y="200" width="180" height="90" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="140" y="230" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">ワーカー向けフロント</text>
+  <text x="140" y="250" text-anchor="middle" font-size="12" fill="#666666">(モバイルアプリ)</text>
+  <text x="140" y="270" text-anchor="middle" font-size="12" fill="#666666">応募・打刻・ウォレット</text>
+  
+  <rect x="50" y="320" width="180" height="90" fill="#f5f5f5" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="140" y="350" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">管理者向けフロント</text>
+  <text x="140" y="370" text-anchor="middle" font-size="12" fill="#666666">(Webアプリ)</text>
+  <text x="140" y="390" text-anchor="middle" font-size="12" fill="#666666">管理コンソール</text>
+  
+  <!-- Backend core -->
+  <rect x="330" y="180" width="220" height="120" fill="#e0e0e0" stroke="#333333" stroke-width="3" rx="6"/>
+  <text x="440" y="215" text-anchor="middle" font-size="16" font-weight="bold" fill="#000000">バックエンドコア</text>
+  <text x="440" y="240" text-anchor="middle" font-size="13" fill="#333333">認証 / 求人 / 勤怠</text>
+  <text x="440" y="260" text-anchor="middle" font-size="13" fill="#333333">報酬 / 請求</text>
+  <text x="440" y="280" text-anchor="middle" font-size="13" fill="#333333">API統合</text>
+  
+  <!-- Payment service -->
+  <rect x="650" y="80" width="200" height="90" fill="#d8d8d8" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="750" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">決済サービス</text>
+  <text x="750" y="140" text-anchor="middle" font-size="12" fill="#666666">決済・送金連携</text>
+  
+  <!-- PDF service -->
+  <rect x="650" y="200" width="200" height="90" fill="#d8d8d8" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="750" y="235" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">帳票生成サービス</text>
+  <text x="750" y="260" text-anchor="middle" font-size="12" fill="#666666">帳票・通知書生成</text>
+  
+  <!-- Cron jobs -->
+  <rect x="330" y="360" width="220" height="90" fill="#d8d8d8" stroke="#666666" stroke-width="2" rx="6"/>
+  <text x="440" y="395" text-anchor="middle" font-size="14" font-weight="bold" fill="#000000">バッチ処理</text>
+  <text x="440" y="420" text-anchor="middle" font-size="12" fill="#666666">定期実行ジョブ</text>
+  
+  <!-- Database -->
+  <ellipse cx="750" cy="400" rx="80" ry="100" fill="#cccccc" stroke="#333333" stroke-width="3"/>
+  <ellipse cx="750" cy="390" rx="80" ry="30" fill="#d8d8d8" stroke="#333333" stroke-width="2"/>
+  <text x="750" y="405" text-anchor="middle" font-size="16" font-weight="bold" fill="#000000">データベース</text>
+  
+  <!-- Arrows -->
+  <line x1="230" y1="125" x2="325" y2="220" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="230" y1="245" x2="325" y2="245" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="230" y1="365" x2="325" y2="270" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  
+  <line x1="550" y1="215" x2="645" y2="125" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="550" y1="250" x2="645" y2="245" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="440" y1="360" x2="440" y2="305" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  
+  <line x1="560" y1="240" x2="665" y2="380" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="750" y1="170" x2="750" y2="285" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="750" y1="290" x2="750" y2="285" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  <line x1="560" y1="405" x2="665" y2="405" stroke="#666666" stroke-width="2" marker-end="url(#arrow7)"/>
+  
+  <text x="500" y="550" text-anchor="middle" font-size="13" fill="#666666">REST/GraphQL APIによる統一的なインターフェース</text>
+</svg>
