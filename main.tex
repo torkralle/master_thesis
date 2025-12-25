@@ -99,6 +99,25 @@ pdfauthor={星子祐哉}
 \input{./section/9_conclusion.tex}
 
 \clearpage
+\chapter*{システム構成概要（ディレクトリベース）}
+\addcontentsline{toc}{chapter}{システム構成概要（ディレクトリベース）}
+本研究で取り扱ったプロダクト群のコードベース構成を、リポジトリ直下の主要ディレクトリ単位で整理する。
+
+\begin{itemize}
+	\item \textbf{care-provider-fe}: Angular を用いた介護事業者向けフロントエンド。求人作成・勤怠確認・設定管理などを担当。
+	\item \textbf{care-worker-fe}: Flutter 製のワーカー向けクライアント。求人検索・応募・勤怠打刻・ウォレット閲覧を提供。
+	\item \textbf{kaigo-admin-fe}: 管理者向け Angular フロントエンド。事業所/求人/ユーザ管理や設定変更を行う。
+	\item \textbf{kaigo-be}: Node.js/TypeScript ベースのバックエンド API。\texttt{src/controllers, services, models} を中心に、認証、求人・応募管理、勤怠計算、支払い処理などを実装。
+	\item \textbf{kaigo-sevenpay-be}: 決済・外部送金系のバックエンド（Node.js/TypeScript）。七銀連携や決済ロジックを分離。
+	\item \textbf{pdf-generator}: PDF 生成用の専用サービス（Node.js）。通知書や帳票を生成。
+	\item \textbf{cron-jobs}: シェルスクリプトによる定期実行タスク群（例: 日次・月次バッチ）。
+	\item \textbf{documents}: 設計メモ・ドキュメント類（システム構成、課題整理など）。
+	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX）。
+\end{itemize}
+
+補足: 各バックエンドでは Mongoose を用いた MongoDB スキーマ定義を採用し、\texttt{/src/models} 配下でドメイン別にモデルを分割している。フロントエンドは Angular/Flutter で機能別にモジュール化されている。
+
+\clearpage
 \addcontentsline{toc}{chapter}{謝辞}
 \chapter*{謝辞}
 
@@ -111,29 +130,15 @@ pdfauthor={星子祐哉}
 \addcontentsline{toc}{chapter}{参考文献}
 \begin{thebibliography}{99}
 
-\bibitem{mhlw2040}厚生労働省, "2040年を展望した社会保障・働き方改革本部資料"
-\textit{厚生労働省} (2019)
+\bibitem{mhlw2025shortage}厚生労働省, "介護人材確保の現状について" \textit{厚生労働省} (令和7年5月9日). \href{https://www.mhlw.go.jp/content/12000000/001485589.pdf}{https://www.mhlw.go.jp/content/12000000/001485589.pdf}
 
-\bibitem{bert}J.Devlin, M.W.Chang, K.Lee and K.Toutanova, "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
-\textit{NAACL-HLT} (2019)
+\bibitem{mhlwlatent}厚生労働省, "福祉・介護人材確保対策について" \textit{厚生労働省} (n.d.). \href{https://www.mhlw.go.jp/seisaku/09.html}{https://www.mhlw.go.jp/seisaku/09.html}
 
-\bibitem{sentencebert}N.Reimers and I.Gurevych, "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"
-\textit{EMNLP} (2019)
+\bibitem{mhlwpolicy}厚生労働省, "福祉人材確保対策" \textit{厚生労働省} (n.d.). \href{https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/fukusijinzai/index.html}{https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi\_kaigo/seikatsuhogo/fukusijinzai/index.html}
 
-\bibitem{cltohoku}東北大学乾・鈴木研究室, "日本語BERTモデル"
-\textit{GitHub} (2020)
+\bibitem{mhlwreport}厚生労働省, "介護福祉士の資格等取得者の届出制度" \textit{厚生労働省} (n.d.). \href{https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158837.html}{https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158837.html}
 
-\bibitem{tfidf}G.Salton and C.Buckley, "Term-weighting approaches in automatic text retrieval"
-\textit{Information Processing \& Management, Volume 24, Issue 5, pp.513-523} (1988)
-
-\bibitem{cosine}A.Singhal, "Modern Information Retrieval: A Brief Overview"
-\textit{IEEE Data Engineering Bulletin, Volume 24, pp.35-43} (2001)
-
-\bibitem{nlp_matching}M.Kobayashi, Y.Nakamura and T.Suzuki, "Job Matching System using Natural Language Processing"
-\textit{情報処理学会論文誌, Volume 62, No.3, pp.789-798} (2021)
-
-\bibitem{embeddings}T.Mikolov, K.Chen, G.Corrado and J.Dean, "Efficient Estimation of Word Representations in Vector Space"
-\textit{ICLR} (2013)
+\bibitem{mhlwcomprehensive}厚生労働省, "介護人材確保に向けた取組について" \textit{厚生労働省} (n.d.). \href{https://www.mhlw.go.jp/stf/newpage_02977.html}{https://www.mhlw.go.jp/stf/newpage\_02977.html}
 
 \end{thebibliography}
 

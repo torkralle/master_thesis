@@ -1,6 +1,6 @@
-PWD /Users/torkralle/WorkSpace/Labo/master_thesis
+PWD /Users/torkralle/WorkSpace/monsuke/master_thesis
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT ./main.tex
+INPUT /Users/torkralle/WorkSpace/monsuke/master_thesis/main.tex
 OUTPUT out/main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
@@ -406,6 +406,8 @@ INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
 INPUT ./section/7_future.tex
 INPUT ./section/9_conclusion.tex
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
+INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmmono10-regular.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatexja/extra_lmroman10-italic.luc
 INPUT ./out/main.aux

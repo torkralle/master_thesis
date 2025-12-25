@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>介護分野の課題 - 厚生労働省資料まとめ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 4px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 50px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-number {
+            background: #333;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            margin: 20px 0 30px 0;
+            padding: 20px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+        }
+
+        .chart-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-label {
+            min-width: 180px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .bar-wrapper {
+            flex: 1;
+            position: relative;
+            background: #e0e0e0;
+            height: 40px;
+        }
+
+        .bar {
+            height: 40px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .bar-value {
+            margin-left: 15px;
+            font-weight: bold;
+            color: #333;
+            min-width: 100px;
+        }
+
+        .highlight-box {
+            background: #f9f9f9;
+            border-left: 6px solid #333;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.15em;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .comparison-item {
+            border: 2px solid #e0e0e0;
+            padding: 25px;
+            text-align: center;
+            background: white;
+        }
+
+        .comparison-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .comparison-label {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .source {
+            background: #fafafa;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .source-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .source-link {
+            color: #666;
+            text-decoration: underline;
+            word-break: break-all;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .source-link:hover {
+            color: #333;
+        }
+
+        .key-point {
+            background: #f5f5f5;
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .key-point-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>介護分野の課題</h1>
+        <p class="subtitle">厚生労働省 公式資料に基づく現状分析</p>
+
+        <!-- Section 1: 人材不足の推移 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">深刻な人材不足の推移</div>
+            </div>
+            
+            <div class="highlight-box">
+                2026年度には約240万人、2040年度には約272万人の介護職員が必要
+            </div>
+
+            <div class="chart-title">図1: 介護職員数の推移と必要数（単位：万人）</div>
+            <div class="chart-container">
+                <div style="padding: 30px 40px;">
+                    <!-- 3カラムのグリッド -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative;">
+                        
+                        <!-- 横線 - 数字の下に配置 -->
+                        <div style="position: absolute; left: 15%; right: 15%; top: 95px; height: 3px; background: #333;"></div>
+                        
+                        <!-- 2022年度 -->
+                        <div style="text-align: center; position: relative; z-index: 2;">
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 15px;">2022年度</div>
+                            <div style="font-size: 2.8em; font-weight: bold; color: #333; line-height: 1; margin-bottom: 10px;">215万人</div>
+                            <div style="font-size: 0.95em; color: #666; margin-bottom: 25px;">現状</div>
+                            <div style="width: 16px; height: 16px; background: #333; border-radius: 50%; margin: 0 auto; border: 4px solid #fafafa;"></div>
+                        </div>
+                        
+                        <!-- 2026年度 -->
+                        <div style="text-align: center; position: relative; z-index: 2;">
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 15px;">2026年度</div>
+                            <div style="font-size: 2.8em; font-weight: bold; color: #333; line-height: 1; margin-bottom: 10px;">240万人</div>
+                            <div style="font-size: 0.95em; color: #666; margin-bottom: 5px;">必要数</div>
+                            <div style="color: #d32f2f; font-weight: bold; font-size: 0.95em; margin-bottom: 20px;">+25万人不足</div>
+                            <div style="width: 16px; height: 16px; background: #333; border-radius: 50%; margin: 0 auto; border: 4px solid #fafafa;"></div>
+                        </div>
+                        
+                        <!-- 2040年度 -->
+                        <div style="text-align: center; position: relative; z-index: 2;">
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 15px;">2040年度</div>
+                            <div style="font-size: 2.8em; font-weight: bold; color: #333; line-height: 1; margin-bottom: 10px;">272万人</div>
+                            <div style="font-size: 0.95em; color: #666; margin-bottom: 5px;">必要数</div>
+                            <div style="color: #d32f2f; font-weight: bold; font-size: 0.95em; margin-bottom: 20px;">+57万人不足</div>
+                            <div style="width: 16px; height: 16px; background: #333; border-radius: 50%; margin: 0 auto; border: 4px solid #fafafa;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-title">図2: 必要な増員ペースと現実のギャップ</div>
+            <div class="chart-container">
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">必要な増員ペース</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;">年間 6.3万人</div>
+                        </div>
+                        <div class="bar-value">6.3万人/年</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">現在の増員ペース</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 16%; background: #999;">年間 1万人</div>
+                        </div>
+                        <div class="bar-value">1.0万人/年</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <div class="key-point-title">■ 重要ポイント</div>
+                現在のペース（年間約1万人）では、必要な増員ペース（年間6.3万人）に全く追いついていません。<br>
+                約6倍のペースで人材を確保する必要があります。
+            </div>
+
+            <div class="source">
+                <div class="source-title">出典：厚生労働省</div>
+                <div>「介護人材確保の現状について」（令和7年5月9日）</div>
+                <a href="https://www.mhlw.go.jp/content/12000000/001485589.pdf" target="_blank" class="source-link">
+                    https://www.mhlw.go.jp/content/12000000/001485589.pdf
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 2: 潜在介護福祉士 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <div class="section-title">潜在介護福祉士の存在</div>
+            </div>
+            
+            <div class="highlight-box">
+                介護福祉士資格取得者約47万人のうち、実際に従事しているのは約27万人のみ。<br>
+                残り約20万人が「潜在介護福祉士」として眠っている
+            </div>
+
+            <div class="chart-title">図3: 介護福祉士資格取得者の内訳（総数47万人）</div>
+            <div class="chart-container">
+                <div style="position: relative; width: 100%; height: 80px; background: #e0e0e0; border: 2px solid #333;">
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 57.4%; background: #333; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-right: 2px solid white;">
+                        実際に従事<br>約27万人 (57.4%)
+                    </div>
+                    <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 42.6%; background: #666; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                        潜在介護福祉士<br>約20万人 (42.6%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-number">47万人</div>
+                    <div class="comparison-label">介護福祉士<br>資格取得者総数</div>
+                </div>
+                <div class="comparison-item" style="border-color: #333; background: #fafafa;">
+                    <div class="comparison-number">27万人</div>
+                    <div class="comparison-label">実際に<br>介護分野で従事</div>
+                </div>
+                <div class="comparison-item" style="border-color: #d32f2f; background: #ffebee;">
+                    <div class="comparison-number" style="color: #d32f2f;">20万人</div>
+                    <div class="comparison-label">潜在介護福祉士<br>（未活用人材）</div>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <div class="key-point-title">■ 活用の可能性</div>
+                資格を持ちながら働いていない約20万人を活用できれば、年間6.3万人×3年分以上の不足をカバーする大きな可能性があります。<br>
+                <strong>潜在介護福祉士の活用が最重要課題</strong>となっています。
+            </div>
+
+            <div class="source">
+                <div class="source-title">出典：厚生労働省</div>
+                <div>「福祉・介護人材確保対策について」</div>
+                <a href="https://www.mhlw.go.jp/seisaku/09.html" target="_blank" class="source-link">
+                    https://www.mhlw.go.jp/seisaku/09.html
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 3: 国の施策 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <div class="section-title">国の施策における位置づけ</div>
+            </div>
+            
+            <div class="highlight-box">
+                厚生労働省は「潜在的有資格者等の掘り起こし等を行う」ことを<br>
+                人材確保のための5つの視点の一つとして明確に位置づけている
+            </div>
+
+            <div class="chart-title">図4: 人材確保のための5つの視点</div>
+            <div class="chart-container">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="padding: 15px; border: 2px solid #e0e0e0; background: white;">
+                        <strong>1.</strong> 労働環境・処遇の改善
+                    </div>
+                    <div style="padding: 15px; border: 2px solid #e0e0e0; background: white;">
+                        <strong>2.</strong> キャリアパスの確立等、資質の向上
+                    </div>
+                    <div style="padding: 15px; border: 2px solid #e0e0e0; background: white;">
+                        <strong>3.</strong> 福祉・介護サービスの周知等、理解の促進
+                    </div>
+                    <div style="padding: 20px; border: 4px solid #333; background: #f5f5f5;">
+                        <strong style="font-size: 1.1em;">4. 潜在的有資格者等の参入の促進 ★</strong>
+                        <div style="margin-top: 10px; font-size: 0.95em; color: #666;">
+                            ← 本マッチングアプリが直接貢献する施策
+                        </div>
+                    </div>
+                    <div style="padding: 15px; border: 2px solid #e0e0e0; background: white;">
+                        <strong>5.</strong> 多様な人材の参入・参画の促進
+                    </div>
+                </div>
+            </div>
+
+            <div class="source">
+                <div class="source-title">出典：厚生労働省</div>
+                <div>「福祉人材確保対策」</div>
+                <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/fukusijinzai/index.html" target="_blank" class="source-link">
+                    https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/fukusijinzai/index.html
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 4: 従事率 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <div class="section-title">介護福祉士の従事率</div>
+            </div>
+            
+            <div class="highlight-box">
+                介護福祉士についてみると、介護職の業務に従事している者は約6割程度に止まっており、<br>
+                潜在介護福祉士の活用方策を導入する必要があった
+            </div>
+
+            <div class="chart-title">図5: 介護福祉士の従事率</div>
+            <div class="chart-container">
+                <svg viewBox="0 0 400 400" style="max-width: 400px; margin: 0 auto; display: block;">
+                    <!-- 従事している60% -->
+                    <path d="M 200 200 L 200 50 A 150 150 0 1 1 75 275 Z" fill="#333" stroke="white" stroke-width="2"/>
+                    <!-- 従事していない40% -->
+                    <path d="M 200 200 L 75 275 A 150 150 0 0 1 200 50 Z" fill="#999" stroke="white" stroke-width="2"/>
+                    <!-- ラベル -->
+                    <text x="150" y="150" fill="white" font-size="20" font-weight="bold" text-anchor="middle">60%</text>
+                    <text x="150" y="170" fill="white" font-size="14" text-anchor="middle">従事中</text>
+                    <text x="260" y="250" fill="white" font-size="20" font-weight="bold" text-anchor="middle">40%</text>
+                    <text x="260" y="270" fill="white" font-size="14" text-anchor="middle">未活用</text>
+                </svg>
+                
+                <div style="margin-top: 30px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background: #333; border: 2px solid #333;"></div>
+                        <div>介護業務に従事（約60%）</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background: #999; border: 2px solid #333;"></div>
+                        <div>資格未活用（約40%）</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <div class="key-point-title">■ 届出制度の創設</div>
+                潜在介護福祉士の活用を促進するため、離職した介護福祉士が福祉人材センターに届け出る制度が創設されました。<br>
+                しかし、<strong>制度だけでは不十分であり、実際のマッチング支援が必要</strong>とされています。
+            </div>
+
+            <div class="source">
+                <div class="source-title">出典：厚生労働省</div>
+                <div>「介護福祉士の資格等取得者の届出制度」</div>
+                <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158837.html" target="_blank" class="source-link">
+                    https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158837.html
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 5: 総合的取組 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <div class="section-title">介護人材確保の総合的取組</div>
+            </div>
+            
+            <div class="highlight-box">
+                多様な人材の確保に向けて、介護分野への介護未経験者の参入を促進するとともに、<br>
+                潜在介護福祉士の再就業促進を推進
+            </div>
+
+            <div class="chart-title">図6: 人材確保の3つの柱</div>
+            <div class="chart-container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 30px; border: 2px solid #333; background: white;">
+                        <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 15px;">参入促進</div>
+                        <div style="font-size: 0.9em; color: #666; line-height: 1.6;">
+                            • 入門的研修<br>
+                            • 職場体験<br>
+                            • 潜在介護福祉士の再就業支援
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: 30px; border: 2px solid #333; background: white;">
+                        <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 15px;">資質の向上</div>
+                        <div style="font-size: 0.9em; color: #666; line-height: 1.6;">
+                            • キャリアアップ研修<br>
+                            • 認知症ケア研修<br>
+                            • 代替職員確保支援
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: 30px; border: 2px solid #333; background: white;">
+                        <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 15px;">労働環境改善</div>
+                        <div style="font-size: 0.9em; color: #666; line-height: 1.6;">
+                            • ICT・ロボット導入<br>
+                            • 処遇改善<br>
+                            • 生産性向上支援
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source">
+                <div class="source-title">出典：厚生労働省</div>
+                <div>「介護人材確保に向けた取組について」</div>
+                <a href="https://www.mhlw.go.jp/stf/newpage_02977.html" target="_blank" class="source-link">
+                    https://www.mhlw.go.jp/stf/newpage_02977.html
+                </a>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="section" style="border: 3px solid #333; padding: 40px; background: #fafafa;">
+            <h2 style="margin-bottom: 30px; text-align: center; font-size: 2em; color: #333;">まとめ：マッチングアプリの価値提案</h2>
+            
+            <div style="background: white; padding: 30px; border: 2px solid #333; margin-bottom: 30px;">
+                <h3 style="margin-bottom: 20px; color: #333;">■ 解決できる課題</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label" style="min-width: 220px;">年間6.3万人の人材不足</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;">対応可能</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label" style="min-width: 220px;">約20万人の潜在介護福祉士</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;">活用促進</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label" style="min-width: 220px;">国の重点施策</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;">直接貢献</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label" style="min-width: 220px;">資格保有者の40%未活用</div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;">改善可能</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 30px; border: 2px solid #333;">
+                <h3 style="margin-bottom: 15px; font-size: 1.3em; color: #333;">■ アプリの位置づけ</h3>
+                <p style="font-size: 1.05em; line-height: 1.9; color: #333;">
+                    本マッチングアプリは、国が重点施策として掲げる「潜在介護福祉士の掘り起こし」を実現する、
+                    <strong>社会的意義の高いプラットフォーム</strong>です。単なる求人マッチングではなく、
+                    <strong>国の介護人材確保戦略を支える重要なインフラ</strong>として機能します。
+                </p>
+                <div style="margin-top: 20px; padding: 20px; background: #f5f5f5; border-left: 4px solid #333;">
+                    約20万人の潜在介護福祉士と介護事業者を効果的にマッチングすることで、<br>
+                    <strong>年間6.3万人という目標達成に大きく貢献</strong>します。
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #666; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
+            <p>※本資料の全データは厚生労働省の公式発表に基づいています</p>
+            <p style="margin-top: 10px;">作成日: 2024年12月</p>
+        </div>
+    </div>
+</body>
+</html>
