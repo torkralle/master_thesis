@@ -11,6 +11,7 @@
 \usepackage{multirow,array}
 \usepackage{tabularx}
 \usepackage{longtable}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows, backgrounds}
 \usepackage{bm}
@@ -71,6 +72,10 @@ pdfauthor={星子祐哉}
 \label{chap:introduction}
 \input{./section/1_intro.tex}
 
+\chapter{アーキテクチャとビジネスプラン}
+\label{chap:architecture-business}
+\input{./section/2_business_architecture.tex}
+
 \chapter{研究の目的}
 \label{chap:purpose}
 \input{./section/2_purpose.tex}
@@ -104,8 +109,12 @@ pdfauthor={星子祐哉}
 \input{./section/9_conclusion.tex}
 
 \clearpage
-\chapter*{システム構成概要（ディレクトリベース）}
-\addcontentsline{toc}{chapter}{システム構成概要（ディレクトリベース）}
+\appendix
+\chapter{重み付けパターン一覧（本実験2・3）}
+\label{app:weight-patterns}
+\input{./section/appendix_weight_patterns.tex}
+
+\chapter{システム構成概要（ディレクトリベース）}
 本研究で取り扱ったプロダクト群のコードベース構成を、リポジトリ直下の主要ディレクトリ単位で整理する。
 
 \begin{itemize}

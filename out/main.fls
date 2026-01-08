@@ -155,6 +155,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/longtable.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -318,8 +319,6 @@ INPUT ./out/texmf-var/luatexja/extra_lmsans10-regular.luc
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmsans17-regular.luc
 INPUT ./out/texmf-var/luatexja/extra_lmsans17-regular.luc
 INPUT ./out/main.toc
-OUTPUT out/main.toc
-INPUT ./out/main.lof
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman7-regular.luc
 INPUT ./out/texmf-var/luatexja/extra_lmroman7-regular.luc
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman5-regular.luc
@@ -345,6 +344,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
+OUTPUT out/main.toc
+INPUT ./out/main.lof
 OUTPUT out/main.lof
 INPUT ./out/main.lot
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
@@ -367,10 +368,13 @@ INPUT ./images/fig_current_matching.png
 INPUT ./images/fig_current_matching.png
 INPUT ./images/fig_app_overview.png
 INPUT ./images/fig_app_overview.png
-INPUT ./images/fig_architecture.png
-INPUT ./images/fig_architecture.png
+INPUT ./section/2_business_architecture.tex
+INPUT ./section/3_business_plan.tex
 INPUT ./images/fig_business.png
 INPUT ./images/fig_business.png
+INPUT ./section/3_architecture.tex
+INPUT ./images/fig_architecture.png
+INPUT ./images/fig_architecture.png
 INPUT ./section/2_purpose.tex
 INPUT ./section/3_method.tex
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmromandemi10-regular.luc
@@ -397,10 +401,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
+INPUT ./images/table4_2_separation_score.png
+INPUT ./images/table4_2_separation_score.png
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman9-bold.luc
 INPUT ./out/texmf-var/luatexja/extra_lmroman9-bold.luc
-INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono8-regular.luc
-INPUT ./out/texmf-var/luatexja/extra_lmmono8-regular.luc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
@@ -422,8 +426,14 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
+INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono8-regular.luc
+INPUT ./out/texmf-var/luatexja/extra_lmmono8-regular.luc
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman7-bold.luc
 INPUT ./out/texmf-var/luatexja/extra_lmroman7-bold.luc
+INPUT ./images/pattern_scores_simple_blue.png
+INPUT ./images/pattern_scores_simple_blue.png
+INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmonolt10-bold.luc
+INPUT ./out/texmf-var/luatexja/extra_lmmonolt10-bold.luc
 INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
 INPUT ./section/6_avoidance_penalty.tex
@@ -433,6 +443,7 @@ INPUT ./images/penalty_and_auto_time.png
 INPUT ./images/penalty_and_auto_time.png
 INPUT ./section/7_future.tex
 INPUT ./section/9_conclusion.tex
+INPUT ./section/appendix_weight_patterns.tex
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT ./out/texmf-var/luatexja/extra_lmroman10-italic.luc
 INPUT ./out/main.aux

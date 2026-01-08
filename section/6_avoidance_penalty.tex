@@ -18,7 +18,7 @@ GUIには「業務回避ペナルティを有効化」のチェックボック�
 重み付けパターン比較をベースに、\textbf{ペナルティ無し}と\textbf{ペナルティ有り}を同一条件で評価する。出力はTop-1/Top-3/Top-5の精度比較と回避項目の一覧を提示し、回避傾向が強いワーカーほど順位変化が大きいかを確認する。
 
 \subsection*{結果}
-20名データのうち、時間重み \texttt{time\_auto} の比較結果が揃った18名を対象に平均精度を算出した。ペナルティ有りはTop-1/Top-3/Top-5の全てで改善し、回避傾向が推薦結果に反映されることが確認できた。
+20名データのうち、時間重みの自動判別（\texttt{time\_auto}）の比較結果が揃った18名を対象に平均精度を算出した。ペナルティ有りはTop-1/Top-3/Top-5の全てで改善し、回避傾向が推薦結果に反映されることが確認できた。
 
 \begin{figure}[htbp]
 \centering
@@ -29,7 +29,7 @@ GUIには「業務回避ペナルティを有効化」のチェックボック�
 
 \begin{table}[htbp]
 \centering
-\caption{回避ペナルティ有無の平均精度（18名, \texttt{equal} / \texttt{time\_auto}）}
+\caption{回避ペナルティ有無の平均精度（18名, \texttt{equal} / 時間重み自動判別（\texttt{time\_auto}））}
 \begin{tabular}{l r r r}
 \hline
 条件 & Top-1 & Top-3 & Top-5 \\
@@ -46,7 +46,7 @@ GUIには「業務回避ペナルティを有効化」のチェックボック�
 
 \section*{追加実験2：時間志向を同時に扱った場合}
 \subsection*{実装方針とGUI連携}
-GUIでは「ペナルティ有無 + time\_auto 比較」を用意し、\textbf{ペナルティ無し/有り}に加えて\textbf{time\_auto}と\textbf{ペナルティ有り + time\_auto}を同時に評価できる。
+GUIでは「ペナルティ有無 + 時間重み自動判別 比較」を用意し、\textbf{ペナルティ無し/有り}に加えて\textbf{時間重み自動判別（\texttt{time\_auto}）}と\textbf{ペナルティ有り + 時間重み自動判別}を同時に評価できる。
 
 \subsection*{長期志向/短期志向の判定}
 結果表示には時間パターンの自動判別サマリを含め、\textbf{長期志向（stable）}と\textbf{短期志向（recent）}をラベルとして表示する。判定には履歴のドリフト、最近ウィンドウ長、日付ベース/セッションベースの別を用い、採用された時間パターンを明示する。
@@ -57,6 +57,9 @@ GUIでは「ペナルティ有無 + time\_auto 比較」を用意し、\textbf{�
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{images/penalty_and_auto_time.png}
-\caption{ペナルティ有無 + time\_auto の同時評価結果}
+\caption{ペナルティ有無 + 時間重み自動判別の同時評価結果}
 \label{fig:penalty-and-auto-time}
 \end{figure}
+
+\subsection*{結果と考察}
+図\ref{fig:penalty-and-auto-time}に示す通り、\textbf{回避ペナルティの有無}と\textbf{時間重み自動判別（\texttt{time\_auto}）の選択結果}を同時に可視化することで、長期志向（stable）/短期志向（recent）の違いと上位候補の入れ替わりを把握できるようになった。個別ワーカーでは、ペナルティ付与により「避けたい業務」を含む求人が上位から外れるケースが見られ、時間重み自動判別を併用した場合にも同様の傾向が確認された。一方で平均精度の増減はワーカーの履歴量や回避傾向の強さに依存するため、今後は\textbf{回避度の更新頻度}や\textbf{ペナルティ強度の個別最適化}を検討する必要がある。

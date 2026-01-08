@@ -2,23 +2,28 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {4.1}{\ignorespaces 予備実験2の評価データ（アンカーと類似/非類似職種の例）}}{22}{table.caption.51}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces BERTモデル別の分離度スコア}}{22}{table.caption.52}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{23}{table.caption.54}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2の重み付けパターン一覧}}{23}{table.4.4}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（20件学習）の全パターン}}{24}{table.caption.56}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 本実験2（30件学習）の全パターン}}{24}{table.caption.57}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{25}{table.caption.58}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces 特徴量配分パターン（本実験3）}}{25}{table.caption.60}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{26}{table.caption.61}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{26}{table.caption.62}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces 時間重み付け比較（平均Top-5）}}{26}{table.caption.63}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces 時間重み付け上位パターン（平均Top-5）}}{26}{table.caption.64}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces ステップ別平均Top-5（有効ワーカー平均）}}{27}{table.caption.65}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces time\_auto 実装結果（5名, 平均Top-K）}}{27}{table.caption.67}%
+\addvspace {10\jsc@mpt }
+\contentsline {table}{\numberline {5.1}{\ignorespaces 予備実験2の評価データ（アンカーと類似/非類似職種の例）}}{22}{table.caption.47}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{24}{table.caption.50}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces 本実験2の主要重み付けパターン}}{24}{table.caption.52}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces 本実験2（20件学習）の上位パターン}}{25}{table.caption.53}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces 本実験2（30件学習）の上位パターン}}{25}{table.caption.54}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{25}{table.caption.55}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces 特徴量配分パターン（本実験3）}}{26}{table.caption.58}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces 時間重み付けパターン（主要）}}{26}{table.caption.59}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces 時間重み付け比較（20名, 平均Top-5）}}{26}{table.caption.60}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces 時間重み付け上位パターン（20名, 平均Top-5）}}{27}{table.caption.61}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces ステップ別平均Top-5（20名, 有効ワーカー平均）}}{27}{table.caption.62}%
+\contentsline {table}{\numberline {5.12}{\ignorespaces 時間重み自動判別の実装結果（\texttt {time\_auto}, 5名, 平均Top-K）}}{28}{table.caption.64}%
+\contentsline {table}{\numberline {5.13}{\ignorespaces 20名データの時間パターン上位（平均Top-K, 全重み付け平均）}}{28}{table.caption.67}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / \texttt {time\_auto}）}}{33}{table.caption.82}%
+\contentsline {table}{\numberline {8.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / 時間重み自動判別（\texttt {time\_auto}））}}{35}{table.caption.83}%
 \addvspace {10\jsc@mpt }
+\addvspace {10\jsc@mpt }
+\addvspace {10\jsc@mpt }
+\contentsline {table}{\numberline {A.1}{\ignorespaces 本実験2の重み付けパターン一覧（全体）}}{40}{table.A.1}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{41}{table.caption.92}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{41}{table.caption.93}%
 \addvspace {10\jsc@mpt }

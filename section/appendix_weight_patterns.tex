@@ -1,0 +1,107 @@
+本実験2・3で使用した重み付けパターンの全一覧を示す。
+
+{\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtable}{>{\raggedright\arraybackslash\ttfamily\tiny}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.35\linewidth}}
+\caption{本実験2の重み付けパターン一覧（全体）} \\
+\hline
+パターンID & GUI表示名 & 重み & 意図 \\
+\hline
+\endfirsthead
+\hline
+パターンID & GUI表示名 & 重み & 意図 \\
+\hline
+\endhead
+\texttt{equal} & 均等 & 1/1/1/1/1/1/1 & 全項目を同一比率で扱う基準。 \\
+\texttt{content\_focused} & 業務内容重視 & 1/3/1/1/1/1/1 & 業務内容の意味一致を強調。 \\
+\texttt{salary\_focused} & 時給重視 & 1/1/1/1/1/3/1 & 報酬条件を優先。 \\
+\texttt{job\_title\_focused} & 職種重視 & 3/1/1/1/1/1/1 & 職種名の一致を重視。 \\
+\texttt{care\_focused} & 介護・施設重視 & 1/1/2/2/1/1/1 & 介護項目と施設種別を優先。 \\
+\texttt{work\_time\_focused} & 勤務時間重視 & 1/1/1/1/3/1/1 & 勤務時間の条件一致を強調。 \\
+\texttt{extreme\_salary} & 極度時給重視 & 1/1/1/1/1/5/1 & 時給のみを極端に強調。 \\
+\texttt{content\_salary} & 業務内容×時給 & 1/3/1/1/1/3/1 & 業務内容と報酬を同時に強化。 \\
+\texttt{content\_salary\_strong} & 業務内容×時給強化 & 1/4/1/1/1/4/1 & 業務内容と時給をさらに強調。 \\
+\texttt{content\_care\_salary} & 業務×介護×時給 & 1/3/2/2/1/2/1 & 仕事内容と介護要素と報酬のバランス。 \\
+\texttt{comprehensive} & 総合重視 & 1/3/2/2/2/3/1 & 内容・介護・条件を幅広く強化。 \\
+\texttt{comprehensive\_strong} & 総合重視強化 & 2/4/2/2/2/4/1 & 総合重視の強化版。 \\
+\texttt{conditions\_focused} & 勤務条件重視 & 1/1/1/1/3/3/1 & 勤務時間と時給に集中。 \\
+\texttt{salary\_time\_strong} & 時給×勤務時間強化 & 1/1/1/1/4/4/1 & 条件重視をさらに強化。 \\
+\texttt{balanced\_high} & 高バランス & 2/2/1/1/1/2/1 & 主要3項目を均等に強化。 \\
+\texttt{content\_dominant\_balanced} & 業務主導バランス & 2/4/1/1/1/2/1 & 業務内容を軸にバランス配分。 \\
+\texttt{extreme\_content} & 極端業務内容 & 1/5/1/1/1/1/1 & 業務内容を大きく強調。 \\
+\texttt{ultra\_content} & 超強力業務内容 & 1/7/1/1/1/1/1 & 業務内容への依存度をさらに高める。 \\
+\texttt{mega\_content} & メガ業務内容 & 1/10/1/1/1/1/1 & 業務内容を最重要視する極端設定。 \\
+\texttt{mega\_content\_salary} & メガ業務×時給 & 1/8/1/1/1/5/1 & 業務内容と時給を極端に強化。 \\
+\texttt{practical\_focus} & 実務重視 & 1/3/3/3/1/1/1 & 現場実務に関わる要素を強化。 \\
+\texttt{content\_care\_strong} & 業務×介護強化 & 1/4/3/3/1/1/1 & 業務内容と介護要素を強調。 \\
+\texttt{content\_care\_avoidance} & 避ける業務考慮 & 1/5/5/1/1/1/1 & 避けたい業務の影響を反映。 \\
+\texttt{care\_items\_dominant} & 介護項目極端重視 & 1/2/8/1/1/1/1 & 介護項目の有無を最重視。 \\
+\texttt{content\_care\_balanced} & 業務×介護バランス & 1/4/4/2/1/2/1 & 業務内容と介護項目のバランス。 \\
+\texttt{task\_detail\_focused} & タスク詳細重視 & 0/6/6/0/0/0/0 & 業務内容と介護項目のみで評価。 \\
+\texttt{avoidance\_optimized} & 避ける業務最適化 & 1/4/4/3/1/2/1 & 業務・介護・施設をバランス強化。 \\
+\texttt{care\_items\_salary} & 介護項目×時給 & 1/2/5/1/1/4/1 & 介護項目と報酬のバランス。 \\
+\texttt{ultra\_care\_items} & 超介護項目重視 & 1/1/10/1/1/1/1 & 介護項目を最優先に扱う。 \\
+\hline
+\end{longtable}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.0}
+}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付けパターン一覧（1/2）}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 意味 \\
+\hline
+\texttt{time\_equal} & 時間減衰なし（全履歴を同一重み）。 \\
+\texttt{time\_recent\_exp\_7d} & 指数減衰（半減期7日）。 \\
+\texttt{time\_recent\_exp\_30d} & 指数減衰（半減期30日）。 \\
+\texttt{time\_recent\_exp\_90d} & 指数減衰（半減期90日）。 \\
+\texttt{time\_session\_exp\_5} & セッション指数減衰（半減期5件）。 \\
+\texttt{time\_session\_exp\_10} & セッション指数減衰（半減期10件）。 \\
+\texttt{time\_session\_exp\_20} & セッション指数減衰（半減期20件）。 \\
+\texttt{time\_recent\_linear\_30d} & 線形減衰（30日で0）。 \\
+\texttt{time\_recent\_linear\_90d} & 線形減衰（90日で0）。 \\
+\texttt{time\_session\_linear\_10} & セッション線形減衰（10件で0）。 \\
+\texttt{time\_session\_linear\_20} & セッション線形減衰（20件で0）。 \\
+\texttt{time\_step\_k\_5} & ステップ関数（直近5件のみ1、それ以外0）。 \\
+\texttt{time\_step\_k\_10} & ステップ関数（直近10件のみ1、それ以外0）。 \\
+\texttt{time\_step\_k\_20} & ステップ関数（直近20件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_5} & セッション順のステップ関数（直近5件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_10} & セッション順のステップ関数（直近10件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_20} & セッション順のステップ関数（直近20件のみ1、それ以外0）。 \\
+\texttt{time\_bi\_level\_5} & 2段階重み（直近5件=1、以降=0.2）。 \\
+\texttt{time\_bi\_level\_10} & 2段階重み（直近10件=1、以降=0.2）。 \\
+\texttt{time\_bi\_level\_20} & 2段階重み（直近20件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_5} & セッション順の2段階重み（直近5件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_10} & セッション順の2段階重み（直近10件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_20} & セッション順の2段階重み（直近20件=1、以降=0.2）。 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付けパターン一覧（2/2）}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 意味 \\
+\hline
+\texttt{time\_window\_uniform\_30d} & 30日以内のみ1、それ以前は0。 \\
+\texttt{time\_window\_uniform\_90d} & 90日以内のみ1、それ以前は0。 \\
+\texttt{time\_recent\_power\_1} & パワー減衰（$1/(age+1)$）。 \\
+\texttt{time\_recent\_power\_2} & パワー減衰（$1/(age+1)^2$）。 \\
+\texttt{time\_recent\_log} & 対数減衰（$1/\log(age+e)$）。 \\
+\texttt{time\_inverse\_age\_1} & 反比例減衰（$1/(age+1)$）。 \\
+\texttt{time\_sigmoid\_30d\_10d} & シグモイド減衰（中心30日、幅10日）。 \\
+\texttt{time\_decay\_then\_flat\_30d} & 30日までは指数減衰、それ以降は0.2固定。 \\
+\texttt{time\_softmax\_30d} & Softmax減衰（温度30日）。 \\
+\texttt{time\_softmax\_7d} & Softmax減衰（温度7日）。 \\
+\texttt{time\_session\_power\_1} & セッションパワー減衰（$1/(k+1)$）。 \\
+\hline
+\end{tabularx}
+\end{table}

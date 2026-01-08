@@ -6,15 +6,20 @@
 \contentsline {figure}{\numberline {1.5}{\ignorespaces 北海道における介護人材確保の特殊事情}}{6}{figure.caption.15}%
 \contentsline {figure}{\numberline {1.6}{\ignorespaces 現行マッチングシステムの定型条件フィルタリング構造}}{8}{figure.caption.17}%
 \contentsline {figure}{\numberline {1.7}{\ignorespaces 介護特化型マッチングアプリの概要}}{9}{figure.caption.19}%
-\contentsline {figure}{\numberline {1.8}{\ignorespaces システムアーキテクチャ概要（主要サービス間の疎結合構成）}}{10}{figure.caption.21}%
-\contentsline {figure}{\numberline {1.9}{\ignorespaces ビジネスプランと価値循環（データ駆動の改善サイクル）}}{11}{figure.caption.23}%
+\addvspace {10\jsc@mpt }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces ビジネスプランと価値循環（データ駆動の改善サイクル）}}{11}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces システムアーキテクチャ概要（主要サービス間の疎結合構成）}}{12}{figure.caption.21}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces BERTモデル別の分離度スコア}}{23}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 本実験2における主要パターンのスコア比較}}{25}{figure.caption.56}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{33}{figure.caption.81}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + time\_auto の同時評価結果}}{34}{figure.caption.88}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{35}{figure.caption.82}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{36}{figure.caption.89}%
+\addvspace {10\jsc@mpt }
+\addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
