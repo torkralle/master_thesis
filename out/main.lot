@@ -16,8 +16,9 @@
 \contentsline {table}{\numberline {4.12}{\ignorespaces 時間重み付け上位パターン（平均Top-5）}}{26}{table.caption.64}%
 \contentsline {table}{\numberline {4.13}{\ignorespaces ステップ別平均Top-5（有効ワーカー平均）}}{27}{table.caption.65}%
 \contentsline {table}{\numberline {4.14}{\ignorespaces time\_auto 実装結果（5名, 平均Top-K）}}{27}{table.caption.67}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces 本実験5の結果（概略）}}{28}{table.caption.69}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
+\addvspace {10\jsc@mpt }
+\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / \texttt {time\_auto}）}}{33}{table.caption.82}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

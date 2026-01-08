@@ -347,6 +347,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
 OUTPUT out/main.lof
 INPUT ./out/main.lot
+INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
+INPUT ./out/texmf-var/luatexja/extra_lmmono10-regular.luc
 OUTPUT out/main.lot
 INPUT ./section/1_intro.tex
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmsans12-regular.luc
@@ -361,8 +363,6 @@ INPUT ./images/fig_business_challenges.png
 INPUT ./images/fig_business_challenges.png
 INPUT ./images/fig_hokkaido_issues.png
 INPUT ./images/fig_hokkaido_issues.png
-INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
-INPUT ./out/texmf-var/luatexja/extra_lmmono10-regular.luc
 INPUT ./images/fig_current_matching.png
 INPUT ./images/fig_current_matching.png
 INPUT ./images/fig_app_overview.png
@@ -426,6 +426,11 @@ INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman7-bold.luc
 INPUT ./out/texmf-var/luatexja/extra_lmroman7-bold.luc
 INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
+INPUT ./section/6_avoidance_penalty.tex
+INPUT ./images/20people_patterns.png
+INPUT ./images/20people_patterns.png
+INPUT ./images/penalty_and_auto_time.png
+INPUT ./images/penalty_and_auto_time.png
 INPUT ./section/7_future.tex
 INPUT ./section/9_conclusion.tex
 INPUT ./out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman10-italic.luc

@@ -8,20 +8,17 @@
 \contentsline {chapter}{\numberline {第2章}研究の目的}{12}{chapter.2}%
 \contentsline {chapter}{\numberline {第3章}提案手法}{15}{chapter.3}%
 \contentsline {chapter}{\numberline {第4章}実験}{17}{chapter.4}%
-\contentsline {chapter}{\numberline {第5章}考察}{29}{chapter.5}%
-\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{32}{chapter.6}%
-\contentsline {paragraph}{リピート志向の強さ}{32}{section*.72}%
-\contentsline {paragraph}{駐車場の重要性}{32}{section*.73}%
-\contentsline {paragraph}{業務内容の選好}{33}{section*.74}%
-\contentsline {paragraph}{給与の基準}{33}{section*.75}%
-\contentsline {paragraph}{回避業務の検出}{34}{section*.80}%
-\contentsline {paragraph}{ペナルティ係数の計算}{34}{section*.81}%
-\contentsline {paragraph}{評価方法}{34}{section*.82}%
-\contentsline {paragraph}{目的}{34}{section*.83}%
-\contentsline {chapter}{\numberline {第7章}今後の展望}{35}{chapter.7}%
-\contentsline {chapter}{\numberline {第8章}結論}{36}{chapter.8}%
-\contentsline {chapter}{システム構成概要（ディレクトリベース）}{37}{chapter*.85}%
-\contentsline {chapter}{謝辞}{38}{chapter*.85}%
-\contentsline {chapter}{参考文献}{39}{chapter*.86}%
-\contentsline {chapter}{参考文献}{39}{chapter*.87}%
-\contentsline {chapter}{研究業績}{40}{chapter*.88}%
+\contentsline {chapter}{\numberline {第5章}考察}{28}{chapter.5}%
+\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{30}{chapter.6}%
+\contentsline {paragraph}{リピート志向の強さ}{30}{section*.70}%
+\contentsline {paragraph}{駐車場の重要性}{30}{section*.71}%
+\contentsline {paragraph}{業務内容の選好}{31}{section*.72}%
+\contentsline {paragraph}{給与の基準}{31}{section*.73}%
+\contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{32}{chapter.7}%
+\contentsline {chapter}{\numberline {第8章}今後の展望}{35}{chapter.8}%
+\contentsline {chapter}{\numberline {第9章}結論}{36}{chapter.9}%
+\contentsline {chapter}{システム構成概要（ディレクトリベース）}{37}{chapter*.90}%
+\contentsline {chapter}{謝辞}{38}{chapter*.90}%
+\contentsline {chapter}{参考文献}{39}{chapter*.91}%
+\contentsline {chapter}{参考文献}{39}{chapter*.92}%
+\contentsline {chapter}{研究業績}{40}{chapter*.93}%

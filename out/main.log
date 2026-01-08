@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  8 JAN 2026 19:52
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  8 JAN 2026 20:33
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -1505,7 +1505,7 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 
 [2
 
-] (./out/main.lot)
+] (./out/main.lot(load cache: extra_lmmono10-regular.luc))
 \tf@lot=\write7
 
 \openout7 = main.lot
@@ -1534,13 +1534,13 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 12.15074pt on input line 3.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 12.15074pt on input line 3.
-<images/fig_workforce_shortage.png, id=176, 1606.0pt x 1606.0pt>
+<images/fig_workforce_shortage.png, id=186, 1606.0pt x 1606.0pt>
 File: images/fig_workforce_shortage.png Graphic file (type png)
 <use images/fig_workforce_shortage.png>
 Package luatex.def Info: images/fig_workforce_shortage.png  used on input line 
 8.
 (luatex.def)             Requested size: 384.77194pt x 384.76172pt.
-<images/fig_latent_workers.png, id=179, 1606.0pt x 1606.0pt>
+<images/fig_latent_workers.png, id=189, 1606.0pt x 1606.0pt>
 File: images/fig_latent_workers.png Graphic file (type png)
 <use images/fig_latent_workers.png>
 Package luatex.def Info: images/fig_latent_workers.png  used on input line 18.
@@ -1552,7 +1552,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 ]
-<images/fig_policy_framework.png, id=192, 1606.0pt x 1606.0pt>
+<images/fig_policy_framework.png, id=202, 1606.0pt x 1606.0pt>
 File: images/fig_policy_framework.png Graphic file (type png)
 <use images/fig_policy_framework.png>
 Package luatex.def Info: images/fig_policy_framework.png  used on input line 30
@@ -1563,7 +1563,7 @@ Package luatex.def Info: images/fig_policy_framework.png  used on input line 30
 [2<./images/fig_workforce_shortage.png>]
 
 [3<./images/fig_latent_workers.png>]
-<images/fig_business_challenges.png, id=213, 1606.0pt x 1606.0pt>
+<images/fig_business_challenges.png, id=223, 1606.0pt x 1606.0pt>
 File: images/fig_business_challenges.png Graphic file (type png)
 <use images/fig_business_challenges.png>
 Package luatex.def Info: images/fig_business_challenges.png  used on input line
@@ -1574,7 +1574,7 @@ Package luatex.def Info: images/fig_business_challenges.png  used on input line
 [4<./images/fig_policy_framework.png>]
 
 [5<./images/fig_business_challenges.png>]
-<images/fig_hokkaido_issues.png, id=227, 1606.0pt x 1606.0pt>
+<images/fig_hokkaido_issues.png, id=237, 1606.0pt x 1606.0pt>
 File: images/fig_hokkaido_issues.png Graphic file (type png)
 <use images/fig_hokkaido_issues.png>
 Package luatex.def Info: images/fig_hokkaido_issues.png  used on input line 70.
@@ -1586,14 +1586,13 @@ Package luatex.def Info: images/fig_hokkaido_issues.png  used on input line 70.
 LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 
 (Font)              scaled to size 10.12561pt on input line 79.
-(load cache: extra_lmmono10-regular.luc)
-<images/fig_current_matching.png, id=235, 1606.0pt x 1606.0pt>
+<images/fig_current_matching.png, id=245, 1606.0pt x 1606.0pt>
 File: images/fig_current_matching.png Graphic file (type png)
 <use images/fig_current_matching.png>
 Package luatex.def Info: images/fig_current_matching.png  used on input line 94
 .
 (luatex.def)             Requested size: 364.51949pt x 364.52014pt.
-<images/fig_app_overview.png, id=237, 1606.0pt x 1606.0pt>
+<images/fig_app_overview.png, id=247, 1606.0pt x 1606.0pt>
 File: images/fig_app_overview.png Graphic file (type png)
 <use images/fig_app_overview.png>
 Package luatex.def Info: images/fig_app_overview.png  used on input line 104.
@@ -1601,7 +1600,7 @@ Package luatex.def Info: images/fig_app_overview.png  used on input line 104.
 
 
 [7]
-<images/fig_architecture.png, id=248, 1606.0pt x 1606.0pt>
+<images/fig_architecture.png, id=257, 1606.0pt x 1606.0pt>
 File: images/fig_architecture.png Graphic file (type png)
 <use images/fig_architecture.png>
 Package luatex.def Info: images/fig_architecture.png  used on input line 116.
@@ -1609,7 +1608,7 @@ Package luatex.def Info: images/fig_architecture.png  used on input line 116.
 
 
 [8<./images/fig_current_matching.png>]
-<images/fig_business.png, id=257, 1606.0pt x 1606.0pt>
+<images/fig_business.png, id=266, 1606.0pt x 1606.0pt>
 File: images/fig_business.png Graphic file (type png)
 <use images/fig_business.png>
 Package luatex.def Info: images/fig_business.png  used on input line 128.
@@ -1749,38 +1748,55 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 
 [25]
 
-[26]
+[26])
 
-[27])
-
-[28]
+[27]
 第5章
 (./section/5_considerations.tex
 
-[29
+[28
 
 ])
 
-[30]
-
-[31]
+[29]
 第6章
 (./section/6_user_study.tex
+
+[30
+
+])
+
+[31]
+第7章
+(./section/6_avoidance_penalty.tex
 
 [32
 
 ]
+<images/20people_patterns.png, id=454, 2268.475pt x 658.46pt>
+File: images/20people_patterns.png Graphic file (type png)
+<use images/20people_patterns.png>
+Package luatex.def Info: images/20people_patterns.png  used on input line 25.
+(luatex.def)             Requested size: 364.51949pt x 105.79782pt.
 
-[33])
 
-[34]
-第7章
+[33<./images/20people_patterns.png>]
+<images/penalty_and_auto_time.png, id=463, 2288.55pt x 843.15pt>
+File: images/penalty_and_auto_time.png Graphic file (type png)
+<use images/penalty_and_auto_time.png>
+Package luatex.def Info: images/penalty_and_auto_time.png  used on input line 5
+9.
+(luatex.def)             Requested size: 364.51949pt x 134.28922pt.
+)
+
+[34<./images/penalty_and_auto_time.png>]
+第8章
 (./section/7_future.tex)
 
 [35
 
 ]
-第8章
+第9章
 (./section/9_conclusion.tex)
 
 [36
@@ -1798,12 +1814,6 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 ](load cache: extra_lmroman10-italic.luc)
 LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
 undefined
-(Font)              No change on input line 135.
-LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
-undefined
-(Font)              No change on input line 137.
-LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
-undefined
 (Font)              No change on input line 139.
 LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
 undefined
@@ -1811,6 +1821,12 @@ undefined
 LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
 undefined
 (Font)              No change on input line 143.
+LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
+undefined
+(Font)              No change on input line 145.
+LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' 
+undefined
+(Font)              No change on input line 147.
 
 
 [39
@@ -1826,19 +1842,19 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 500C2A657EDD73C5E5F9439A4E317999;1309.
+(rerunfilecheck)             Checksum: 77450020F1DBBCB7FFF3505579AA466B;1518.
 )
 
 Here is how much of LuaTeX's memory you used:
- 29160 strings out of 475506
+ 29199 strings out of 475506
  382248,1144653 words of node,token memory allocated
- 3081 words of node memory still in use:
-   26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 917 attribute, 63 glue_s
-pec, 108 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 1 pdf_action,
+ 3027 words of node memory still in use:
+   26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 893 attribute, 63 glue_s
+pec, 105 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 1 pdf_action,
  16 pdf_colorstack nodes
-   avail lists: 1:34,2:115235,3:938,4:939,5:137,6:249,7:9687,8:39,9:3391,10:38,1
+   avail lists: 1:34,2:113979,3:938,4:939,5:135,6:249,7:9511,8:39,9:3391,10:38,1
 1:58
- 51126 multiletter control sequences out of 65536+600000
+ 51147 multiletter control sequences out of 65536+600000
  177 fonts using 162269399 bytes
  130i,12n,131p,1879b,722s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-bold.otf><
@@ -1847,10 +1863,10 @@ pec, 108 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 1 pdf_action,
 f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf
 ></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.o
 tf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromandemi10-re
-gular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-
-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman
-10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans1
-7-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmrom
+gular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10
+-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans17-
+regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono1
+0-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmrom
 an10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lm
 sans10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/har
 anoaji/HaranoAjiGothic-Medium.otf></usr/local/texlive/2025/texmf-dist/fonts/open
@@ -1863,10 +1879,10 @@ ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist
 nts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (45 pages, 1528283 bytes).
+Output written on main.pdf (45 pages, 1707261 bytes).
 
-PDF statistics: 614 PDF objects out of 1000 (max. 8388607)
- 479 compressed objects within 5 object streams
- 177 named destinations out of 1000 (max. 131072)
- 280 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 630 PDF objects out of 1000 (max. 8388607)
+ 491 compressed objects within 5 object streams
+ 183 named destinations out of 1000 (max. 131072)
+ 288 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -32,7 +32,7 @@
 	\item \textbf{前処理層}: セッション検証、テキスト正規化、特徴抽出を行う。
 	\item \textbf{モデル層}: Sentence-BERT による埋め込み生成と類似度計算。
 	\item \textbf{推薦ロジック層}: 重み付けパターン、履歴平均ベクトル、ベースライン手法の切替。
-	\item \textbf{評価層}: Top-K、MRR、NDCG等の指標算出と学習曲線評価。
+	\item \textbf{評価層}: Top-K、NDCG等の指標算出と学習曲線評価。
 	\item \textbf{インタフェース層}: CLI 実行スクリプトと FastAPI Web GUI。
 \end{enumerate}
 
@@ -78,7 +78,7 @@ BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、�
 \end{itemize}
 
 \subsection*{評価指標の補足}
-Top-K精度に加え、\textbf{MRR（Mean Reciprocal Rank）} と \textbf{NDCG} を計算し、順位の質を評価する。Top-Kは正解が上位に入るかを測る一方、MRR/NDCGは\textbf{上位に来るほど高得点}となるため、実サービスでの露出順位を意識した指標として扱う。
+Top-K精度に加え、\textbf{NDCG} を計算し、順位の質を評価する。Top-Kは正解が上位に入るかを測る一方、NDCGは\textbf{上位に来るほど高得点}となるため、実サービスでの露出順位を意識した指標として扱う。
 
 \subsection*{高速化・キャッシュ戦略}
 \begin{itemize}
@@ -387,7 +387,7 @@ BERT (CLS) & 0.019 \\
 
 2名データ（学習ステップ5〜40）では、短期リセンシー型（指数・パワー・反比例・softmaxなど）が平均Top-5で0.8375となり、等重み（0.7625）より安定して高い。特徴量配分のカテゴリ別に見ても、\texttt{equal} は「全特徴を均等配分」、\texttt{content\_focused} は「業務内容重視」、\texttt{job\_title\_focused} は「求人タイトル重視」、\texttt{care\_focused} は「介護項目重視」、\texttt{work\_time\_focused} は「勤務時間重視」を表し、いずれも短期リセンシー型が最良であった。少数ユーザーでは「直近行動の反映」が有効であることが示唆される。
 
-20名データ（学習ステップ5〜20）では \texttt{time\_recent\_linear\_30d} 系（直近30日を線形に重視する時間減衰）が上位を占め、\texttt{equal\_\_time\_recent\_linear\_30d}（均等配分×30日線形減衰）と \texttt{salary\_focused\_\_time\_recent\_linear\_30d}（時給重視×30日線形減衰）が平均Top-5で0.75となった。等重みの \texttt{equal\_\_time\_equal} は0.65で、時間減衰の設計が精度差に直結している。20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。MRRは実装上の出力が0固定であったため、評価にはTop-kのみを使用した。
+20名データ（学習ステップ5〜20）では \texttt{time\_recent\_linear\_30d} 系（直近30日を線形に重視する時間減衰）が上位を占め、\texttt{equal\_\_time\_recent\_linear\_30d}（均等配分×30日線形減衰）と \texttt{salary\_focused\_\_time\_recent\_linear\_30d}（時給重視×30日線形減衰）が平均Top-5で0.75となった。等重みの \texttt{equal\_\_time\_equal} は0.65で、時間減衰の設計が精度差に直結している。20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。
 
 \begin{table}[htbp]
 \centering
@@ -459,23 +459,6 @@ time\_auto の検証は別途5名データ（学習ステップ5〜40）で実�
 \texttt{equal\_\_time\_equal} & 0.5125 & 0.75 & 0.7625 \\
 \texttt{equal\_\_time\_auto} & 0.5375 & 0.7375 & 0.775 \\
 \texttt{equal\_\_time\_recent\_linear\_30d} & 0.625 & 0.80 & 0.825 \\
-\hline
-\end{tabular}
-\end{table}
-
-\section*{本実験5：TF-IDFとBERTの比較}
-単語出現頻度に基づくTF-IDF、ルールベース（単語一致）、およびBERTによる意味的類似度を比較した結果、短文やタイトルレベルの比較ではTF-IDFが実用上十分な精度を出す場合があり、計算コストの点で有利であることがわかった。
-
-\begin{table}[htbp]
-\centering
-\caption{本実験5の結果（概略）}
-\begin{tabular}{l c l}
-\hline
-手法 & 精度 & 特徴 \\
-\hline
-ルールベース（単語一致） & 0.8 & シンプルだが限界あり \\
-BERT（意味的類似度） & 1.0 & 最高精度だが計算コスト高 \\
-TF-IDF（頻度ベース） & 1.0 & 計算コスト低で有効な場合あり \\
 \hline
 \end{tabular}
 \end{table}

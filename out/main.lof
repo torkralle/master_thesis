@@ -14,4 +14,7 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{33}{figure.caption.81}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + time\_auto の同時評価結果}}{34}{figure.caption.88}%
+\addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
