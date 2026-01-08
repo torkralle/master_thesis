@@ -1,5 +1,116 @@
 本節では本研究で実施した予備実験および本実験の設計と結果を示す。
 
+\section*{実験システムの実装とアーキテクチャ}
+実データ分析の実験環境は \textbf{analyze\_real\_data} ディレクトリに実装し、推薦モデル・評価器・データ処理・Web GUI を分離した多層構成として設計した。研究目的での再現性と拡張性を重視し、CLI/GUIの両方から同一の評価パイプラインを呼び出せる構成としている。
+
+\subsection*{技術スタック}
+\begin{itemize}
+	\item \textbf{Python}: 研究実装の中核言語。モデル推論・評価・可視化を一貫して実装。
+	\item \textbf{PyTorch + Transformers}: Sentence-BERT によるテキスト埋め込みと類似度計算。
+	\item \textbf{FastAPI + Uvicorn}: Web GUI/REST API を提供。非同期処理と並列実行に対応。
+	\item \textbf{pandas / numpy / scikit-learn}: データ整形、集計、評価指標の算出。
+	\item \textbf{MongoDB (任意)}: 実データ取得時の補助的なデータソース（環境変数で有効化）。
+	\item \textbf{Jinja2 / Static Files}: GUIテンプレートと静的資産を分離し、軽量に可視化。
+	\item \textbf{pymongo / python-dotenv}: 環境変数ベースで本番DB連携を制御。
+\end{itemize}
+
+\subsection*{ディレクトリ構成と責務分離}
+\begin{itemize}
+	\item \textbf{app/core/recommenders}: 推薦エンジン本体。Sentence-BERT ベースの推薦と評価クラスを実装。
+	\item \textbf{app/core/features}: インタビュー知見に基づく特徴量計算（リピート志向、報酬、業務内容など）。
+	\item \textbf{app/analyzers}: 職種のみ・介護項目のみといった軽量ベースラインを実装。
+	\item \textbf{app/utils}: データ読み込み、検証、可視化、設定管理。
+	\item \textbf{app/web}: FastAPI による GUI/API 層。テンプレートと静的ファイルを含む。
+	\item \textbf{scripts}: 単一分析、バッチ分析、比較実験の実行スクリプト。
+	\item \textbf{data/results/tests}: 実データ、出力、テストコードを分離配置。
+\end{itemize}
+
+\subsection*{システムアーキテクチャ（層構造）}
+以下の層構造により、研究用のオフライン分析と対話的評価を同一コードベースで実現している。
+\begin{enumerate}
+	\item \textbf{データ層}: JSON/Markdown 形式のワーカーデータ、求人データを保持。
+	\item \textbf{前処理層}: セッション検証、テキスト正規化、特徴抽出を行う。
+	\item \textbf{モデル層}: Sentence-BERT による埋め込み生成と類似度計算。
+	\item \textbf{推薦ロジック層}: 重み付けパターン、履歴平均ベクトル、ベースライン手法の切替。
+	\item \textbf{評価層}: Top-K、MRR、NDCG等の指標算出と学習曲線評価。
+	\item \textbf{インタフェース層}: CLI 実行スクリプトと FastAPI Web GUI。
+\end{enumerate}
+
+\subsection*{アーキテクチャの論理図（文章化）}
+本システムは、\textbf{Web GUI/CLI} を入口として、\textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/MongoDB）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は BERTベース／ベースライン／インタビュー特徴量統合 を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、研究再現性を担保する。
+
+\subsection*{データフロー（処理パイプライン）}
+\begin{enumerate}
+	\item データ読み込み：\texttt{data\_loader.py} がワーカー履歴と求人リストを取得。
+	\item セッション検証：欠損や不正データを除外し、学習用・評価用に分割。
+	\item 特徴生成：求人テキスト（タイトル・業務内容・介護項目など）を統合しベクトル化。
+	\item スコアリング：平均ベクトルとのコサイン類似度、または特徴量スコアを計算。
+	\item 推薦生成：Top-K を抽出し、正解求人の順位を評価。
+	\item 出力保存：JSON/テキスト/HTML に結果と詳細ログを保存。
+\end{enumerate}
+
+\subsection*{データモデル（主要フィールド）}
+実データはワーカー単位の履歴として保存され、セッションは「応募/勤務1回」を基本単位とする。評価では、各セッションに含まれる\textbf{選択求人}と\textbf{候補求人集合}を用いる。
+\begin{itemize}
+	\item \textbf{ワーカー情報}: \texttt{workerId}, \texttt{name}, \texttt{qualifications} など。
+	\item \textbf{セッション情報}: \texttt{workDate}, \texttt{startTime}, \texttt{jobTitle}, \texttt{jobContent}。
+	\item \textbf{求人情報}: \texttt{careItems}, \texttt{facilityName}, \texttt{salary}, \texttt{transportationAllowance} など。
+	\item \textbf{候補集合}: その時点で提示された求人群（\texttt{availableJobs}）。
+\end{itemize}
+
+\subsection*{推薦アルゴリズム構成}
+\begin{itemize}
+	\item \textbf{Sentence-BERT ベース}: 求人タイトル・業務内容・介護項目・施設・勤務条件など複数項目の重み付けで統合類似度を算出。
+	\item \textbf{重み付けパターン比較}: 20種類以上の重み付けパターンを並列評価し、最適構成を探索。
+	\item \textbf{ベースライン}: 職種のみ/介護項目のみで推薦する軽量モデルを実装し、BERTとの差分を測定。
+	\item \textbf{インタビュー特徴量}: リピート施設志向、駐車場・交通費、業務内容の詳細一致、報酬の心理的効果、タイミング傾向をスコア化。
+	\item \textbf{業務回避パターン}: 過去履歴から避けている業務を推定し、ペナルティを付与。
+\end{itemize}
+
+\subsection*{スコア統合の考え方}
+BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、インタビュー特徴量は\textbf{現場の意思決定要因}（リピート・交通費・業務負荷・報酬印象）を補正する。両者は単純加重和で統合されるが、\textbf{利用頻度に応じて重みを動的調整}することで、ライトユーザーとヘビーユーザーの推薦方針を切り替える設計としている。
+
+\subsection*{評価設計}
+\begin{itemize}
+	\item \textbf{Top-K精度}: Top-1/3/5 を基本指標とし、実務的推薦の再現性を評価。
+	\item \textbf{分割方法}: 適切分割（学習:テスト = 7:3）とスライディングウィンドウ評価を実装。
+	\item \textbf{学習曲線評価}: 学習件数を段階的に増やして性能変化を分析。
+\end{itemize}
+
+\subsection*{評価指標の補足}
+Top-K精度に加え、\textbf{MRR（Mean Reciprocal Rank）} と \textbf{NDCG} を計算し、順位の質を評価する。Top-Kは正解が上位に入るかを測る一方、MRR/NDCGは\textbf{上位に来るほど高得点}となるため、実サービスでの露出順位を意識した指標として扱う。
+
+\subsection*{高速化・キャッシュ戦略}
+\begin{itemize}
+	\item \textbf{事前エンコード}: 求人埋め込みを事前計算し、重み付け比較時の再計算を回避。
+	\item \textbf{キャッシュ層}: メモリキャッシュとディスクキャッシュを併用し、再実験の時間を短縮。
+	\item \textbf{並列実行}: FastAPI 上で重み付けパターンを非同期で並列評価。
+	\item \textbf{Apple Silicon最適化}: MPS/スレッド設定を利用し高速化。
+\end{itemize}
+
+\subsection*{障害対策と再実行性}
+大規模バッチ実験では、途中失敗が研究コストに直結するため、\textbf{進捗ログ}と\textbf{部分結果の保存}を重視した。GUIからの実行ではキャンセルフラグを監視し、エラー時は原因をJSONに記録して再実験を容易にする。
+
+\subsection*{Web GUI と運用}
+\begin{itemize}
+	\item \textbf{FastAPI GUI}: ブラウザからワーカー選択・分析実行・進捗確認が可能。
+	\item \textbf{API連携}: JSON形式で分析結果を取得でき、可視化・報告書作成に連携。
+	\item \textbf{MongoDB連携（任意）}: 実データ取得時に最新履歴を取得可能（環境変数による切替）。
+\end{itemize}
+
+\subsection*{API設計の要点}
+GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{自動化}と\textbf{外部連携}を可能にしている。単一ワーカー分析、バッチ分析、重み付け比較、事前エンコードといった操作がAPI経由で呼び出せるため、研究プロセスの自動化に適する。
+
+\subsection*{出力と再現性}
+\begin{itemize}
+	\item \textbf{結果出力}: JSON/CSV/テキストに加え、HTMLレポートとして可視化。
+	\item \textbf{ログ管理}: 実行ログ・進捗ログを保存し、追試可能な実験履歴を保持。
+	\item \textbf{設定管理}: \texttt{config.py} にモデル名や評価パラメータを集約。
+\end{itemize}
+
+\subsection*{拡張性}
+構成を\textbf{推薦エンジンの差し替え}と\textbf{特徴量の追加}に耐える設計とした。新規特徴量は \texttt{features} に追加し、統合スコアに組み込むだけで再評価が可能である。新しい推薦モデルも \texttt{recommenders} に追加し、同じ評価器に接続できる。
+
 \section*{予備実験1：日本語BERTモデルによる単語間類似度測定}
 自然言語処理モデルの代表的なものとして、BERTがある。その中でも日本語に特化したCl-tohokuモデルを利用し、単語間のコサイン類似度を計測した。しかし、「介護」と「極悪非道」の類似度が0.678であったり、「看護師」と「ナース」よりも「介護士」と「ナース」のほうが数値的に近かったりと、直感的に数値があまり合わなかった。この結果から、単一モデルに依存せず、横断的に複数モデルの検討を行うことの重要性が示された。
 
@@ -54,6 +165,55 @@ BERT (CLS) & 0.019 \\
 
 \section*{本実験2：複数項目の重み付けによる精度向上}
 求人タイトル、業務内容、介護項目、施設、勤務時間、時給、勤務日など7項目を抽出し、各項目に重みを付与して評価した。以下に一部結果を示す。
+本実験2で使用した重み付けパターンは、GUIアプリケーションの選択肢に合わせ、実装側の重み定義（\texttt{weight\_patterns}）を参照して整理した。重みの並びは「職種/業務内容/介護項目/施設/勤務時間/時給/勤務日」の順である。
+
+{\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtable}{>{\raggedright\arraybackslash\ttfamily\tiny}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.35\linewidth}}
+\caption{本実験2の重み付けパターン一覧} \\
+\hline
+パターンID & GUI表示名 & 重み & 意図 \\
+\hline
+\endfirsthead
+\hline
+パターンID & GUI表示名 & 重み & 意図 \\
+\hline
+\endhead
+\texttt{equal} & 均等 & 1/1/1/1/1/1/1 & 全項目を同一比率で扱う基準。 \\
+\texttt{content\_focused} & 業務内容重視 & 1/3/1/1/1/1/1 & 業務内容の意味一致を強調。 \\
+\texttt{salary\_focused} & 時給重視 & 1/1/1/1/1/3/1 & 報酬条件を優先。 \\
+\texttt{job\_title\_focused} & 職種重視 & 3/1/1/1/1/1/1 & 職種名の一致を重視。 \\
+\texttt{care\_focused} & 介護・施設重視 & 1/1/2/2/1/1/1 & 介護項目と施設種別を優先。 \\
+\texttt{work\_time\_focused} & 勤務時間重視 & 1/1/1/1/3/1/1 & 勤務時間の条件一致を強調。 \\
+\texttt{extreme\_salary} & 極度時給重視 & 1/1/1/1/1/5/1 & 時給のみを極端に強調。 \\
+\texttt{content\_salary} & 業務内容×時給 & 1/3/1/1/1/3/1 & 業務内容と報酬を同時に強化。 \\
+\texttt{content\_salary\_strong} & 業務内容×時給強化 & 1/4/1/1/1/4/1 & 業務内容と時給をさらに強調。 \\
+\texttt{content\_care\_salary} & 業務×介護×時給 & 1/3/2/2/1/2/1 & 仕事内容と介護要素と報酬のバランス。 \\
+\texttt{comprehensive} & 総合重視 & 1/3/2/2/2/3/1 & 内容・介護・条件を幅広く強化。 \\
+\texttt{comprehensive\_strong} & 総合重視強化 & 2/4/2/2/2/4/1 & 総合重視の強化版。 \\
+\texttt{conditions\_focused} & 勤務条件重視 & 1/1/1/1/3/3/1 & 勤務時間と時給に集中。 \\
+\texttt{salary\_time\_strong} & 時給×勤務時間強化 & 1/1/1/1/4/4/1 & 条件重視をさらに強化。 \\
+\texttt{balanced\_high} & 高バランス & 2/2/1/1/1/2/1 & 主要3項目を均等に強化。 \\
+\texttt{content\_dominant\_balanced} & 業務主導バランス & 2/4/1/1/1/2/1 & 業務内容を軸にバランス配分。 \\
+\texttt{extreme\_content} & 極端業務内容 & 1/5/1/1/1/1/1 & 業務内容を大きく強調。 \\
+\texttt{ultra\_content} & 超強力業務内容 & 1/7/1/1/1/1/1 & 業務内容への依存度をさらに高める。 \\
+\texttt{mega\_content} & メガ業務内容 & 1/10/1/1/1/1/1 & 業務内容を最重要視する極端設定。 \\
+\texttt{mega\_content\_salary} & メガ業務×時給 & 1/8/1/1/1/5/1 & 業務内容と時給を極端に強化。 \\
+\texttt{practical\_focus} & 実務重視 & 1/3/3/3/1/1/1 & 現場実務に関わる要素を強化。 \\
+\texttt{content\_care\_strong} & 業務×介護強化 & 1/4/3/3/1/1/1 & 業務内容と介護要素を強調。 \\
+\texttt{content\_care\_avoidance} & 避ける業務考慮 & 1/5/5/1/1/1/1 & 避けたい業務の影響を反映。 \\
+\texttt{care\_items\_dominant} & 介護項目極端重視 & 1/2/8/1/1/1/1 & 介護項目の有無を最重視。 \\
+\texttt{content\_care\_balanced} & 業務×介護バランス & 1/4/4/2/1/2/1 & 業務内容と介護項目のバランス。 \\
+\texttt{task\_detail\_focused} & タスク詳細重視 & 0/6/6/0/0/0/0 & 業務内容と介護項目のみで評価。 \\
+\texttt{avoidance\_optimized} & 避ける業務最適化 & 1/4/4/3/1/2/1 & 業務・介護・施設をバランス強化。 \\
+\texttt{care\_items\_salary} & 介護項目×時給 & 1/2/5/1/1/4/1 & 介護項目と報酬のバランス。 \\
+\texttt{ultra\_care\_items} & 超介護項目重視 & 1/1/10/1/1/1/1 & 介護項目を最優先に扱う。 \\
+\hline
+\end{longtable}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.0}
+}
 
 \begin{table}[htbp]
 \centering
@@ -120,12 +280,169 @@ BERT (CLS) & 0.019 \\
 
 上記の表から、20件を超えると全てのパターンで精度が低下することが明確に示された。これは過去の嗜好データが現在の嗜好と乖離するためと考えられる。
 
-\section*{実験3：TF-IDFとBERTの比較}
+\section*{本実験3：時間重み付け比較}
+過去の履歴に時間的な重みを付与する複数の減衰関数（指数、パワー、線形、ステップなど）を比較した。表記は「特徴量配分\_\_時間重み」の構成であり、例えば \texttt{equal\_\_time\_recent\_exp\_7d} は「特徴量は均等配分（equal）」「直近7日を指数的に重視（半減期7日）」を意味する。対照の \texttt{equal\_\_time\_equal} は時間減衰を行わず、全履歴を同じ重みで扱う基準である。本実験では特徴量配分6種と時間重み34種を組み合わせ、合計204パターンを評価した。時間重みは日付ベース（\texttt{time\_recent\_...}）とセッション順ベース（\texttt{time\_session\_...}）の2系統があり、セッション系は履歴の古さを「直近からの件数」で定義する。
+
+\begin{table}[htbp]
+\centering
+\caption{特徴量配分パターン（本実験3）}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 説明 \\
+\hline
+\texttt{equal} & 全特徴を均等配分。 \\
+\texttt{content\_focused} & 業務内容を重視。 \\
+\texttt{salary\_focused} & 時給を重視。 \\
+\texttt{job\_title\_focused} & 求人タイトル（職種）を重視。 \\
+\texttt{care\_focused} & 介護項目を重視。 \\
+\texttt{work\_time\_focused} & 勤務時間を重視。 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付けパターン一覧（1/2）}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 意味 \\
+\hline
+\texttt{time\_equal} & 時間減衰なし（全履歴を同一重み）。 \\
+\texttt{time\_recent\_exp\_7d} & 指数減衰（半減期7日）。 \\
+\texttt{time\_recent\_exp\_30d} & 指数減衰（半減期30日）。 \\
+\texttt{time\_recent\_exp\_90d} & 指数減衰（半減期90日）。 \\
+\texttt{time\_session\_exp\_5} & セッション指数減衰（半減期5件）。 \\
+\texttt{time\_session\_exp\_10} & セッション指数減衰（半減期10件）。 \\
+\texttt{time\_session\_exp\_20} & セッション指数減衰（半減期20件）。 \\
+\texttt{time\_recent\_linear\_30d} & 線形減衰（30日で0）。 \\
+\texttt{time\_recent\_linear\_90d} & 線形減衰（90日で0）。 \\
+\texttt{time\_session\_linear\_10} & セッション線形減衰（10件で0）。 \\
+\texttt{time\_session\_linear\_20} & セッション線形減衰（20件で0）。 \\
+\texttt{time\_step\_k\_5} & ステップ関数（直近5件のみ1、それ以外0）。 \\
+\texttt{time\_step\_k\_10} & ステップ関数（直近10件のみ1、それ以外0）。 \\
+\texttt{time\_step\_k\_20} & ステップ関数（直近20件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_5} & セッション順のステップ関数（直近5件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_10} & セッション順のステップ関数（直近10件のみ1、それ以外0）。 \\
+\texttt{time\_session\_step\_k\_20} & セッション順のステップ関数（直近20件のみ1、それ以外0）。 \\
+\texttt{time\_bi\_level\_5} & 2段階重み（直近5件=1、以降=0.2）。 \\
+\texttt{time\_bi\_level\_10} & 2段階重み（直近10件=1、以降=0.2）。 \\
+\texttt{time\_bi\_level\_20} & 2段階重み（直近20件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_5} & セッション順の2段階重み（直近5件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_10} & セッション順の2段階重み（直近10件=1、以降=0.2）。 \\
+\texttt{time\_session\_bi\_level\_20} & セッション順の2段階重み（直近20件=1、以降=0.2）。 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付けパターン一覧（2/2）}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 意味 \\
+\hline
+\texttt{time\_window\_uniform\_30d} & 30日以内のみ1、それ以前は0。 \\
+\texttt{time\_window\_uniform\_90d} & 90日以内のみ1、それ以前は0。 \\
+\texttt{time\_recent\_power\_1} & パワー減衰（$1/(age+1)$）。 \\
+\texttt{time\_recent\_power\_2} & パワー減衰（$1/(age+1)^2$）。 \\
+\texttt{time\_recent\_log} & 対数減衰（$1/\log(age+e)$）。 \\
+\texttt{time\_inverse\_age\_1} & 反比例減衰（$1/(age+1)$）。 \\
+\texttt{time\_sigmoid\_30d\_10d} & シグモイド減衰（中心30日、幅10日）。 \\
+\texttt{time\_decay\_then\_flat\_30d} & 30日までは指数減衰、それ以降は0.2固定。 \\
+\texttt{time\_softmax\_30d} & Softmax減衰（温度30日）。 \\
+\texttt{time\_softmax\_7d} & Softmax減衰（温度7日）。 \\
+\texttt{time\_session\_power\_1} & セッションパワー減衰（$1/(k+1)$）。 \\
+\hline
+\end{tabularx}
+\end{table}
+
+2名データ（学習ステップ5〜40）では、短期リセンシー型（指数・パワー・反比例・softmaxなど）が平均Top-5で0.8375となり、等重み（0.7625）より安定して高い。特徴量配分のカテゴリ別に見ても、\texttt{equal} は「全特徴を均等配分」、\texttt{content\_focused} は「業務内容重視」、\texttt{job\_title\_focused} は「求人タイトル重視」、\texttt{care\_focused} は「介護項目重視」、\texttt{work\_time\_focused} は「勤務時間重視」を表し、いずれも短期リセンシー型が最良であった。少数ユーザーでは「直近行動の反映」が有効であることが示唆される。
+
+20名データ（学習ステップ5〜20）では \texttt{time\_recent\_linear\_30d} 系（直近30日を線形に重視する時間減衰）が上位を占め、\texttt{equal\_\_time\_recent\_linear\_30d}（均等配分×30日線形減衰）と \texttt{salary\_focused\_\_time\_recent\_linear\_30d}（時給重視×30日線形減衰）が平均Top-5で0.75となった。等重みの \texttt{equal\_\_time\_equal} は0.65で、時間減衰の設計が精度差に直結している。20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。MRRは出力が0固定のため、評価にはTop-kのみを使用した。
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け比較（平均Top-5）}
+\scriptsize
+\begin{tabular}{l l r l}
+\hline
+対象 & 代表パターン & 平均Top-5 & 備考 \\
+\hline
+2名 & \texttt{equal\_\_time\_recent\_exp\_7d} & 0.8375 & 等重みは0.7625 \\
+20名 & \texttt{equal\_\_time\_recent\_linear\_30d} & 0.75 & 等重みは0.65 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（平均Top-5）}
+\scriptsize
+\begin{tabular}{l l r r r}
+\hline
+対象 & パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
+\hline
+2名 & \texttt{equal\_\_time\_recent\_exp\_7d} & 0.60 & 0.80 & 0.8375 \\
+2名 & \texttt{equal\_\_time\_recent\_power\_1} & 0.525 & 0.8125 & 0.8375 \\
+2名 & \texttt{equal\_\_time\_inverse\_age\_1} & 0.525 & 0.8125 & 0.8375 \\
+20名 & \texttt{equal\_\_time\_recent\_linear\_30d} & 0.375 & 0.525 & 0.75 \\
+20名 & \texttt{salary\_focused\_\_time\_recent\_linear\_30d} & 0.40 & 0.575 & 0.75 \\
+20名 & \texttt{content\_focused\_\_time\_auto} & 0.35 & 0.475 & 0.675 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{ステップ別平均Top-5（有効ワーカー平均）}
+\label{tab:time-weighting-steps}
+\scriptsize
+\begin{tabular}{c r r}
+\hline
+学習ステップ & 2名（平均Top-5） & 20名（平均Top-5） \\
+\hline
+5  & 0.50 & 0.70 \\
+10 & 0.5711 & 0.50 \\
+15 & 0.8005 & 0.90 \\
+20 & 0.8176 & 0.6111 \\
+30 & 0.90 & -- \\
+35 & 0.9789 & -- \\
+40 & 0.8863 & -- \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{本実験4：時間重み自動選択の実装と結果}
+時間重み付け比較の知見を踏まえ、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する \texttt{time\_auto} を実装した。GUIでは「時間的重み付けパターン」に \texttt{time\_auto（自動判別）} を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。実装側では履歴に日付情報が含まれる場合は日付ベースの減衰（例：\texttt{time\_recent\_exp\_7d}）を、日付が取得できない場合はセッション順ベースの減衰（例：\texttt{time\_session\_exp\_5}）を初期候補として選ぶ。
+
+自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う減衰（\texttt{time\_window\_uniform\_90d} または \texttt{time\_session\_linear\_20}）へ切替える。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d} / \texttt{time\_session\_exp\_5}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
+
+time\_auto の検証は別途5名データ（学習ステップ5〜40）で実施し、\texttt{equal} 系の時間重みを比較したところ、\texttt{equal\_\_time\_auto} は等重み \texttt{equal\_\_time\_equal} を上回り、明示的な線形減衰 \texttt{equal\_\_time\_recent\_linear\_30d} が最も高い平均Top-5を示した。自動選択は「短期の行動変化」への追従性を高める一方、ドリフト推定は履歴量や埋め込みのばらつきに影響されるため、固定減衰との併用が有効である。
+
+\begin{table}[htbp]
+\centering
+\caption{time\_auto 実装結果（5名, 平均Top-K）}
+\scriptsize
+\begin{tabular}{l r r r}
+\hline
+パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
+\hline
+\texttt{equal\_\_time\_equal} & 0.5125 & 0.75 & 0.7625 \\
+\texttt{equal\_\_time\_auto} & 0.5375 & 0.7375 & 0.775 \\
+\texttt{equal\_\_time\_recent\_linear\_30d} & 0.625 & 0.80 & 0.825 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{本実験5：TF-IDFとBERTの比較}
 単語出現頻度に基づくTF-IDF、ルールベース（単語一致）、およびBERTによる意味的類似度を比較した結果、短文やタイトルレベルの比較ではTF-IDFが実用上十分な精度を出す場合があり、計算コストの点で有利であることがわかった。
 
 \begin{table}[htbp]
 \centering
-\caption{実験3の結果（概略）}
+\caption{本実験5の結果（概略）}
 \begin{tabular}{l c l}
 \hline
 手法 & 精度 & 特徴 \\

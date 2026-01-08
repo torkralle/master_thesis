@@ -2,12 +2,20 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {4.1}{\ignorespaces BERTモデル別の分離度スコア}}{15}{table.caption.34}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{16}{table.caption.36}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2（20件学習）の全パターン}}{16}{table.caption.38}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（30件学習）の全パターン}}{17}{table.caption.39}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{17}{table.caption.40}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 実験3の結果（概略）}}{17}{table.caption.42}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces BERTモデル別の分離度スコア}}{20}{table.caption.51}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{21}{table.caption.53}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2の重み付けパターン一覧}}{21}{table.4.3}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（20件学習）の全パターン}}{22}{table.caption.55}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（30件学習）の全パターン}}{22}{table.caption.56}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{23}{table.caption.57}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces 特徴量配分パターン（本実験3）}}{23}{table.caption.59}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{23}{table.caption.60}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{24}{table.caption.61}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付け比較（平均Top-5）}}{24}{table.caption.62}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces 時間重み付け上位パターン（平均Top-5）}}{24}{table.caption.63}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces ステップ別平均Top-5（有効ワーカー平均）}}{24}{table.caption.64}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces time\_auto 実装結果（5名, 平均Top-K）}}{25}{table.caption.66}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces 本実験5の結果（概略）}}{26}{table.caption.68}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

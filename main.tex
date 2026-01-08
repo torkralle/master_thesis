@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{multirow,array}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows, backgrounds}
 \usepackage{bm}
@@ -112,6 +113,7 @@ pdfauthor={星子祐哉}
 	\item \textbf{pdf-generator}: PDF 生成用の専用サービス（Node.js）。通知書や帳票を生成。
 	\item \textbf{cron-jobs}: シェルスクリプトによる定期実行タスク群（例: 日次・月次バッチ）。
 	\item \textbf{documents}: 設計メモ・ドキュメント類（システム構成、課題整理など）。
+	\item \textbf{analyze\_real\_data}: 実データ分析・推薦評価の実験環境。Sentence-BERTを用いた推薦エンジンと評価器、職種ベース/介護項目ベースの軽量ベースライン、インタビュー知見を統合したハイブリッド推薦、FastAPIによるWeb GUI、単一分析/バッチ分析スクリプト、可視化・結果出力を実装。
 	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX）。
 \end{itemize}
 
@@ -144,16 +146,15 @@ pdfauthor={星子祐哉}
 
 \renewcommand{\bibname}{研究業績}
 \begin{thebibliography}{99}
-	
-\bibitem{conf2024}
-星子 祐哉, 土橋 宜典
-``介護マッチングサービスにおける自然言語処理を用いたマッチング精度向上手法の検討''，
-電気・情報関係学会北海道支部連合大会 2024，(November. 2024)．
 
-\bibitem{journal2025}
-星子 祐哉, 土橋 宜典
-``BERTを用いた介護職マッチングシステムの提案と評価''，
-情報処理学会論文誌，(投稿準備中)．
+\bibitem{conf2022voice}
+星子 祐哉, 青木 直史, 土橋 宜典
+``VGG16の転移学習を利用した病的音声の検出''，
+電気・情報関係学会北海道支部連合大会，オンライン開催，November 5-6, 2022．
+
+\bibitem{conf2025matching}
+介護マッチングサービスにおけるマッチング精度向上の提案と実装（星子 祐哉, 土橋 宜典），
+令和7年度 電気・情報関係学会北海道支部連合大会（2025/11/2 - 3）．
 
 \end{thebibliography}
 
