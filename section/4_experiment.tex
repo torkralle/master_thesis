@@ -1,7 +1,7 @@
-本節では本研究で実施した予備実験および本実験の設計と結果を示す。
+本節では、本研究で実施した予備実験および本実験の設計と結果を示す。
 
 \section*{実験システムの実装とアーキテクチャ}
-実データ分析の実験環境は \textbf{analyze\_real\_data} ディレクトリに実装し、推薦モデル・評価器・データ処理・Web GUI を分離した多層構成として設計した。研究目的での再現性と拡張性を重視し、CLI/GUIの両方から同一の評価パイプラインを呼び出せる構成としている。
+実データ分析の実験環境は \textbf{analyze\_real\_data} ディレクトリに実装し、推薦モデル・評価器・データ処理・Web GUI を分離した多層構成として設計した。研究目的での再現性と拡張性を重視し、CLI/GUIのどちらからでも同一の評価パイプラインを呼び出せるようにした。
 
 \subsection*{技術スタック}
 \begin{itemize}
@@ -10,8 +10,8 @@
 	\item \textbf{FastAPI + Uvicorn}: Web GUI/REST API を提供。非同期処理と並列実行に対応。
 	\item \textbf{pandas / numpy / scikit-learn}: データ整形、集計、評価指標の算出。
 	\item \textbf{外部データソース（任意）}: 実データ取得時の補助的なデータソース（環境変数で有効化）。
-	\item \textbf{Jinja2 / Static Files}: GUIテンプレートと静的資産を分離し、軽量に可視化。
-	\item \textbf{pymongo / python-dotenv}: 環境変数ベースで本番DB連携を制御。
+	\item \textbf{Jinja2 / Static Files}: GUIテンプレートと静的資産を分離し、軽量な可視化を実現。
+	\item \textbf{pymongo / python-dotenv}: 環境変数で本番DB連携を制御。
 \end{itemize}
 
 \subsection*{ディレクトリ構成と責務分離}
@@ -26,7 +26,7 @@
 \end{itemize}
 
 \subsection*{システムアーキテクチャ（層構造）}
-以下の層構造により、研究用のオフライン分析と対話的評価を同一コードベースで実現している。
+以下の層構造により、研究用のオフライン分析と対話的な評価を同一コードベースで実現している。
 \begin{enumerate}
 	\item \textbf{データ層}: JSON/Markdown 形式のワーカーデータ、求人データを保持。
 	\item \textbf{前処理層}: セッション検証、テキスト正規化、特徴抽出を行う。
@@ -37,7 +37,7 @@
 \end{enumerate}
 
 \subsection*{アーキテクチャの論理図（文章化）}
-本システムは、\textbf{Web GUI/CLI} を入口として、\textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/外部データ）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は BERTベース／ベースライン／インタビュー特徴量統合 を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、研究再現性を担保する。
+本システムは、\textbf{Web GUI/CLI} を入口として \textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/外部データ）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は「BERTベース」「ベースライン」「インタビュー特徴量の統合」を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、再現性の高い記録を残す。
 
 \subsection*{データフロー（処理パイプライン）}
 \begin{enumerate}
@@ -52,23 +52,23 @@
 \subsection*{データモデル（主要フィールド）}
 実データはワーカー単位の履歴として保存され、セッションは「応募/勤務1回」を基本単位とする。評価では、各セッションに含まれる\textbf{選択求人}と\textbf{候補求人集合}を用いる。
 \begin{itemize}
-	\item \textbf{ワーカー情報}: \texttt{workerId}, \texttt{name}, \texttt{qualifications} など。
-	\item \textbf{セッション情報}: \texttt{workDate}, \texttt{startTime}, \texttt{jobTitle}, \texttt{jobContent}。
-	\item \textbf{求人情報}: \texttt{careItems}, \texttt{facilityName}, \texttt{salary}, \texttt{transportationAllowance} など。
-	\item \textbf{候補集合}: その時点で提示された求人群（\texttt{availableJobs}）。
+\item \textbf{ワーカー情報}: ワーカーID（\texttt{workerId}）、氏名（\texttt{name}）、資格（\texttt{qualifications}）など。
+\item \textbf{セッション情報}: 勤務日（\texttt{workDate}）、開始時刻（\texttt{startTime}）、職種名（\texttt{jobTitle}）、業務内容（\texttt{jobContent}）。
+\item \textbf{求人情報}: 介護項目（\texttt{careItems}）、施設名（\texttt{facilityName}）、給与（\texttt{salary}）、交通費（\texttt{transportationAllowance}）など。
+\item \textbf{候補集合}: その時点で提示された候補求人群（\texttt{availableJobs}）。
 \end{itemize}
 
 \subsection*{推薦アルゴリズム構成}
 \begin{itemize}
 	\item \textbf{Sentence-BERT ベース}: 求人タイトル・業務内容・介護項目・施設・勤務条件など複数項目の重み付けで統合類似度を算出。
 	\item \textbf{重み付けパターン比較}: 20種類以上の重み付けパターンを並列評価し、最適構成を探索。
-	\item \textbf{ベースライン}: 職種のみ/介護項目のみで推薦する軽量モデルを実装し、BERTとの差分を測定。
+	\item \textbf{ベースライン}: 職種のみ／介護項目のみで推薦する軽量モデルを実装し、BERTとの差分を測定。
 	\item \textbf{インタビュー特徴量}: リピート施設志向、駐車場・交通費、業務内容の詳細一致、報酬の心理的効果、タイミング傾向をスコア化。
 	\item \textbf{業務回避パターン}: 過去履歴から避けている業務を推定し、ペナルティを付与。
 \end{itemize}
 
 \subsection*{スコア統合の考え方}
-BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、インタビュー特徴量は\textbf{現場の意思決定要因}（リピート・交通費・業務負荷・報酬印象）を補正する。両者は単純加重和で統合されるが、\textbf{利用頻度に応じて重みを動的調整}することで、ライトユーザーとヘビーユーザーの推薦方針を切り替える設計としている。
+BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、インタビュー特徴量は\textbf{現場の意思決定要因}（リピート・交通費・業務負荷・報酬印象）を補正する。両者は単純加重和で統合されるが、\textbf{利用頻度に応じて重みを動的に調整}し、ライトユーザーとヘビーユーザーで推薦方針を切り替える設計としている。
 
 \subsection*{評価設計}
 \begin{itemize}
@@ -109,13 +109,33 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \end{itemize}
 
 \subsection*{拡張性}
-構成を\textbf{推薦エンジンの差し替え}と\textbf{特徴量の追加}に耐える設計とした。新規特徴量は \texttt{features} に追加し、統合スコアに組み込むだけで再評価が可能である。新しい推薦モデルも \texttt{recommenders} に追加し、同じ評価器に接続できる。
+構成を\textbf{推薦エンジンの差し替え}と\textbf{特徴量の追加}に耐える設計とした。新規特徴量は \texttt{features} に追加し、統合スコアに組み込むだけで再評価できる。新しい推薦モデルも \texttt{recommenders} に追加し、同じ評価器に接続できる。
 
 \section*{予備実験1：日本語BERTモデルによる単語間類似度測定}
-自然言語処理モデルの代表的なものとして、BERTがある。その中でも日本語に特化したCl-tohokuモデルを利用し、単語間のコサイン類似度を計測した。しかし、「介護」と「極悪非道」の類似度が0.678であったり、「看護師」と「ナース」よりも「介護士」と「ナース」のほうが数値的に近かったりと、直感的に数値があまり合わなかった。この結果から、単一モデルに依存せず、横断的に複数モデルの検討を行うことの重要性が示された。
+自然言語処理モデルの代表例としてBERTがある。本研究では日本語に特化したcl-tohokuモデルを利用し、単語間のコサイン類似度を計測した。しかし、「介護」と「極悪非道」の類似度が0.678であったり、「看護師」と「ナース」よりも「介護士」と「ナース」のほうが数値的に近かったりと、直感とずれる結果が得られた。この結果から、単一モデルに依存せず、横断的に複数モデルを検討する重要性が示された。
 
 \section*{予備実験2：BERTモデルの横断評価}
-複数のBERT系モデル（日本語Sentence-BERT、マルチリンガルSentence-BERT、BERT-largeなど）を比較し、職種間の分離度を評価した。分離度は類似職種グループと非類似職種グループの平均スコア差で定義する。
+複数のBERT系モデル（日本語Sentence-BERT、マルチリンガルSentence-BERT、BERT-largeなど）を比較し、職種間の分離度を評価した。分離度は「アンカー職種に対する類似職種の平均スコア」と「非類似職種の平均スコア」の差として定義する。
+
+評価データは \texttt{reference/類似度検索.py} の設定に合わせ、5つのアンカー職種ごとに「類似4件・非類似4件」を手動で作成した。アンカーは店舗業務・IT・営業・医療・データ分析を含むように選定し、語彙の近さだけでなく職域の近さが反映されるかを確認した。
+
+\begin{table}[htbp]
+\centering
+\caption{予備実験2の評価データ（アンカーと類似/非類似職種の例）}
+\begin{tabular}{l l l}
+\hline
+アンカー & 類似職種（例） & 非類似職種（例） \\
+\hline
+レジ打ち & レジ係、キャッシャー & プログラマー、医師 \\
+プログラマー & ソフトウェアエンジニア、開発者 & 販売員、料理人 \\
+営業職 & セールス、営業担当 & 経理、研究員 \\
+看護師 & ナース、病棟看護師 & デザイナー、建設作業員 \\
+データサイエンティスト & データアナリスト、MLエンジニア & 警備員、調理師 \\
+\hline
+\end{tabular}
+\end{table}
+
+比較対象モデルは、BERT系の\textbf{CLS}埋め込みと平均プーリング、さらにSentence-BERTの日本語・多言語モデルである。いずれもコサイン類似度を用い、各アンカーに対して類似/非類似の平均スコア差（分離度）を算出し、アンカー平均をモデルの総合指標とした。
 
 \begin{table}[htbp]
 \centering
@@ -133,6 +153,12 @@ BERT (CLS) & 0.019 \\
 \hline
 \end{tabular}
 \end{table}
+
+モデル間の違いは大きく二点ある。第一に、Sentence-BERTは文類似度タスクで学習された\textbf{文表現}を直接出力するのに対し、通常のBERTは\textbf{単語文脈表現}が主であり、文全体の類似度に最適化されていない。第二に、プーリング戦略の違いであり、\textbf{CLS}は単一トークンの表現に依存するため短文の意味が安定しにくい一方、\textbf{平均プーリング}は全トークンの情報を平均化して文全体の意味を捉えやすい。さらに、BERT-largeはパラメータ規模が大きく表現力が高いが、本実験では\textbf{日本語特化Sentence-BERT}が最も高い分離度を示し、\textbf{多言語Sentence-BERT}は言語汎用性の代わりに日本語の精度がやや低下したと解釈できる。
+
+結果から、日本語Sentence-BERTが最も高い分離度を示し、マルチリンガルSentence-BERTがそれに続いた。BERT系では平均プーリングがCLSより安定して高い傾向があり、特にBERT-largeの平均プーリングは同系列の中で最良となった。これは単語単位の類似度よりも、短い職種表現全体の意味整合性を捉える埋め込みの方が、職種判別に向いていることを示唆する。
+
+以上の結果を踏まえ、分離度が最も高かった日本語Sentence-BERTを今後の実験で標準モデルとして採用する。
 
 \section*{本実験1：過去の応募履歴からの推定}
 学習データとして過去30件、テストデータ10件を用い、過去応募の平均ベクトルから次に選択される求人を推測した。評価指標としてTop-1/Top-3/Top-5精度および複合スコアを算出した。
@@ -361,7 +387,7 @@ BERT (CLS) & 0.019 \\
 
 2名データ（学習ステップ5〜40）では、短期リセンシー型（指数・パワー・反比例・softmaxなど）が平均Top-5で0.8375となり、等重み（0.7625）より安定して高い。特徴量配分のカテゴリ別に見ても、\texttt{equal} は「全特徴を均等配分」、\texttt{content\_focused} は「業務内容重視」、\texttt{job\_title\_focused} は「求人タイトル重視」、\texttt{care\_focused} は「介護項目重視」、\texttt{work\_time\_focused} は「勤務時間重視」を表し、いずれも短期リセンシー型が最良であった。少数ユーザーでは「直近行動の反映」が有効であることが示唆される。
 
-20名データ（学習ステップ5〜20）では \texttt{time\_recent\_linear\_30d} 系（直近30日を線形に重視する時間減衰）が上位を占め、\texttt{equal\_\_time\_recent\_linear\_30d}（均等配分×30日線形減衰）と \texttt{salary\_focused\_\_time\_recent\_linear\_30d}（時給重視×30日線形減衰）が平均Top-5で0.75となった。等重みの \texttt{equal\_\_time\_equal} は0.65で、時間減衰の設計が精度差に直結している。20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。MRRは出力が0固定のため、評価にはTop-kのみを使用した。
+20名データ（学習ステップ5〜20）では \texttt{time\_recent\_linear\_30d} 系（直近30日を線形に重視する時間減衰）が上位を占め、\texttt{equal\_\_time\_recent\_linear\_30d}（均等配分×30日線形減衰）と \texttt{salary\_focused\_\_time\_recent\_linear\_30d}（時給重視×30日線形減衰）が平均Top-5で0.75となった。等重みの \texttt{equal\_\_time\_equal} は0.65で、時間減衰の設計が精度差に直結している。20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。MRRは実装上の出力が0固定であったため、評価にはTop-kのみを使用した。
 
 \begin{table}[htbp]
 \centering
@@ -418,7 +444,7 @@ BERT (CLS) & 0.019 \\
 \section*{本実験4：時間重み自動選択の実装と結果}
 時間重み付け比較の知見を踏まえ、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する \texttt{time\_auto} を実装した。GUIでは「時間的重み付けパターン」に \texttt{time\_auto（自動判別）} を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。実装側では履歴に日付情報が含まれる場合は日付ベースの減衰（例：\texttt{time\_recent\_exp\_7d}）を、日付が取得できない場合はセッション順ベースの減衰（例：\texttt{time\_session\_exp\_5}）を初期候補として選ぶ。
 
-自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う減衰（\texttt{time\_window\_uniform\_90d} または \texttt{time\_session\_linear\_20}）へ切替える。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d} / \texttt{time\_session\_exp\_5}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
+自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う減衰（\texttt{time\_window\_uniform\_90d} または \texttt{time\_session\_linear\_20}）へ切り替える。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d} / \texttt{time\_session\_exp\_5}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
 
 time\_auto の検証は別途5名データ（学習ステップ5〜40）で実施し、\texttt{equal} 系の時間重みを比較したところ、\texttt{equal\_\_time\_auto} は等重み \texttt{equal\_\_time\_equal} を上回り、明示的な線形減衰 \texttt{equal\_\_time\_recent\_linear\_30d} が最も高い平均Top-5を示した。自動選択は「短期の行動変化」への追従性を高める一方、ドリフト推定は履歴量や埋め込みのばらつきに影響されるため、固定減衰との併用が有効である。
 
