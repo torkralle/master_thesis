@@ -9,7 +9,7 @@
 	\item \textbf{PyTorch + Transformers}: Sentence-BERT によるテキスト埋め込みと類似度計算。
 	\item \textbf{FastAPI + Uvicorn}: Web GUI/REST API を提供。非同期処理と並列実行に対応。
 	\item \textbf{pandas / numpy / scikit-learn}: データ整形、集計、評価指標の算出。
-	\item \textbf{MongoDB (任意)}: 実データ取得時の補助的なデータソース（環境変数で有効化）。
+	\item \textbf{外部データソース（任意）}: 実データ取得時の補助的なデータソース（環境変数で有効化）。
 	\item \textbf{Jinja2 / Static Files}: GUIテンプレートと静的資産を分離し、軽量に可視化。
 	\item \textbf{pymongo / python-dotenv}: 環境変数ベースで本番DB連携を制御。
 \end{itemize}
@@ -37,7 +37,7 @@
 \end{enumerate}
 
 \subsection*{アーキテクチャの論理図（文章化）}
-本システムは、\textbf{Web GUI/CLI} を入口として、\textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/MongoDB）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は BERTベース／ベースライン／インタビュー特徴量統合 を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、研究再現性を担保する。
+本システムは、\textbf{Web GUI/CLI} を入口として、\textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/外部データ）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は BERTベース／ベースライン／インタビュー特徴量統合 を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、研究再現性を担保する。
 
 \subsection*{データフロー（処理パイプライン）}
 \begin{enumerate}
@@ -95,7 +95,7 @@ Top-K精度に加え、\textbf{MRR（Mean Reciprocal Rank）} と \textbf{NDCG} 
 \begin{itemize}
 	\item \textbf{FastAPI GUI}: ブラウザからワーカー選択・分析実行・進捗確認が可能。
 	\item \textbf{API連携}: JSON形式で分析結果を取得でき、可視化・報告書作成に連携。
-	\item \textbf{MongoDB連携（任意）}: 実データ取得時に最新履歴を取得可能（環境変数による切替）。
+	\item \textbf{外部DB連携（任意）}: 実データ取得時に最新履歴を取得可能（環境変数による切替）。
 \end{itemize}
 
 \subsection*{API設計の要点}

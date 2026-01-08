@@ -14,10 +14,14 @@
 \contentsline {paragraph}{駐車場の重要性}{30}{section*.72}%
 \contentsline {paragraph}{業務内容の選好}{31}{section*.73}%
 \contentsline {paragraph}{給与の基準}{31}{section*.74}%
+\contentsline {paragraph}{回避業務の検出}{32}{section*.79}%
+\contentsline {paragraph}{ペナルティ係数の計算}{32}{section*.80}%
+\contentsline {paragraph}{評価方法}{32}{section*.81}%
+\contentsline {paragraph}{目的}{32}{section*.82}%
 \contentsline {chapter}{\numberline {第7章}今後の展望}{33}{chapter.7}%
 \contentsline {chapter}{\numberline {第8章}結論}{34}{chapter.8}%
-\contentsline {chapter}{システム構成概要（ディレクトリベース）}{35}{chapter*.79}%
-\contentsline {chapter}{謝辞}{36}{chapter*.79}%
-\contentsline {chapter}{参考文献}{37}{chapter*.80}%
-\contentsline {chapter}{参考文献}{37}{chapter*.81}%
-\contentsline {chapter}{研究業績}{38}{chapter*.82}%
+\contentsline {chapter}{システム構成概要（ディレクトリベース）}{35}{chapter*.84}%
+\contentsline {chapter}{謝辞}{36}{chapter*.84}%
+\contentsline {chapter}{参考文献}{37}{chapter*.85}%
+\contentsline {chapter}{参考文献}{37}{chapter*.86}%
+\contentsline {chapter}{研究業績}{38}{chapter*.87}%
