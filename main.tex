@@ -28,6 +28,9 @@
 \setlength{\textwidth}{40\zw}
 \setlength{\oddsidemargin}{0mm}
 
+% 見出し番号の深さ設定
+\setcounter{secnumdepth}{2}
+
 % hyperrefパッケージ
 \usepackage[
 bookmarks=true,
@@ -51,6 +54,7 @@ pdfauthor={星子祐哉}
 \maketitle
 
 \pagenumbering{roman}
+\setcounter{tocdepth}{2}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -71,10 +75,6 @@ pdfauthor={星子祐哉}
 \chapter{序論}%
 \label{chap:introduction}
 \input{./section/1_intro.tex}
-
-\chapter{アーキテクチャとビジネスモデル}
-\label{chap:architecture-business}
-\input{./section/2_business_architecture.tex}
 
 \chapter{研究の目的}
 \label{chap:purpose}
@@ -109,32 +109,8 @@ pdfauthor={星子祐哉}
 \input{./section/9_conclusion.tex}
 
 \clearpage
-\appendix
-\chapter{重み付けパターン一覧（本実験2・3）}
-\label{app:weight-patterns}
-\input{./section/appendix_weight_patterns.tex}
-
-\chapter{システム構成概要（ディレクトリベース）}
-本研究で扱ったプロダクト群のコードベース構成を、リポジトリ直下の主要ディレクトリ単位で整理する。
-
-\begin{itemize}
-	\item \textbf{care-provider-fe}: Angular を用いた介護事業者向けフロントエンド。求人作成、勤怠確認、設定管理などを担う。
-	\item \textbf{care-worker-fe}: Flutter 製のワーカー向けクライアント。求人検索、応募、勤怠の打刻、ウォレット閲覧などを提供する。
-	\item \textbf{kaigo-admin-fe}: 管理者向け Angular フロントエンド。事業所・求人・ユーザ管理や設定変更を行う。
-	\item \textbf{kaigo-be}: Node.js/TypeScript ベースのバックエンド API。\texttt{src/controllers, services, models} を中心に、認証、求人・応募管理、勤怠計算、支払い処理などを実装している。
-	\item \textbf{kaigo-sevenpay-be}: 決済・外部送金系のバックエンド（Node.js/TypeScript）。七銀連携や決済ロジックを分離している。
-	\item \textbf{pdf-generator}: PDF 生成用の専用サービス（Node.js）。通知書や帳票を生成する。
-	\item \textbf{cron-jobs}: シェルスクリプトによる定期実行タスク群（例：日次・月次バッチ）。
-	\item \textbf{documents}: 設計メモやドキュメント類（システム構成、課題整理など）。
-	\item \textbf{analyze\_real\_data}: 実データ分析・推薦評価の実験環境。Sentence-BERTを用いた推薦エンジンと評価器、職種ベース/介護項目ベースの軽量ベースライン、インタビュー知見を統合したハイブリッド推薦、FastAPIによるWeb GUI、単一分析/バッチ分析スクリプト、可視化・結果出力機能などを実装している。
-	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX{}）。
-\end{itemize}
-
-補足：各バックエンドでは Mongoose を用いたスキーマ定義を採用し、\texttt{/src/models} 配下でドメイン別にモデルを分割している。フロントエンドは Angular/Flutter を用い、機能別にモジュール化している。
-
-\clearpage
-\addcontentsline{toc}{chapter}{謝辞}
 \chapter*{謝辞}
+\addcontentsline{toc}{chapter}{謝辞}
 
 本研究ならびに本論文の執筆にあたり、多大なるご指導・ご討論を賜りました北海道大学大学院情報科学研究院メディアネットワーク部門 土橋宜典教授に、心より感謝申し上げます。
 
@@ -142,7 +118,6 @@ pdfauthor={星子祐哉}
 
 \clearpage
 \renewcommand{\bibname}{参考文献}
-\addcontentsline{toc}{chapter}{参考文献}
 \begin{thebibliography}{99}
 
 \bibitem{mhlw2025shortage}厚生労働省, "介護人材確保の現状について" \textit{厚生労働省} (令和7年5月9日). \href{https://www.mhlw.go.jp/content/12000000/001485589.pdf}{https://www.mhlw.go.jp/content/12000000/001485589.pdf}
@@ -170,5 +145,29 @@ pdfauthor={星子祐哉}
 令和7年度 電気・情報関係学会北海道支部連合大会（2025/11/2 - 3）．
 
 \end{thebibliography}
+
+\clearpage
+\appendix
+\chapter{重み付けパターン一覧（本実験2・3）}
+\label{app:weight-patterns}
+\input{./section/appendix_weight_patterns.tex}
+
+\chapter{システム構成概要（ディレクトリベース）}
+本研究で扱ったプロダクト群のコードベース構成を、リポジトリ直下の主要ディレクトリ単位で整理する。
+
+\begin{itemize}
+	\item \textbf{care-provider-fe}: Angular を用いた介護事業者向けフロントエンド。求人作成、勤怠確認、設定管理などを担う。
+	\item \textbf{care-worker-fe}: Flutter 製のワーカー向けクライアント。求人検索、応募、勤怠の打刻、ウォレット閲覧などを提供する。
+	\item \textbf{kaigo-admin-fe}: 管理者向け Angular フロントエンド。事業所・求人・ユーザ管理や設定変更を行う。
+	\item \textbf{kaigo-be}: Node.js/TypeScript ベースのバックエンド API。\texttt{src/controllers, services, models} を中心に、認証、求人・応募管理、勤怠計算、支払い処理などを実装している。
+	\item \textbf{kaigo-sevenpay-be}: 決済・外部送金系のバックエンド（Node.js/TypeScript）。七銀連携や決済ロジックを分離している。
+	\item \textbf{pdf-generator}: PDF 生成用の専用サービス（Node.js）。通知書や帳票を生成する。
+	\item \textbf{cron-jobs}: シェルスクリプトによる定期実行タスク群（例：日次・月次バッチ）。
+	\item \textbf{documents}: 設計メモやドキュメント類（システム構成、課題整理など）。
+	\item \textbf{analyze\_real\_data}: 実データ分析・推薦評価の実験環境。Sentence-BERTを用いた推薦エンジンと評価器、職種ベース/介護項目ベースの軽量ベースライン、インタビュー知見を統合したハイブリッド推薦、FastAPIによるWeb GUI、単一分析/バッチ分析スクリプト、可視化・結果出力機能などを実装している。
+	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX{}）。
+\end{itemize}
+
+補足：各バックエンドでは Mongoose を用いたスキーマ定義を採用し、\texttt{/src/models} 配下でドメイン別にモデルを分割している。フロントエンドは Angular/Flutter を用い、機能別にモジュール化している。
 
 \end{document}
