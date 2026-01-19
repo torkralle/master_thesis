@@ -5,7 +5,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{images/fig_workforce_shortage.png}
+\includegraphics[width=0.95\textwidth]{images/fig1-1.png}
 \caption{介護職員数の推移と必要な増員ペース}
 \label{fig:workforce_shortage}
 \end{figure}
@@ -15,7 +15,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{images/fig_latent_workers.png}
+\includegraphics[width=0.85\textwidth]{images/fig1-2.png}
 \caption{介護福祉士資格保有者の内訳}
 \label{fig:latent_workers}
 \end{figure}
@@ -27,7 +27,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{images/fig_policy_framework.png}
+\includegraphics[width=0.95\textwidth]{images/fig1-3.png}
 \caption{人材確保のための5つの視点}
 \label{fig:policy_framework}
 \end{figure}
@@ -49,7 +49,7 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{images/fig_business_challenges.png}
+\includegraphics[width=0.95\textwidth]{images/fig1-4.png}
 \caption{介護事業者が直面する課題の構造}
 \label{fig:business_challenges}
 \end{figure}
@@ -67,13 +67,25 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{images/fig_hokkaido_issues.png}
+\includegraphics[width=0.95\textwidth]{images/fig1-5.png}
 \caption{北海道における介護人材確保の特殊事情}
 \label{fig:hokkaido_issues}
 \end{figure}
 
-\paragraph{現行マッチングシステムの限界}
-現状のマッチングシステムは、図\ref{fig:current_matching}に示すように「勤務地」「日程」「資格要件」「介護種別」「給与範囲」などの定型条件によるフィルタリングが中心である。具体的には、以下のような検索パラメータでの絞り込みのみが実装されている：
+以上のように、介護業界は量的不足・経営負担・地域特性が絡み合う構造的課題を抱えている。そのため弊チームはこれらの課題に対して介護特化型マッチングアプリを開発･提供しているが、本研究ではそのマッチングアプリ内でのワーカーと求人の出会いを簡便化し、より少ない手間でマッチングできることを目指す。以下では、アプリの仕組みを示したうえで、現状のマッチング基盤が抱える限界を整理する。
+
+\subsection*{介護マッチングアプリの仕組み}
+本研究で対象とする介護特化型マッチングアプリの概要を図\ref{fig:app_overview}に示す。このシステムでは、介護事業者が求人情報を登録し、ワーカー（潜在介護士、副業希望者、その他就労希望者等）が希望の勤務地・時間・職種等を入力することで、システムが自動的にマッチングを行う。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{images/fig1-6.png}
+\caption{介護特化型マッチングアプリの概要}
+\label{fig:app_overview}
+\end{figure}
+
+\subsection*{現行マッチングシステムの限界}
+現行の介護マッチングシステムは、図\ref{fig:current_matching}に示すように「勤務地」「日程」「資格要件」「介護種別」「給与範囲」などの定型条件によるフィルタリングが中心であり、実装としても以下の検索パラメータに限定されている：
 
 \begin{itemize}
 \item \textbf{地理的条件:} 都道府県（prefecture）、市区町村（city）による完全一致フィルタ
@@ -83,7 +95,7 @@
 \item \textbf{介護種別:} 訪問介護、施設介護等（careType）のカテゴリ一致
 \end{itemize}
 
-この手法には以下の構造的な問題が存在する。第一に、\textbf{希望職種と求人内容の意味的マッチングが欠如}している。例えば、ワーカーが「身体介護中心の業務」を希望していても、求人票に記載された職務内容のテキスト（「入浴介助」「移乗介助」等）との意味的な一致度は評価されない。第二に、\textbf{過去の応募・勤務履歴が活用されていない}。実際のワーカー行動として、良い施設には繰り返し応募する「リピート志向」が観察されるが、このパターンは推薦アルゴリズムに反映されていない。
+この設計には以下の構造的な問題が存在する。第一に、\textbf{希望職種と求人内容の意味的マッチングが欠如}している。例えば、ワーカーが「身体介護中心の業務」を希望していても、求人票に記載された職務内容のテキスト（「入浴介助」「移乗介助」等）との意味的な一致度は評価されない。第二に、\textbf{過去の応募・勤務履歴が活用されていない}。実際のワーカー行動として、良い施設には繰り返し応募する「リピート志向」が観察されるが、このパターンは推薦アルゴリズムに反映されていない。
 
 第三に、\textbf{実質的な利便性要因が考慮されない}。ユーザーインタビューから、「駐車場の有無」が重要な選択基準であることが判明した。交通費が往復500円の場合、駐車場がなければ地下鉄利用で実質赤字となるケースがあり、名目上の給与だけでは判断できない。しかし現システムには駐車場情報フィールド（has\_parking）すら存在しない。第四に、\textbf{業務内容の詳細なマッチングが不可能}である。「入浴介助を避けたい」といった具体的な希望があっても、求人検索では「介護種別」という粗い分類でしか絞り込めない。
 
@@ -91,19 +103,9 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/fig_current_matching.png}
+\includegraphics[width=0.9\textwidth]{images/fig1-7.png}
 \caption{現行マッチングシステムの定型条件フィルタリング構造}
 \label{fig:current_matching}
-\end{figure}
-
-\subsection*{介護マッチングアプリの仕組み}
-本研究で対象とする介護特化型マッチングアプリの概要を図\ref{fig:app_overview}に示す。このシステムでは、介護事業者が求人情報を登録し、ワーカー（潜在介護士、副業希望者、その他就労希望者等）が希望の勤務地・時間・職種等を入力することで、システムが自動的にマッチングを行う。
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{images/fig_app_overview.png}
-\caption{介護特化型マッチングアプリの概要}
-\label{fig:app_overview}
 \end{figure}
 
 これらの課題を踏まえ、本研究では単純な定型条件マッチ（勤務地・日程・資格等）だけでなく、テキストの意味的類似性や履歴情報、時間的要因を組み合わせた重み付けにより、ワーカーと求人の潜在的親和性をより高精度に評価する手法を提案する。

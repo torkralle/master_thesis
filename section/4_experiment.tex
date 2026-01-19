@@ -135,7 +135,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/table4_2_separation_score.png}
+\includegraphics[width=0.9\textwidth]{images/fig1-10.png}
 \caption{BERTモデル別の分離度スコア}
 \end{figure}
 
@@ -268,12 +268,14 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{images/pattern_scores_simple_blue.png}
+\includegraphics[width=0.9\textwidth]{images/fig1-11.png}
 \caption{本実験2における主要パターンのスコア比較}
 \label{fig:exp2-pattern-scores}
 \end{figure}
 
 \section*{本実験3：時間重み付け比較}
+本実験2では、重み付けパターンによって精度が大きく変動し、学習データ数が20件を超えると精度が低下する傾向が確認された。これは、\textbf{過去の嗜好が現在の嗜好と乖離していく}影響が無視できないことを示唆している。そこで本実験3では、本実験2の結果を踏まえ、\textbf{履歴の新しさを明示的に評価に反映する必要がある}と考え、時間的な重み付けの比較を行うことにした。具体的には、直近の行動を重視する設計が本実験2の精度劣化を緩和できるかを検証する。
+
 過去の履歴に時間的な重みを付与する複数の減衰関数（指数、パワー、線形、ステップなど）を比較した。表記は「特徴量配分\_\_時間重み」の構成であり、例えば \texttt{equal\_\_time\_recent\_exp\_7d} は「特徴量は均等配分（equal）」「直近7日を指数的に重視（半減期7日）」を意味する。対照の \texttt{equal\_\_time\_equal} は時間減衰を行わず、全履歴を同じ重みで扱う基準である。本実験では特徴量配分6種と時間重み34種を組み合わせ、合計204パターンを評価した。時間重みは日付ベース（\texttt{time\_recent\_...}）とセッション順ベース（\texttt{time\_session\_...}）の2系統があり、セッション系は履歴の古さを「直近からの件数」で定義する。
 
 \begin{table}[htbp]
@@ -315,7 +317,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \end{tabularx}
 \end{table}
 
-20名データ（有効18名）では、時間パターンを全重み付け平均で比較すると \texttt{time\_recent\_linear\_30d}（直近30日線形減衰）が平均Top-5=0.6753で最良となった。時間重み自動判別（\texttt{time\_auto}）は平均Top-5=0.6609、等重み（\texttt{time\_equal}）は0.6478であり、最良パターンは等重みに比べて+0.0275の改善となる。短期の履歴を強く反映する設計が安定して有利であることが確認できる。なお、20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。
+20名データ（有効18名）では、時間パターンを全重み付け平均で比較すると \texttt{time\_recent\_exp\_7d}（直近7日指数減衰）が平均Top-5=0.7296で最良となった。直近30日線形減衰（\texttt{time\_recent\_linear\_30d}）は0.7222、等重み（\texttt{time\_equal}）は0.6963であり、最良パターンは等重みに比べて+0.0333の改善となる。短期の履歴を強く反映する設計が安定して有利であることが確認できる。なお、20名データには読み込み失敗が2件含まれるため、表\ref{tab:time-weighting-steps}の学習曲線は有効ワーカーの平均に基づく。
 
 \begin{table}[htbp]
 \centering
@@ -325,9 +327,9 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \hline
 代表パターン & 平均Top-5 & 備考 \\
 \hline
-\texttt{time\_recent\_linear\_30d} & 0.6753 & 全重み付け平均で最良 \\
-\texttt{time\_auto} & 0.6609 & 等重みより改善 \\
-\texttt{time\_equal} & 0.6478 & ベースライン \\
+\texttt{time\_recent\_exp\_7d} & 0.7296 & 全重み付け平均で最良 \\
+\texttt{time\_recent\_linear\_30d} & 0.7222 & 直近30日線形減衰 \\
+\texttt{time\_equal} & 0.6963 & ベースライン \\
 \hline
 \end{tabular}
 \end{table}
@@ -340,9 +342,9 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \hline
 パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
 \hline
-\texttt{equal\_\_time\_recent\_linear\_30d} & 0.375 & 0.525 & 0.75 \\
-\texttt{salary\_focused\_\_time\_recent\_linear\_30d} & 0.40 & 0.575 & 0.75 \\
-\texttt{content\_focused\_\_time\_auto} & 0.35 & 0.475 & 0.675 \\
+\texttt{content\_focused\_\_time\_recent\_exp\_7d} & 0.5111 & 0.6889 & 0.7500 \\
+\texttt{content\_focused\_\_time\_session\_linear\_10} & 0.5111 & 0.7000 & 0.7500 \\
+\texttt{equal\_\_time\_session\_linear\_20} & 0.5111 & 0.6333 & 0.7444 \\
 \hline
 \end{tabular}
 \end{table}
@@ -363,13 +365,13 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 25 & 0.6311 & 0.6633 \\
 30 & 0.5348 & 0.6439 \\
 35 & 0.4970 & 0.5879 \\
-40 & 0.5333 & 0.5313 \\
+40 & 0.5333 & 0.5312 \\
 \hline
 \end{tabular}
 \end{table}
 
 \section*{本実験4：時間重み自動選択の実装と結果}
-時間重み付け比較の知見を踏まえ、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する\textbf{時間重み自動判別（\texttt{time\_auto}）}を実装した。GUIでは「時間的重み付けパターン」に「時間重み自動判別」を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。実装側では履歴に日付情報が含まれる場合は日付ベースの減衰（例：\texttt{time\_recent\_exp\_7d}）を、日付が取得できない場合はセッション順ベースの減衰（例：\texttt{time\_session\_exp\_5}）を初期候補として選ぶ。
+本実験3の結果から「短期志向が優位だが個別差が大きい」ことに気づいたため、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する\textbf{時間重み自動判別（\texttt{time\_auto}）}を実装した。GUIでは「時間的重み付けパターン」に「時間重み自動判別」を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。実装側では履歴に日付情報が含まれる場合は日付ベースの減衰（例：\texttt{time\_recent\_exp\_7d}）を、日付が取得できない場合はセッション順ベースの減衰（例：\texttt{time\_session\_exp\_5}）を初期候補として選ぶ。
 
 自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う減衰（\texttt{time\_window\_uniform\_90d} または \texttt{time\_session\_linear\_20}）へ切り替える。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d} / \texttt{time\_session\_exp\_5}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
 
@@ -394,7 +396,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 時間重み自動判別の判定結果（\texttt{time\_auto}）を用い、20名データの時間志向を集計した。読み込み成功18名のうち、\textbf{短期志向（recent）が3名（16.7\%）、長期志向（stable）が15名（83.3\%）}であり、安定志向のワーカーが多数を占めた。短期志向は履歴のドリフトが大きいワーカーに集中しており、直近行動の重視が有効であることを示唆する。
 
 \subsection*{時間パターン別の優位性（20名データ）}
-時間パターンの優位性を確認するため、全重み付けパターン（6種）における各時間パターンの平均Top-Kを集計した。その結果、\textbf{直近30日線形減衰}や\textbf{短期のステップ/指数減衰}が上位に並び、短期の情報を重視する設計が安定して高い精度を示した（表\ref{tab:time-pattern-ranking-20}）。
+時間パターンの優位性を確認するため、全重み付けパターン（6種）における各時間パターンの平均Top-Kを集計した。その結果、\textbf{直近7日指数減衰}や\textbf{Softmax 7日}、\textbf{セッション線形減衰}が上位に並び、短期の情報を重視する設計が安定して高い精度を示した（表\ref{tab:time-pattern-ranking-20}）。
 
 \begin{table}[htbp]
 \centering
@@ -405,13 +407,13 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \hline
 順位 & 時間パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
 \hline
-1 & 直近30日線形減衰 (\texttt{time\_recent\_linear\_30d}) & 0.4981 & 0.6089 & 0.6753 \\
-2 & セッション順ステップ5件 (\texttt{time\_session\_step\_k\_5}) & 0.4913 & 0.6042 & 0.6744 \\
-3 & セッション順線形10件 (\texttt{time\_session\_linear\_10}) & 0.4984 & 0.6064 & 0.6740 \\
-4 & 直近7日指数減衰 (\texttt{time\_recent\_exp\_7d}) & 0.4872 & 0.6046 & 0.6740 \\
-5 & 直近5件ステップ (\texttt{time\_step\_k\_5}) & 0.4913 & 0.6038 & 0.6721 \\
+1 & 直近7日指数減衰 (\texttt{time\_recent\_exp\_7d}) & 0.5352 & 0.6880 & 0.7296 \\
+2 & Softmax 7日 (\texttt{time\_softmax\_7d}) & 0.5269 & 0.6778 & 0.7269 \\
+3 & セッション順線形10件 (\texttt{time\_session\_linear\_10}) & 0.5278 & 0.6731 & 0.7250 \\
+4 & セッション順線形20件 (\texttt{time\_session\_linear\_20}) & 0.5139 & 0.6324 & 0.7241 \\
+5 & 直近30日線形減衰 (\texttt{time\_recent\_linear\_30d}) & 0.5278 & 0.6824 & 0.7222 \\
 \hline
 \end{tabular}
 \end{table}
 
-また、\texttt{equal} のみで各ワーカーの最良パターンを確認すると、時間重み自動判別（\texttt{time\_auto}）が5名、直近7日指数減衰（\texttt{time\_recent\_exp\_7d}）が3名で最多となり、残りは複数パターンに分散した。これは\textbf{集団平均では短期重視が有利である一方、個別最適は多様}であることを示している。
+また、\texttt{equal} のみで各ワーカーの最良パターンを確認すると、時間重み自動判別（\texttt{time\_auto}）が11名、直近7日指数減衰（\texttt{time\_recent\_exp\_7d}）が3名で最多となり、残りは \texttt{time\_session\_exp\_10}、\texttt{time\_recent\_exp\_30d}、\texttt{time\_recent\_log}、\texttt{time\_session\_linear\_10} に分散した。これは\textbf{集団平均では短期重視が有利である一方、個別最適は多様}であることを示している。
