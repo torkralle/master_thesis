@@ -7,18 +7,18 @@
 \contentsline {figure}{\numberline {1.6}{\ignorespaces 介護特化型マッチングアプリの概要}}{6}{figure.caption.17}%
 \contentsline {figure}{\numberline {1.7}{\ignorespaces 現行マッチングシステムの定型条件フィルタリング構造}}{7}{figure.caption.19}%
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces ビジネスモデルと価値循環（データ駆動の改善サイクル）}}{9}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces ビジネスモデルと価値循環（データ駆動の改善サイクル）}}{8}{figure.caption.20}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces システムアーキテクチャ概要（主要サービス間の疎結合構成）}}{9}{figure.caption.21}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces BERTモデル別の分離度スコア}}{21}{figure.caption.48}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces 本実験2における主要パターンのスコア比較}}{23}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces BERTモデル別の分離度スコア}}{20}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 本実験2における主要パターンのスコア比較}}{22}{figure.caption.56}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{33}{figure.caption.82}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{34}{figure.caption.89}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{32}{figure.caption.82}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{33}{figure.caption.89}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
