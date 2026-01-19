@@ -4,8 +4,8 @@
 \contentsline {paragraph}{総合的な人材確保戦略}{3}{section*.10}%
 \contentsline {paragraph}{人材ミスマッチと経営危機}{3}{section*.12}%
 \contentsline {paragraph}{北海道の特殊事情}{4}{section*.14}%
-\contentsline {chapter}{\numberline {第2章}アーキテクチャとビジネスプラン}{8}{chapter.2}%
-\contentsline {section}{\numberline {2.1}ビジネスプラン}{8}{section.2.1}%
+\contentsline {chapter}{\numberline {第2章}アーキテクチャとビジネスモデル}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}ビジネスモデル}{8}{section.2.1}%
 \contentsline {section}{\numberline {2.2}現在のアプリのアーキテクチャ}{8}{section.2.2}%
 \contentsline {chapter}{\numberline {第3章}研究の目的}{11}{chapter.3}%
 \contentsline {chapter}{\numberline {第4章}提案手法}{14}{chapter.4}%
