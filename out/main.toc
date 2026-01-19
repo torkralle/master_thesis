@@ -1,6 +1,6 @@
 \contentsline {chapter}{\numberline {第1章}序論}{1}{chapter.1}%
 \contentsline {paragraph}{潜在介護福祉士の存在と再就業障壁}{1}{section*.6}%
-\contentsline {paragraph}{国の施策における位置づけ}{3}{section*.8}%
+\contentsline {paragraph}{国の施策における位置づけ}{2}{section*.8}%
 \contentsline {paragraph}{総合的な人材確保戦略}{3}{section*.10}%
 \contentsline {paragraph}{人材ミスマッチと経営危機}{3}{section*.12}%
 \contentsline {paragraph}{北海道の特殊事情}{4}{section*.14}%
