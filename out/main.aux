@@ -68,117 +68,110 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}実験システムの実装とアーキテクチャ}{16}{section.4.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces 推薦システム設計の全体像}}{16}{figure.caption.19}\protected@file@percent }
 \newlabel{fig:recommender-system-overview}{{4.1}{16}{推薦システム設計の全体像}{figure.caption.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}技術スタック}{17}{subsection.4.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}ディレクトリ構成と責務分離}{17}{subsection.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}システムアーキテクチャ（層構造）}{17}{subsection.4.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}データフロー（処理パイプライン）}{18}{subsection.4.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}データモデル（主要フィールド）}{18}{subsection.4.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}推薦アルゴリズム構成}{18}{subsection.4.1.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.7}スコア統合の考え方}{19}{subsection.4.1.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.8}評価設計}{19}{subsection.4.1.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.9}高速化・キャッシュ戦略}{19}{subsection.4.1.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.10}障害対策と再実行性}{19}{subsection.4.1.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.11}Web GUI と運用}{19}{subsection.4.1.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.12}API設計の要点}{20}{subsection.4.1.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.13}出力と再現性}{20}{subsection.4.1.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.14}拡張性}{20}{subsection.4.1.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}予備実験1：日本語BERTモデルによる単語間類似度測定}{20}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}予備実験2：BERTモデルの横断評価}{20}{section.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 予備実験2の評価データ（アンカーと類似/非類似職種の例）}}{21}{table.caption.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces BERTモデル別の分離度スコア}}{21}{figure.caption.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}システム概要}{17}{subsection.4.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 技術スタックとディレクトリ構成}}{17}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:techstack-directory}{{4.2}{17}{技術スタックとディレクトリ構成}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}評価パイプライン}{18}{subsection.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}運用・拡張}{20}{subsection.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}予備実験1：日本語BERTモデルによる単語間類似度測定}{21}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}予備実験2：BERTモデルの横断評価}{21}{section.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces 予備実験2の評価データ（アンカーと類似/非類似職種の例）}}{21}{table.caption.35}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces BERTモデル別の分離度スコア}}{22}{figure.caption.36}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}本実験1：過去の応募履歴からの推定}{22}{section.4.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{22}{table.caption.22}\protected@file@percent }
-\newlabel{tab:exp1-worker-accuracy}{{4.2}{22}{本実験1：ワーカー別の推薦精度}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces 本実験1：ワーカー別の推薦精度}}{23}{table.caption.37}\protected@file@percent }
+\newlabel{tab:exp1-worker-accuracy}{{4.2}{23}{本実験1：ワーカー別の推薦精度}{table.caption.37}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}本実験2：複数項目の重み付けによる精度向上}{23}{section.4.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2の主要重み付けパターン}}{23}{table.caption.23}\protected@file@percent }
-\newlabel{tab:weight-patterns-core}{{4.3}{23}{本実験2の主要重み付けパターン}{table.caption.23}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（20件学習）の上位パターン}}{23}{table.caption.24}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（30件学習）の上位パターン}}{24}{table.caption.25}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{24}{table.caption.26}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces 本実験2における主要パターンのスコア比較}}{24}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:exp2-pattern-scores}{{4.3}{24}{本実験2における主要パターンのスコア比較}{figure.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2の主要重み付けパターン}}{24}{table.caption.38}\protected@file@percent }
+\newlabel{tab:weight-patterns-core}{{4.3}{24}{本実験2の主要重み付けパターン}{table.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（20件学習）の上位パターン}}{24}{table.caption.39}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（30件学習）の上位パターン}}{24}{table.caption.40}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{25}{table.caption.41}\protected@file@percent }
+\newlabel{tab:exp2-learning-curve-top5}{{4.6}{25}{学習データ数による精度推移（Top-5精度）}{table.caption.41}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces 均等重み（特徴量均等配分・時間減衰なし）における学習データ数別の精度推移（20名）}}{25}{table.caption.42}\protected@file@percent }
+\newlabel{tab:exp2-learning-curve-equal-20workers}{{4.7}{25}{均等重み（特徴量均等配分・時間減衰なし）における学習データ数別の精度推移（20名）}{table.caption.42}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}本実験3：時間重み付け比較}{25}{section.4.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces 特徴量配分パターン（本実験3）}}{25}{table.caption.28}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces 時間重み付けパターン（主要）}}{25}{table.caption.29}\protected@file@percent }
-\newlabel{tab:time-weighting-core}{{4.8}{25}{時間重み付けパターン（主要）}{table.caption.29}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.9}{\ignorespaces 時間重み付け比較（20名, 平均Top-5）}}{26}{table.caption.30}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付け上位パターン（20名, 平均Top-5）}}{26}{table.caption.31}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.11}{\ignorespaces ステップ別平均Top-5（20名, 有効ワーカー平均）}}{26}{table.caption.32}\protected@file@percent }
-\newlabel{tab:time-weighting-steps}{{4.11}{26}{ステップ別平均Top-5（20名, 有効ワーカー平均）}{table.caption.32}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{26}{section.4.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.12}{\ignorespaces 時間重み自動判別の実装結果（\texttt  {time\_auto}, 5名, 平均Top-K）}}{27}{table.caption.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}20名データにおける時間志向の分布}{27}{subsection.4.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}時間パターン別の優位性（20名データ）}{27}{subsection.4.7.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.13}{\ignorespaces 20名データの時間パターン上位（平均Top-K, 全重み付け平均）}}{27}{table.caption.34}\protected@file@percent }
-\newlabel{tab:time-pattern-ranking-20}{{4.13}{27}{20名データの時間パターン上位（平均Top-K, 全重み付け平均）}{table.caption.34}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}考察}{28}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 本実験2における主要パターンのスコア比較}}{26}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:exp2-pattern-scores}{{4.4}{26}{本実験2における主要パターンのスコア比較}{figure.caption.43}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces 特徴量配分パターン（本実験3）}}{26}{table.caption.44}\protected@file@percent }
+\newlabel{tab:exp3-feature-patterns}{{4.8}{26}{特徴量配分パターン（本実験3）}{table.caption.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.9}{\ignorespaces 時間重み付けパターン（代表例）}}{26}{table.caption.45}\protected@file@percent }
+\newlabel{tab:time-weighting-core}{{4.9}{26}{時間重み付けパターン（代表例）}{table.caption.45}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付け比較（20名, 平均Top-5）}}{27}{table.caption.46}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.11}{\ignorespaces 時間重み付け上位パターン（20名, 平均Top-5）}}{27}{table.caption.47}\protected@file@percent }
+\newlabel{tab:time-weighting-top-patterns}{{4.11}{27}{時間重み付け上位パターン（20名, 平均Top-5）}{table.caption.47}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{27}{section.4.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.12}{\ignorespaces 時間重み付け上位パターン（学習20件, 20名（有効18名））}}{28}{table.caption.48}\protected@file@percent }
+\newlabel{tab:exp3-top-patterns-step20}{{4.12}{28}{時間重み付け上位パターン（学習20件, 20名（有効18名））}{table.caption.48}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.13}{\ignorespaces 時間重み付け上位パターン（学習30件, 20名（有効11名））}}{29}{table.caption.49}\protected@file@percent }
+\newlabel{tab:exp3-top-patterns-step30}{{4.13}{29}{時間重み付け上位パターン（学習30件, 20名（有効11名））}{table.caption.49}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.14}{\ignorespaces ステップ別平均Top-5（20名, 有効ワーカー平均）}}{30}{table.caption.50}\protected@file@percent }
+\newlabel{tab:time-weighting-steps}{{4.14}{30}{ステップ別平均Top-5（20名, 有効ワーカー平均）}{table.caption.50}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.15}{\ignorespaces 時間重み自動判別の実装結果（\texttt  {time\_auto}, 20名（有効18名）, 平均Top-K）}}{30}{table.caption.51}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.16}{\ignorespaces 20名データの時間パターン上位（平均Top-K, 全重み付け平均）}}{30}{table.caption.54}\protected@file@percent }
+\newlabel{tab:time-pattern-ranking-20}{{4.16}{30}{20名データの時間パターン上位（平均Top-K, 全重み付け平均）}{table.caption.54}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}考察}{32}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{chap:consideration}{{5}{28}{考察}{chapter.5}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{30}{chapter.6}\protected@file@percent }
+\newlabel{chap:consideration}{{5}{32}{考察}{chapter.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{34}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{chap:userstudy}{{6}{30}{ユーザースタディ}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}インタビュー対象者}{30}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}求人選択の実態}{30}{section.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{リピート志向の強さ}{30}{section*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{駐車場の重要性}{30}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{業務内容の選好}{31}{section*.37}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{給与の基準}{31}{section*.38}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}情報収集の実態}{31}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}ユーザースタディから得られた示唆}{31}{section.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{33}{chapter.7}\protected@file@percent }
+\newlabel{chap:userstudy}{{6}{34}{ユーザースタディ}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}インタビュー対象者}{34}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}求人選択の実態}{34}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{リピート志向の強さ}{34}{section*.55}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{駐車場の重要性}{34}{section*.56}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{業務内容の選好}{35}{section*.57}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{給与の基準}{35}{section*.58}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}情報収集の実態}{35}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}ユーザースタディから得られた示唆}{35}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{37}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{chap:avoidance-penalty}{{7}{33}{回避業務ペナルティと時間志向の実験}{chapter.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}追加実験1：回避業務ペナルティの検証}{33}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}実装方針とGUI連携}{33}{subsection.7.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}回避業務の検出}{33}{subsection.7.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}ペナルティ係数の計算}{33}{subsection.7.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.4}評価設計}{34}{subsection.7.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.5}結果}{34}{subsection.7.1.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{34}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:20people-patterns}{{7.1}{34}{20名データの重み付けパターン比較（概観）}{figure.caption.39}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt  {equal} / 時間重み自動判別（\texttt  {time\_auto}））}}{34}{table.caption.40}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.6}考察}{34}{subsection.7.1.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}追加実験2：時間志向を同時に扱った場合}{35}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}実装方針とGUI連携}{35}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}長期志向/短期志向の判定}{35}{subsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}評価視点}{35}{subsection.7.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{35}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:penalty-and-auto-time}{{7.2}{35}{ペナルティ有無 + 時間重み自動判別の同時評価結果}{figure.caption.41}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}結果と考察}{35}{subsection.7.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {第8章}今後の展望}{37}{chapter.8}\protected@file@percent }
+\newlabel{chap:avoidance-penalty}{{7}{37}{回避業務ペナルティと時間志向の実験}{chapter.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}追加実験1：回避業務ペナルティの検証}{37}{section.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{39}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:20people-patterns}{{7.1}{39}{20名データの重み付けパターン比較（概観）}{figure.caption.67}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt  {equal} / 時間重み自動判別（\texttt  {time\_auto}））}}{39}{table.caption.68}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}追加実験2：時間志向を同時に扱った場合}{40}{section.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{41}{figure.caption.75}\protected@file@percent }
+\newlabel{fig:penalty-and-auto-time}{{7.2}{41}{ペナルティ有無 + 時間重み自動判別の同時評価結果}{figure.caption.75}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces 4条件同時比較の平均精度（10名, \texttt  {equal}）}}{41}{table.caption.77}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.3}{\ignorespaces 4条件同時比較の平均精度（20名（有効18名）, \texttt  {equal}）}}{42}{table.caption.78}\protected@file@percent }
+\newlabel{tab:avoidance-timeauto-20workers-equal}{{7.3}{42}{4条件同時比較の平均精度（20名（有効18名）, \texttt {equal}）}{table.caption.78}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.4}{\ignorespaces 4条件同時比較の平均精度（学習15件, 20名（有効18名）, \texttt  {equal}）}}{42}{table.caption.79}\protected@file@percent }
+\newlabel{tab:avoidance-timeauto-20workers-equal-step15}{{7.4}{42}{4条件同時比較の平均精度（学習15件, 20名（有効18名）, \texttt {equal}）}{table.caption.79}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第8章}今後の展望}{43}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{chap:future}{{8}{37}{今後の展望}{chapter.8}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第9章}結論}{38}{chapter.9}\protected@file@percent }
+\newlabel{chap:future}{{8}{43}{今後の展望}{chapter.8}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第9章}結論}{44}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{chap:conclusion}{{9}{38}{結論}{chapter.9}{}}
-\@writefile{toc}{\contentsline {chapter}{謝辞}{39}{chapter*.42}\protected@file@percent }
+\newlabel{chap:conclusion}{{9}{44}{結論}{chapter.9}{}}
+\@writefile{toc}{\contentsline {chapter}{謝辞}{45}{chapter*.81}\protected@file@percent }
 \bibcite{mhlw2025shortage}{1}
 \bibcite{mhlwlatent}{2}
 \bibcite{mhlwpolicy}{3}
 \bibcite{mhlwreport}{4}
 \bibcite{mhlwcomprehensive}{5}
-\@writefile{toc}{\contentsline {chapter}{参考文献}{40}{chapter*.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{参考文献}{46}{chapter*.82}\protected@file@percent }
 \bibcite{conf2022voice}{1}
 \bibcite{conf2025matching}{2}
-\@writefile{toc}{\contentsline {chapter}{研究業績}{41}{chapter*.44}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{研究業績}{47}{chapter*.83}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
     {1}{78.90141pt}\LT@entry 
     {1}{87.00363pt}\LT@entry 
     {1}{87.00363pt}\LT@entry 
     {1}{147.76102pt}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}重み付けパターン一覧（本実験2・3）}{42}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {付録A}重み付けパターン一覧（本実験2・3）}{48}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\newlabel{app:weight-patterns}{{A}{42}{重み付けパターン一覧（本実験2・3）}{appendix.A}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces 本実験2の重み付けパターン一覧（全体）}}{42}{table.A.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{43}{table.caption.45}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{43}{table.caption.46}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {付録B}システム構成概要（ディレクトリベース）}{44}{appendix.B}\protected@file@percent }
+\newlabel{app:weight-patterns}{{A}{48}{重み付けパターン一覧（本実験2・3）}{appendix.A}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces 本実験2の重み付けパターン一覧（全体）}}{48}{table.A.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{49}{table.caption.84}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{49}{table.caption.85}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {付録B}システム構成概要（ディレクトリベース）}{50}{appendix.B}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\jsc@mpt }}
 \@writefile{lot}{\addvspace {10\jsc@mpt }}
-\gdef \@abspage@last{52}
+\gdef \@abspage@last{56}

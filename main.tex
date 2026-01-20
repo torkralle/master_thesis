@@ -160,7 +160,7 @@ pdfauthor={星子祐哉}
 	\item \textbf{care-worker-fe}: Flutter 製のワーカー向けクライアント。求人検索、応募、勤怠の打刻、ウォレット閲覧などを提供する。
 	\item \textbf{kaigo-admin-fe}: 管理者向け Angular フロントエンド。事業所・求人・ユーザ管理や設定変更を行う。
 	\item \textbf{kaigo-be}: Node.js/TypeScript ベースのバックエンド API。\texttt{src/controllers, services, models} を中心に、認証、求人・応募管理、勤怠計算、支払い処理などを実装している。
-	\item \textbf{kaigo-sevenpay-be}: 決済・外部送金系のバックエンド（Node.js/TypeScript）。七銀連携や決済ロジックを分離している。
+	\item \textbf{kaigo-payment-be}: 決済・外部送金系のバックエンド（Node.js/TypeScript）。七銀連携や決済ロジックを分離している。
 	\item \textbf{pdf-generator}: PDF 生成用の専用サービス（Node.js）。通知書や帳票を生成する。
 	\item \textbf{cron-jobs}: シェルスクリプトによる定期実行タスク群（例：日次・月次バッチ）。
 	\item \textbf{documents}: 設計メモやドキュメント類（システム構成、課題整理など）。
@@ -168,6 +168,6 @@ pdfauthor={星子祐哉}
 	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX{}）。
 \end{itemize}
 
-補足：各バックエンドでは Mongoose を用いたスキーマ定義を採用し、\texttt{/src/models} 配下でドメイン別にモデルを分割している。フロントエンドは Angular/Flutter を用い、機能別にモジュール化している。
+
 
 \end{document}

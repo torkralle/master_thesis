@@ -5,7 +5,7 @@
 # ====================
 # LuaLaTeX を使用（lualatexコマンドを使用）
 $lualatex = 'lualatex -synctex=1 -halt-on-error -file-line-error -interaction=nonstopmode %O %S';
-$max_repeat = 5;
+$max_repeat = 10;
 
 # PDF モードを LuaLaTeX に設定
 $pdf_mode = 4;

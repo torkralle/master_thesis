@@ -11,7 +11,17 @@
 \label{fig:recommender-system-overview}
 \end{figure}
 
-\subsection{技術スタック}
+\subsection{システム概要}
+技術スタックとディレクトリ構成の対応関係を図\ref{fig:techstack-directory}に示す。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{images/fig4-5.pdf}
+\caption{技術スタックとディレクトリ構成}
+\label{fig:techstack-directory}
+\end{figure}
+
+\subsubsection*{技術スタック}
 \begin{itemize}
 	\item \textbf{Python}: 研究実装の中核言語。モデル推論・評価・可視化を一貫して実装。
 	\item \textbf{PyTorch + Transformers}: Sentence-BERT によるテキスト埋め込みと類似度計算。
@@ -22,18 +32,18 @@
 	\item \textbf{pymongo / python-dotenv}: 環境変数で本番DB連携を制御。
 \end{itemize}
 
-\subsection{ディレクトリ構成と責務分離}
+\subsubsection*{ディレクトリ構成と責務分離}
 \begin{itemize}
-	\item \textbf{app/core/recommenders}: 推薦エンジン本体。Sentence-BERT ベースの推薦と評価クラスを実装。
-	\item \textbf{app/core/features}: 特徴量計算（リピート志向、報酬、業務内容など）。
-	\item \textbf{app/analyzers}: 職種のみ・介護項目のみといった軽量ベースラインを実装。
-	\item \textbf{app/utils}: データ読み込み、検証、可視化、設定管理。
-	\item \textbf{app/web}: FastAPI による GUI/API 層。テンプレートと静的ファイルを含む。
-	\item \textbf{scripts}: 単一分析、バッチ分析、比較実験の実行スクリプト。
-	\item \textbf{data/results/tests}: 実データ、出力、テストコードを分離配置。
+	\item \textbf{推薦・評価}: Sentence-BERT ベースの推薦と評価機能。
+	\item \textbf{特徴量}: リピート志向、報酬、業務内容などの特徴量計算。
+	\item \textbf{ベースライン}: 職種のみ・介護項目のみ等の軽量手法。
+	\item \textbf{ユーティリティ}: データ読み込み、検証、可視化、設定管理。
+	\item \textbf{GUI/API}: Web GUI と API 層（テンプレートと静的ファイルを含む）。
+	\item \textbf{実行系}: 単一分析、バッチ分析、比較実験の実行機能。
+	\item \textbf{データ/結果/テスト}: 実データ、出力、テストを分離配置。
 \end{itemize}
 
-\subsection{システムアーキテクチャ（層構造）}
+\subsubsection*{システムアーキテクチャ（層構造）}
 以下の層構造により、研究用のオフライン分析と対話的な評価を同一コードベースで実現している。
 \begin{enumerate}
 	\item \textbf{データ層}: JSON/Markdown 形式のワーカーデータ、求人データを保持。
@@ -45,9 +55,10 @@
 \end{enumerate}
 また、本システムは、\textbf{Web GUI/CLI} を入口として \textbf{評価パイプライン} を起動する構成である。GUI層は FastAPI が担当し、ワーカー選択・実験条件（重み付けや特徴量モード）・進捗表示を提供する。GUI/CLI からの実行指示は評価層に渡され、\textbf{データ読み込み}（JSON/外部データ）→\textbf{前処理}→\textbf{特徴生成}→\textbf{推薦}→\textbf{評価}→\textbf{出力保存} の順に処理される。推薦層は「BERTベース」「ベースライン」を切り替え可能で、同一インタフェース上で比較できる。出力層は JSON/テキスト/HTML に対応し、再現性の高い記録を残す。
 
-\subsection{データフロー（処理パイプライン）}
+\subsection{評価パイプライン}
+\subsubsection*{データフロー（処理パイプライン）}
 \begin{enumerate}
-	\item データ読み込み：\texttt{data\_loader.py} がワーカー履歴と求人リストを取得。
+	\item データ読み込み：ワーカー履歴と求人リストを取得。
 	\item セッション検証：欠損や不正データを除外し、学習用・評価用に分割。
 	\item 特徴生成：求人テキスト（タイトル・業務内容・介護項目など）を統合しベクトル化。
 	\item スコアリング：平均ベクトルとのコサイン類似度、または特徴量スコアを計算。
@@ -55,7 +66,7 @@
 	\item 出力保存：JSON/テキスト/HTML に結果と詳細ログを保存。
 \end{enumerate}
 
-\subsection{データモデル（主要フィールド）}
+\subsubsection*{データモデル（主要フィールド）}
 実データはワーカー単位の履歴として保存され、セッションは「応募/勤務1回」を基本単位とする。評価では、各セッションに含まれる\textbf{選択求人}と\textbf{候補求人集合}を用いる。
 \begin{itemize}
 \item \textbf{ワーカー情報}: ワーカーID（\texttt{workerId}）、氏名（\texttt{name}）、資格（\texttt{qualifications}）など。
@@ -64,7 +75,7 @@
 \item \textbf{候補集合}: その時点で提示された候補求人群（\texttt{availableJobs}）。
 \end{itemize}
 
-\subsection{推薦アルゴリズム構成}
+\subsubsection*{推薦アルゴリズム構成}
 \begin{itemize}
 	\item \textbf{Sentence-BERT ベース}: 求人タイトル・業務内容・介護項目・施設・勤務条件など複数項目の重み付けで統合類似度を算出。
 	\item \textbf{重み付けパターン比較}: 20種類以上の重み付けパターンを並列評価し、最適構成を探索。
@@ -72,18 +83,24 @@
 	\item \textbf{業務回避パターン}: 過去履歴から避けている業務を推定し、ペナルティを付与。
 \end{itemize}
 
-\subsection{スコア統合の考え方}
+\subsubsection*{スコア統合の考え方}
 BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、条件差分や履歴平均との統合により総合スコアを構成する。利用頻度に応じて重みを動的に調整し、ライトユーザーとヘビーユーザーで推薦方針を切り替える設計としている。
 
-\subsection{評価設計}
-\begin{itemize}
-	\item \textbf{Top-K精度}: Top-1/3/5 を基本指標とし、実務的推薦の再現性を評価。
-	\item \textbf{分割方法}: 適切分割（学習:テスト = 7:3）とスライディングウィンドウ評価を実装。
-	\item \textbf{学習曲線評価}: 学習件数を段階的に増やして性能変化を分析。
-\end{itemize}
+\subsubsection*{評価設計}
+	\begin{itemize}
+		\item \textbf{Top-K精度}: Top-1/3/5 を基本指標とし、実務的推薦の再現性を評価。
+		\item \textbf{複合スコア}: Top-1/3/5 を1つの値に集約するため、各Top-K精度（0〜1）を用いて
+	\[
+	S_{\text{composite}} = 0.5\,\text{Top-1} + 0.3\,\text{Top-3} + 0.2\,\text{Top-5}
+	\]
+		と定義する（例：Top-1=39.0\%は0.390として扱う）。
+		\item \textbf{分割方法}: 段階的学習評価では、履歴の先頭から学習データを$k$件用意し、その直後の\textbf{10件を固定テストデータ}として精度を算出する（$k$を変化させて学習曲線を得る）。
+		\item \textbf{学習曲線評価}: 学習件数を段階的に増やして性能変化を分析。
+	\end{itemize}
 
 
-\subsection{高速化・キャッシュ戦略}
+\subsection{運用・拡張}
+\subsubsection*{高速化・キャッシュ戦略}
 \begin{itemize}
 	\item \textbf{事前エンコード}: 求人埋め込みを事前計算し、重み付け比較時の再計算を回避。
 	\item \textbf{キャッシュ層}: メモリキャッシュとディスクキャッシュを併用し、再実験の時間を短縮。
@@ -91,28 +108,28 @@ BERTスコアは職種や業務内容の\textbf{意味的距離}を評価し、�
 	\item \textbf{Apple Silicon最適化}: MPS/スレッド設定を利用し高速化。
 \end{itemize}
 
-\subsection{障害対策と再実行性}
+\subsubsection*{障害対策と再実行性}
 大規模バッチ実験では、途中失敗が研究コストに直結するため、\textbf{進捗ログ}と\textbf{部分結果の保存}を重視した。GUIからの実行ではキャンセルフラグを監視し、エラー時は原因をJSONに記録して再実験を容易にする。
 
-\subsection{Web GUI と運用}
+\subsubsection*{Web GUI と運用}
 \begin{itemize}
 	\item \textbf{FastAPI GUI}: ブラウザからワーカー選択・分析実行・進捗確認が可能。
 	\item \textbf{API連携}: JSON形式で分析結果を取得でき、可視化・報告書作成に連携。
 	\item \textbf{外部DB連携（任意）}: 実データ取得時に最新履歴を取得可能（環境変数による切替）。
 \end{itemize}
 
-\subsection{API設計の要点}
+\subsubsection*{API設計の要点}
 GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{自動化}と\textbf{外部連携}を可能にしている。単一ワーカー分析、バッチ分析、重み付け比較、事前エンコードといった操作がAPI経由で呼び出せるため、研究プロセスの自動化に適する。
 
-\subsection{出力と再現性}
+\subsubsection*{出力と再現性}
 \begin{itemize}
 	\item \textbf{結果出力}: JSON/CSV/テキストに加え、HTMLレポートとして可視化。
 	\item \textbf{ログ管理}: 実行ログ・進捗ログを保存し、追試可能な実験履歴を保持。
-	\item \textbf{設定管理}: \texttt{config.py} にモデル名や評価パラメータを集約。
+	\item \textbf{設定管理}: モデル名や評価パラメータを設定として集約。
 \end{itemize}
 
-\subsection{拡張性}
-構成を\textbf{推薦エンジンの差し替え}と\textbf{特徴量の追加}に耐える設計とした。新規特徴量は \texttt{features} に追加し、統合スコアに組み込むだけで再評価できる。新しい推薦モデルも \texttt{recommenders} に追加し、同じ評価器に接続できる。
+\subsubsection*{拡張性}
+構成を\textbf{推薦エンジンの差し替え}と\textbf{特徴量の追加}に耐える設計とした。新規特徴量を追加して統合スコアに組み込むだけで再評価でき、新しい推薦モデルも同じ評価器に接続できる。
 
 \section{予備実験1：日本語BERTモデルによる単語間類似度測定}
 自然言語処理モデルの代表例としてBERTがある。本研究では日本語に特化したcl-tohokuモデルを利用し、単語間のコサイン類似度を計測した。しかし、「介護」と「極悪非道」の類似度が0.678であったり、「看護師」と「ナース」よりも「介護士」と「ナース」のほうが数値的に近かったりと、直感とずれる結果が得られた。この結果から、単一モデルに依存せず、横断的に複数モデルを検討する重要性が示された。
@@ -120,7 +137,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \section{予備実験2：BERTモデルの横断評価}
 複数のBERT系モデル（日本語Sentence-BERT、マルチリンガルSentence-BERT、BERT-largeなど）を比較し、職種間の分離度を評価した。分離度は「アンカー職種に対する類似職種の平均スコア」と「非類似職種の平均スコア」の差として定義する。
 
-評価データは \texttt{reference/類似度検索.py} の設定に合わせ、5つのアンカー職種ごとに「類似4件・非類似4件」を手動で作成した。アンカーは店舗業務・IT・営業・医療・データ分析を含むように選定し、語彙の近さだけでなく職域の近さが反映されるかを確認した。
+評価データは、5つのアンカー職種ごとに「類似4件・非類似4件」を手動で作成した。アンカーは店舗業務・IT・営業・医療・データ分析を含むように選定し、語彙の近さだけでなく職域の近さが反映されるかを確認した。
 
 \begin{table}[H]
 \centering
@@ -200,6 +217,9 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \begin{table}[htbp]
 \centering
 \caption{本実験2（20件学習）の上位パターン}
+\includegraphics[width=0.95\textwidth]{images/fig4-4.pdf}
+
+\iffalse
 \scriptsize
 \begin{tabular}{c l r r r r}
 \hline
@@ -217,6 +237,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 10 & 職種重視 & 55.3\% & 67.1\% & 70.0\% & 0.6618 \\
 \hline
 \end{tabular}
+\fi
 \end{table}
 
 \begin{table}[htbp]
@@ -241,12 +262,25 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \end{tabular}
 \end{table}
 
-学習データ数を変化させた場合の精度推移では、学習データが15件〜20件の時点で最高値を示し、それを超えると精度が悪化する傾向が観察された。
+学習データ数を変化させた場合の精度推移では、学習データが15件〜20件の時点で最高値を示し、それを超えると精度が悪化する傾向が観察された。本実験2の学習データ数による精度推移は表\ref{tab:exp2-learning-curve-top5}（表4.6）を参照した。
 
 \begin{table}[htbp]
 \centering
 \caption{学習データ数による精度推移（Top-5精度）}
+\label{tab:exp2-learning-curve-top5}
 \includegraphics[width=0.95\textwidth]{images/fig4-6.pdf}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{均等重み（特徴量均等配分・時間減衰なし）における学習データ数別の精度推移（20名）}
+\label{tab:exp2-learning-curve-equal-20workers}
+\scriptsize
+\input{section/table_exp2_learning_curve_equal_20workers}
+\vspace{2pt}
+\scriptsize
+\raggedright
+注：$n$は当該学習件数を評価できたワーカー数（履歴セッション数が十分なワーカーのみ）。\par
 \end{table}
 
 上記の表から、20件を超えると全てのパターンで精度が低下することが明確に示された。これは過去の嗜好データが現在の嗜好と乖離するためと考えられる。
@@ -261,11 +295,12 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \section{本実験3：時間重み付け比較}
 本実験2では、重み付けパターンによって精度が大きく変動し、学習データ数が20件を超えると精度が低下する傾向が確認された。これは、\textbf{過去の嗜好が現在の嗜好と乖離していく}影響が無視できないことを示唆している。そこで本実験3では、本実験2の結果を踏まえ、\textbf{履歴の新しさを明示的に評価に反映する必要がある}と考え、時間的な重み付けの比較を行うことにした。具体的には、直近の行動を重視する設計が本実験2の精度劣化を緩和できるかを検証する。
 
-過去の履歴に時間的な重みを付与する複数の減衰関数（指数、パワー、線形、ステップなど）を比較した。表記は「特徴量配分\_\_時間重み」の構成であり、例えば \texttt{equal\_\_time\_recent\_exp\_7d} は「特徴量は均等配分（equal）」「直近7日を指数的に重視（半減期7日）」を意味する。対照の \texttt{equal\_\_time\_equal} は時間減衰を行わず、全履歴を同じ重みで扱う基準である。本実験では特徴量配分6種と時間重み34種を組み合わせ、合計204パターンを評価した。時間重みは日付ベース（\texttt{time\_recent\_...}）とセッション順ベース（\texttt{time\_session\_...}）の2系統があり、セッション系は履歴の古さを「直近からの件数」で定義する。
+過去の履歴に時間的な重みを付与する複数の減衰関数（指数、線形など）を比較した。本実験では、特徴量配分パターン6種（表\ref{tab:exp3-feature-patterns}）に対して、時間重みパターンを組み合わせて評価した。時間重みパターンは、実装で提供される減衰関数群（等重み、指数/線形/パワー/対数、ウィンドウ、ステップ、Softmax等）に基づく計34種類である。なお、本論文では理解しやすさのため、パターン名を「特徴量配分」と「時間重み」に分けて記述し、必要に応じて実装名（\texttt{time\_*}）を併記する。以降の上位パターン表は、\textbf{学習ステップ20（履歴20件）}の評価結果を用いる（学習ステップ別の推移は表\ref{tab:time-weighting-steps}）。
 
 \begin{table}[htbp]
 \centering
 \caption{特徴量配分パターン（本実験3）}
+\label{tab:exp3-feature-patterns}
 \scriptsize
 \begin{tabularx}{\linewidth}{l X}
 \hline
@@ -285,7 +320,7 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 
 \begin{table}[htbp]
 \centering
-\caption{時間重み付けパターン（主要）}
+\caption{時間重み付けパターン（代表例）}
 \label{tab:time-weighting-core}
 \scriptsize
 \begin{tabularx}{\linewidth}{l X}
@@ -293,11 +328,11 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 パターン & 意味 \\
 \hline
 \texttt{time\_equal} & 時間減衰なし（全履歴を同一重み）。 \\
-\texttt{time\_recent\_linear\_30d} & 線形減衰（30日で0）。 \\
-\texttt{time\_recent\_exp\_7d} & 指数減衰（半減期7日）。 \\
-\texttt{time\_step\_k\_5} & ステップ関数（直近5件のみ1、それ以外0）。 \\
-\texttt{time\_session\_step\_k\_5} & セッション順のステップ関数（直近5件のみ1、それ以外0）。 \\
-\texttt{time\_session\_linear\_10} & セッション線形減衰（10件で0）。 \\
+\texttt{time\_recent\_exp\_7d} & 直近ほど重視する指数減衰（半減期7日）。 \\
+\texttt{time\_recent\_linear\_30d} & 直近ほど重視する線形減衰（30日で0）。 \\
+\texttt{time\_softmax\_7d} & 直近ほど重視するSoftmax型（温度7日相当）。 \\
+\texttt{time\_window\_uniform\_90d} & 直近90日を同一重み（それより古い履歴は0）。 \\
+\texttt{time\_session\_linear\_20} & セッション順の線形減衰（直近20件で0）。 \\
 \hline
 \end{tabularx}
 \end{table}
@@ -322,16 +357,33 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \begin{table}[htbp]
 \centering
 \caption{時間重み付け上位パターン（20名, 平均Top-5）}
+\label{tab:time-weighting-top-patterns}
 \scriptsize
-\begin{tabular}{l l r r r}
+\begin{tabularx}{\linewidth}{X X r r r}
 \hline
-パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
+特徴量配分 & 時間重み & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
 \hline
-\texttt{content\_focused\_\_time\_recent\_exp\_7d} & 0.5111 & 0.6889 & 0.7500 \\
-\texttt{content\_focused\_\_time\_session\_linear\_10} & 0.5111 & 0.7000 & 0.7500 \\
-\texttt{equal\_\_time\_session\_linear\_20} & 0.5111 & 0.6333 & 0.7444 \\
+業務内容重視（\texttt{content\_focused}） & 直近7日指数減衰（\texttt{time\_recent\_exp\_7d}） & 0.5111 & 0.6889 & 0.7500 \\
+業務内容重視（\texttt{content\_focused}） & セッション順線形10件（\texttt{time\_session\_linear\_10}） & 0.5111 & 0.7000 & 0.7500 \\
+均等配分（\texttt{equal}） & セッション順線形20件（\texttt{time\_session\_linear\_20}） & 0.5111 & 0.6333 & 0.7444 \\
 \hline
-\end{tabular}
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（学習20件, 20名（有効18名））}
+\label{tab:exp3-top-patterns-step20}
+\scriptsize
+\input{section/table_exp3_top_patterns_step20}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（学習30件, 20名（有効11名））}
+\label{tab:exp3-top-patterns-step30}
+\scriptsize
+\input{section/table_exp3_top_patterns_step30}
 \end{table}
 
 \begin{table}[htbp]
@@ -356,31 +408,31 @@ GUIと同一のエンドポイントをAPIとして公開し、分析の\textbf{
 \end{table}
 
 \section{本実験4：時間重み自動選択の実装と結果}
-本実験3の結果から「短期志向が優位だが個別差が大きい」ことに気づいたため、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する\textbf{時間重み自動判別（\texttt{time\_auto}）}を実装した。GUIでは「時間的重み付けパターン」に「時間重み自動判別」を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。実装側では履歴に日付情報が含まれる場合は日付ベースの減衰（例：\texttt{time\_recent\_exp\_7d}）を、日付が取得できない場合はセッション順ベースの減衰（例：\texttt{time\_session\_exp\_5}）を初期候補として選ぶ。
+本実験3の結果から「短期志向が優位だが個別差が大きい」ことに気づいたため、履歴のドリフト傾向に応じて短期/長期の減衰関数を自動選択する\textbf{時間重み自動判別（\texttt{time\_auto}）}を実装した。GUIでは「時間的重み付けパターン」に「時間重み自動判別」を用意しており、単一分析・バッチ分析・時間重み比較のいずれも同一パラメータで実行される。本研究で用いたデータは履歴に日付情報が含まれるため、日付ベースの時間重みから候補を選択する（直近重視：\texttt{time\_recent\_exp\_7d}、長期安定：\texttt{time\_window\_uniform\_90d}（直近90日以内は重み1、90日超は重み0））。
 
-自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う減衰（\texttt{time\_window\_uniform\_90d} または \texttt{time\_session\_linear\_20}）へ切り替える。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d} / \texttt{time\_session\_exp\_5}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
+自動選択の中核は「履歴のドリフト」検出である。過去履歴の埋め込みベクトルを作成し、直近ウィンドウ（最小2件・最大5件、履歴長の1/3を上限）とそれ以前の履歴を分け、各集合の平均ベクトル間のコサイン類似度を計算する。ここで \textbf{drift = 1 - similarity} と定義し、値が大きいほど最近の行動が過去と異なる（志向性が変化している）と解釈する。ドリフトが小さい場合（閾値0.12未満）は安定とみなし、長期履歴を厚めに使う時間重み（\texttt{time\_window\_uniform\_90d}）へ切り替える。これは、直近90日以内の履歴を同一重みで参照し、それ以前の履歴を参照しないことで「最近に寄せすぎない」参照範囲を与える設定である。ドリフトが大きい場合は短期変化の追従を優先し、指数減衰（\texttt{time\_recent\_exp\_7d}）を維持する。判定結果（選択パターン、ドリフト値、最近ウィンドウ長）はワーカー単位にキャッシュし、同一履歴長での再計算を省略する。
 
-時間重み自動判別（\texttt{time\_auto}）の検証は別途5名データ（学習ステップ5〜40）で実施し、\texttt{equal} 系の時間重みを比較したところ、\texttt{equal\_\_time\_auto} は等重み \texttt{equal\_\_time\_equal} を上回り、明示的な線形減衰 \texttt{equal\_\_time\_recent\_linear\_30d} が最も高い平均Top-5を示した。自動選択は「短期の行動変化」への追従性を高める一方、ドリフト推定は履歴量や埋め込みのばらつきに影響されるため、固定減衰との併用が有効である。
+時間重み自動判別（\texttt{time\_auto}）の検証は20名データ（読み込み成功18名）で実施し、特徴量配分を均等（\texttt{equal}）に固定したうえで、時間重みのみを比較した。その結果、\texttt{time\_auto}は\texttt{time\_equal}（時間減衰なし）を上回り、明示的な線形減衰（\texttt{time\_recent\_linear\_30d}）が最も高い平均Top-5を示した。自動選択は「短期の行動変化」への追従性を高める一方、ドリフト推定は履歴量や埋め込みのばらつきに影響されるため、固定減衰との併用が有効である。
 
 \begin{table}[htbp]
 \centering
-\caption{時間重み自動判別の実装結果（\texttt{time\_auto}, 5名, 平均Top-K）}
+\caption{時間重み自動判別の実装結果（\texttt{time\_auto}, 20名（有効18名）, 平均Top-K）}
 \scriptsize
 \begin{tabular}{l r r r}
 \hline
-パターン & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
+時間重み & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
 \hline
-\texttt{equal\_\_time\_equal} & 0.5125 & 0.75 & 0.7625 \\
-\texttt{equal\_\_time\_auto} & 0.5375 & 0.7375 & 0.775 \\
-\texttt{equal\_\_time\_recent\_linear\_30d} & 0.625 & 0.80 & 0.825 \\
+時間減衰なし（\texttt{time\_equal}） & 0.4778 & 0.6278 & 0.6944 \\
+自動選択（\texttt{time\_auto}） & 0.4944 & 0.6500 & 0.7056 \\
+直近30日線形減衰（\texttt{time\_recent\_linear\_30d}） & 0.5333 & 0.6722 & 0.7278 \\
 \hline
 \end{tabular}
 \end{table}
 
-\subsection{20名データにおける時間志向の分布}
+\subsubsection*{20名データにおける時間志向の分布}
 時間重み自動判別の判定結果（\texttt{time\_auto}）を用い、20名データの時間志向を集計した。読み込み成功18名のうち、\textbf{短期志向（recent）が3名（16.7\%）、長期志向（stable）が15名（83.3\%）}であり、安定志向のワーカーが多数を占めた。短期志向は履歴のドリフトが大きいワーカーに集中しており、直近行動の重視が有効であることを示唆する。
 
-\subsection{時間パターン別の優位性（20名データ）}
+\subsubsection*{時間パターン別の優位性（20名データ）}
 時間パターンの優位性を確認するため、全重み付けパターン（6種）における各時間パターンの平均Top-Kを集計した。その結果、\textbf{直近7日指数減衰}や\textbf{Softmax 7日}、\textbf{セッション線形減衰}が上位に並び、短期の情報を重視する設計が安定して高い精度を示した（表\ref{tab:time-pattern-ranking-20}）。
 
 \begin{table}[htbp]

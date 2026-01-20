@@ -31,24 +31,24 @@
 \contentsline {section}{\numberline {4.4}本実験1：過去の応募履歴からの推定}{22}{section.4.4}%
 \contentsline {section}{\numberline {4.5}本実験2：複数項目の重み付けによる精度向上}{23}{section.4.5}%
 \contentsline {section}{\numberline {4.6}本実験3：時間重み付け比較}{25}{section.4.6}%
-\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{27}{section.4.7}%
-\contentsline {chapter}{\numberline {第5章}考察}{32}{chapter.5}%
-\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{34}{chapter.6}%
-\contentsline {section}{\numberline {6.1}インタビュー対象者}{34}{section.6.1}%
-\contentsline {section}{\numberline {6.2}求人選択の実態}{34}{section.6.2}%
-\contentsline {paragraph}{リピート志向の強さ}{34}{section*.55}%
-\contentsline {paragraph}{駐車場の重要性}{34}{section*.56}%
-\contentsline {paragraph}{業務内容の選好}{35}{section*.57}%
-\contentsline {paragraph}{給与の基準}{35}{section*.58}%
-\contentsline {section}{\numberline {6.3}情報収集の実態}{35}{section.6.3}%
-\contentsline {section}{\numberline {6.4}ユーザースタディから得られた示唆}{35}{section.6.4}%
-\contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{37}{chapter.7}%
-\contentsline {section}{\numberline {7.1}追加実験1：回避業務ペナルティの検証}{37}{section.7.1}%
-\contentsline {section}{\numberline {7.2}追加実験2：時間志向を同時に扱った場合}{40}{section.7.2}%
-\contentsline {chapter}{\numberline {第8章}今後の展望}{43}{chapter.8}%
-\contentsline {chapter}{\numberline {第9章}結論}{44}{chapter.9}%
-\contentsline {chapter}{謝辞}{45}{chapter*.81}%
-\contentsline {chapter}{参考文献}{46}{chapter*.82}%
-\contentsline {chapter}{研究業績}{47}{chapter*.83}%
-\contentsline {chapter}{\numberline {付録A}重み付けパターン一覧（本実験2・3）}{48}{appendix.A}%
-\contentsline {chapter}{\numberline {付録B}システム構成概要（ディレクトリベース）}{50}{appendix.B}%
+\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{28}{section.4.7}%
+\contentsline {chapter}{\numberline {第5章}考察}{30}{chapter.5}%
+\contentsline {chapter}{\numberline {第6章}ユーザースタディ}{32}{chapter.6}%
+\contentsline {section}{\numberline {6.1}インタビュー対象者}{32}{section.6.1}%
+\contentsline {section}{\numberline {6.2}求人選択の実態}{32}{section.6.2}%
+\contentsline {paragraph}{リピート志向の強さ}{32}{section*.52}%
+\contentsline {paragraph}{駐車場の重要性}{32}{section*.53}%
+\contentsline {paragraph}{業務内容の選好}{33}{section*.54}%
+\contentsline {paragraph}{給与の基準}{33}{section*.55}%
+\contentsline {section}{\numberline {6.3}情報収集の実態}{33}{section.6.3}%
+\contentsline {section}{\numberline {6.4}ユーザースタディから得られた示唆}{33}{section.6.4}%
+\contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{35}{chapter.7}%
+\contentsline {section}{\numberline {7.1}追加実験1：回避業務ペナルティの検証}{35}{section.7.1}%
+\contentsline {section}{\numberline {7.2}追加実験2：時間志向を同時に扱った場合}{38}{section.7.2}%
+\contentsline {chapter}{\numberline {第8章}今後の展望}{41}{chapter.8}%
+\contentsline {chapter}{\numberline {第9章}結論}{42}{chapter.9}%
+\contentsline {chapter}{謝辞}{43}{chapter*.76}%
+\contentsline {chapter}{参考文献}{44}{chapter*.77}%
+\contentsline {chapter}{研究業績}{45}{chapter*.78}%
+\contentsline {chapter}{\numberline {付録A}重み付けパターン一覧（本実験2・3）}{46}{appendix.A}%
+\contentsline {chapter}{\numberline {付録B}システム構成概要（ディレクトリベース）}{48}{appendix.B}%
