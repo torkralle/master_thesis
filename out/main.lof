@@ -5,22 +5,21 @@
 \contentsline {figure}{\numberline {1.4}{\ignorespaces 介護事業者が直面する課題の構造}}{4}{figure.caption.11}%
 \contentsline {figure}{\numberline {1.5}{\ignorespaces 北海道における介護人材確保の特殊事情}}{5}{figure.caption.13}%
 \contentsline {figure}{\numberline {1.6}{\ignorespaces 介護特化型マッチングアプリの概要}}{6}{figure.caption.14}%
-\contentsline {figure}{\numberline {1.7}{\ignorespaces 現行マッチングシステムの定型条件フィルタリング構造}}{7}{figure.caption.15}%
-\contentsline {figure}{\numberline {1.8}{\ignorespaces ビジネスモデルと価値循環（データ駆動の改善サイクル）}}{8}{figure.caption.16}%
-\contentsline {figure}{\numberline {1.9}{\ignorespaces システムアーキテクチャ概要（主要サービス間の疎結合構成）}}{9}{figure.caption.17}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces システムアーキテクチャ概要（主要サービス間の疎結合構成）}}{7}{figure.caption.16}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces 現行マッチングシステムの定型条件フィルタリング構造}}{8}{figure.caption.17}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces 求人推薦スコア算出の全体フロー}}{14}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 求人推薦スコア算出の全体フロー}}{12}{figure.caption.18}%
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces 推薦システム設計の全体像}}{16}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 技術スタックとディレクトリ構成}}{17}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces BERTモデル別の分離度スコア}}{22}{figure.caption.36}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 本実験2における主要パターンのスコア比較}}{26}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 推薦システム設計の全体像}}{14}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 技術スタックとディレクトリ構成}}{15}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces BERTモデル別の分離度スコア}}{20}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 本実験2における主要パターンのスコア比較}}{24}{figure.caption.43}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{39}{figure.caption.67}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{41}{figure.caption.75}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces 20名データの重み付けパターン比較（概観）}}{37}{figure.caption.67}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{39}{figure.caption.75}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

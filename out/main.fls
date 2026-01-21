@@ -366,15 +366,13 @@ INPUT ./images/fig1-5.pdf
 INPUT ./images/fig1-5.pdf
 INPUT ./images/fig1-6.png
 INPUT ./images/fig1-6.png
-INPUT ./images/fig1-7.pdf
-INPUT ./images/fig1-7.pdf
 INPUT ./section/2_business_architecture.tex
 INPUT ./section/3_business_plan.tex
-INPUT ./images/fig2-1.pdf
-INPUT ./images/fig2-1.pdf
 INPUT ./section/3_architecture.tex
 INPUT ./images/fig1-9.png
 INPUT ./images/fig1-9.png
+INPUT ./images/fig1-7.pdf
+INPUT ./images/fig1-7.pdf
 INPUT ./section/2_purpose.tex
 INPUT ./section/3_method.tex
 INPUT /Users/torkralle/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmromandemi10-regular.luc

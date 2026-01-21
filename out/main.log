@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  20 JAN 2026 21:30
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.12.11)  21 JAN 2026 10:05
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/torkralle/WorkSpace/monsuke/master_thesis/main.tex
@@ -1270,12 +1270,12 @@ LaTeX Font Info:    Font shape `JT3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 14.58087pt on input line 3.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 14.58087pt on input line 3.
-<images/fig1-1.pdf, id=378, 963.6pt x 542.025pt>
+<images/fig1-1.pdf, id=386, 963.6pt x 542.025pt>
 File: images/fig1-1.pdf Graphic file (type pdf)
 <use images/fig1-1.pdf>
 Package luatex.def Info: images/fig1-1.pdf  used on input line 8.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-<images/fig1-2.pdf, id=381, 963.6pt x 542.025pt>
+<images/fig1-2.pdf, id=389, 963.6pt x 542.025pt>
 File: images/fig1-2.pdf Graphic file (type pdf)
 <use images/fig1-2.pdf>
 Package luatex.def Info: images/fig1-2.pdf  used on input line 18.
@@ -1287,7 +1287,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 ]
-<images/fig1-3.png, id=393, 961.5925pt x 424.58624pt>
+<images/fig1-3.png, id=401, 961.5925pt x 424.58624pt>
 File: images/fig1-3.png Graphic file (type png)
 <use images/fig1-3.png>
 Package luatex.def Info: images/fig1-3.png  used on input line 30.
@@ -1297,7 +1297,7 @@ Package luatex.def Info: images/fig1-3.png  used on input line 30.
 [2<./images/fig1-1.pdf><./images/fig1-2.pdf>]
 
 [3<./images/fig1-3.png>]
-<images/fig1-4.pdf, id=1672, 963.6pt x 542.025pt>
+<images/fig1-4.pdf, id=1680, 963.6pt x 542.025pt>
 File: images/fig1-4.pdf Graphic file (type pdf)
 <use images/fig1-4.pdf>
 Package luatex.def Info: images/fig1-4.pdf  used on input line 52.
@@ -1305,63 +1305,52 @@ Package luatex.def Info: images/fig1-4.pdf  used on input line 52.
 
 
 [4<./images/fig1-4.pdf>]
-<images/fig1-5.pdf, id=2416, 963.6pt x 542.025pt>
+<images/fig1-5.pdf, id=2424, 963.6pt x 542.025pt>
 File: images/fig1-5.pdf Graphic file (type pdf)
 <use images/fig1-5.pdf>
 Package luatex.def Info: images/fig1-5.pdf  used on input line 70.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-<images/fig1-6.png, id=2418, 992.70876pt x 475.7775pt>
+<images/fig1-6.png, id=2426, 992.70876pt x 475.7775pt>
 File: images/fig1-6.png Graphic file (type png)
 <use images/fig1-6.png>
 Package luatex.def Info: images/fig1-6.png  used on input line 82.
 (luatex.def)             Requested size: 364.51949pt x 174.70638pt.
-
-
-[5<./images/fig1-5.pdf>]
-LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
-(Font)              scaled to size 10.12561pt on input line 91.
-
-
-[6<./images/fig1-6.png>]
-<images/fig1-7.pdf, id=3402, 963.6pt x 542.025pt>
-File: images/fig1-7.pdf Graphic file (type pdf)
-<use images/fig1-7.pdf>
-Package luatex.def Info: images/fig1-7.pdf  used on input line 106.
-(luatex.def)             Requested size: 364.51949pt x 205.03705pt.
 (./section/2_business_architecture.tex
 LaTeX Font Info:    Font shape `JT3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 12.15074pt on input line 1.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 12.15074pt on input line 1.
 (./section/3_business_plan.tex
-<images/fig2-1.pdf, id=3404, 963.6pt x 542.025pt>
-File: images/fig2-1.pdf Graphic file (type pdf)
-<use images/fig2-1.pdf>
-Package luatex.def Info: images/fig2-1.pdf  used on input line 5.
-(luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-)
 
-[7<./images/fig1-7.pdf>] (./section/3_architecture.tex
-<images/fig1-9.png, id=4265, 1002.74625pt x 472.76625pt>
+[5<./images/fig1-5.pdf>]) (./section/3_architecture.tex
+<images/fig1-9.png, id=3404, 1002.74625pt x 472.76625pt>
 File: images/fig1-9.png Graphic file (type png)
 <use images/fig1-9.png>
 Package luatex.def Info: images/fig1-9.png  used on input line 5.
 (luatex.def)             Requested size: 384.77194pt x 181.41321pt.
-)))
+LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
+(Font)              scaled to size 10.12561pt on input line 10.
+))
 
-[8<./images/fig2-1.pdf>]
+[6<./images/fig1-6.png>]
 
-[9<./images/fig1-9.png>]
+[7<./images/fig1-9.png>]
+<images/fig1-7.pdf, id=3418, 963.6pt x 542.025pt>
+File: images/fig1-7.pdf Graphic file (type pdf)
+<use images/fig1-7.pdf>
+Package luatex.def Info: images/fig1-7.pdf  used on input line 111.
+(luatex.def)             Requested size: 364.51949pt x 205.03705pt.
+)
+
+[8<./images/fig1-7.pdf>]
 第2章
 (./section/2_purpose.tex
 
-[10
+[9
 
-]
+])
 
-[11])
-
-[12]
+[10]
 第3章
 (./section/3_method.tex(load cache: extra_lmromandemi10-regular.luc)
 LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
@@ -1370,70 +1359,70 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/m/n' will be
 (Font)              scaled to size 5.0628pt on input line 9.
 
 
-[13
+[11
 
 ]
 LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 7.08789pt on input line 28.
 LaTeX Font Info:    Font shape `JT3/HaranoAjiMincho-Regular.otf(0)/m/n' will be
 (Font)              scaled to size 5.0628pt on input line 28.
-<images/fig3-1.pdf, id=5019, 963.6pt x 542.025pt>
+<images/fig3-1.pdf, id=4301, 963.6pt x 542.025pt>
 File: images/fig3-1.pdf Graphic file (type pdf)
 <use images/fig3-1.pdf>
 Package luatex.def Info: images/fig3-1.pdf  used on input line 36.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-)
 
-[14<./images/fig3-1.pdf>]
 
-[15]
+[12<./images/fig3-1.pdf>])
+
+[13]
 第4章
 (./section/4_experiment.tex
-<images/fig4-1.pdf, id=5781, 963.6pt x 542.025pt>
+<images/fig4-1.pdf, id=5061, 963.6pt x 542.025pt>
 File: images/fig4-1.pdf Graphic file (type pdf)
 <use images/fig4-1.pdf>
 Package luatex.def Info: images/fig4-1.pdf  used on input line 9.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-<images/fig4-5.pdf, id=5783, 963.6pt x 542.025pt>
+<images/fig4-5.pdf, id=5063, 963.6pt x 542.025pt>
 File: images/fig4-5.pdf Graphic file (type pdf)
 <use images/fig4-5.pdf>
 Package luatex.def Info: images/fig4-5.pdf  used on input line 19.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
 
 
-[16
+[14
 
 <./images/fig4-1.pdf>]
 
-[17<./images/fig4-5.pdf>]
+[15<./images/fig4-5.pdf>]
+
+[16]
+
+[17]
 
 [18]
-
-[19]
-
-[20]
-<images/fig1-10.png, id=7588, 1806.75pt x 663.47874pt>
+<images/fig1-10.png, id=6869, 1806.75pt x 663.47874pt>
 File: images/fig1-10.png Graphic file (type png)
 <use images/fig1-10.png>
 Package luatex.def Info: images/fig1-10.png  used on input line 163.
 (luatex.def)             Requested size: 364.51949pt x 133.85764pt.
 
 
-[21]
-<images/fig4-2.pdf, id=7593, 963.6pt x 578.16pt>
+[19]
+<images/fig4-2.pdf, id=6875, 963.6pt x 578.16pt>
 File: images/fig4-2.pdf Graphic file (type pdf)
 <use images/fig4-2.pdf>
 Package luatex.def Info: images/fig4-2.pdf  used on input line 181.
 (luatex.def)             Requested size: 384.77194pt x 230.86292pt.
 
 
-[22<./images/fig1-10.png>]
-<images/fig4-3.pdf, id=7602, 963.6pt x 542.025pt>
+[20<./images/fig1-10.png>]
+<images/fig4-3.pdf, id=6884, 963.6pt x 542.025pt>
 File: images/fig4-3.pdf Graphic file (type pdf)
 <use images/fig4-3.pdf>
 Package luatex.def Info: images/fig4-3.pdf  used on input line 195.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
-<images/fig4-4.pdf, id=7603, 963.6pt x 542.025pt>
+<images/fig4-4.pdf, id=6885, 963.6pt x 542.025pt>
 File: images/fig4-4.pdf Graphic file (type pdf)
 <use images/fig4-4.pdf>
 Package luatex.def Info: images/fig4-4.pdf  used on input line 220.
@@ -1459,26 +1448,26 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 (Font)              scaled to size 4.96152pt on input line 247.
 LaTeX Font Info:    Font shape `JY3/HaranoAjiMincho-Regular.otf(0)/b/n' will be
 (Font)              scaled to size 3.54396pt on input line 247.
-<images/fig4-6.pdf, id=7605, 963.6pt x 542.025pt>
+<images/fig4-6.pdf, id=6887, 963.6pt x 542.025pt>
 File: images/fig4-6.pdf Graphic file (type pdf)
 <use images/fig4-6.pdf>
 Package luatex.def Info: images/fig4-6.pdf  used on input line 271.
 (luatex.def)             Requested size: 384.77194pt x 216.43398pt.
 
 
-[23<./images/fig4-2.pdf>]
+[21<./images/fig4-2.pdf>]
 
-[24<./images/fig4-3.pdf><./images/fig4-4.pdf>] (./section/table_exp2_learning_curve_equal_20workers.tex)
-<images/fig1-11.png, id=8651, 2710.125pt x 1397.22pt>
+[22<./images/fig4-3.pdf><./images/fig4-4.pdf>] (./section/table_exp2_learning_curve_equal_20workers.tex)
+<images/fig1-11.png, id=7933, 2710.125pt x 1397.22pt>
 File: images/fig1-11.png Graphic file (type png)
 <use images/fig1-11.png>
 Package luatex.def Info: images/fig1-11.png  used on input line 290.
 (luatex.def)             Requested size: 364.51949pt x 187.91301pt.
 
 
-[25<./images/fig4-6.pdf>](load cache: extra_lmmono8-regular.luc)
+[23<./images/fig4-6.pdf>](load cache: extra_lmmono8-regular.luc)
 
-[26<./images/fig1-11.png>] (./section/table_exp3_top_patterns_step20.tex) (./section/table_exp3_top_patterns_step30.tex)
+[24<./images/fig1-11.png>] (./section/table_exp3_top_patterns_step20.tex) (./section/table_exp3_top_patterns_step30.tex)
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95001> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 411.
 (load cache: extra_lmmonolt10-bold.luc)
@@ -1488,80 +1477,80 @@ LaTeX Font Info:    Font shape `JY3/HaranoAjiGothic-Medium.otf(0)/b/n' will be
 (Font)              scaled to size 10.12561pt on input line 411.
 
 
-[27]
+[25]
+
+[26]
+
+[27])
 
 [28]
 
-[29])
-
-[30]
-
-[31]
+[29]
 第5章
 (./section/5_considerations.tex
 
-[32
+[30
 
 ])
 
-[33]
+[31]
 第6章
 (./section/6_user_study.tex
 
-[34
+[32
 
 ]
 
-[35])
+[33])
 
-[36]
+[34]
 第7章
 (./section/6_avoidance_penalty.tex
 
-[37
+[35
 
 ]
 
-[38]
-<images/fig1-12.png, id=9395, 2268.475pt x 658.46pt>
+[36]
+<images/fig1-12.png, id=8677, 2268.475pt x 658.46pt>
 File: images/fig1-12.png Graphic file (type png)
 <use images/fig1-12.png>
 Package luatex.def Info: images/fig1-12.png  used on input line 38.
 (luatex.def)             Requested size: 364.51949pt x 105.79782pt.
 
 
-[39<./images/fig1-12.png>]
+[37<./images/fig1-12.png>]
 Overfull \hbox (74.4275pt too wide) in paragraph at lines 70--71
 []\TU/lmtt/m/n/10.95001 time_recent_exp_7d\TU/lmr/m/n/10.95001 , \TU/lmtt/m/n/10.95001 time_window_uniform_90d[]  |\JY3/HaranoAjiMincho-Regular.otf(0)/m/n/10.95001 か |ら |選 |択 |す |る  []\TU/lmtt/m/n/10.95001 time_window_uniform_90d
  []
 
 
 
-[40]
-<images/fig1-13.png, id=9413, 2288.55pt x 843.15pt>
+[38]
+<images/fig1-13.png, id=8694, 2288.55pt x 843.15pt>
 File: images/fig1-13.png Graphic file (type png)
 <use images/fig1-13.png>
 Package luatex.def Info: images/fig1-13.png  used on input line 88.
 (luatex.def)             Requested size: 364.51949pt x 134.28922pt.
 (./section/table_ch7_penalty_timeauto_20workers_equal.tex) (./section/table_ch7_penalty_timeauto_20workers_equal_step15.tex))
 
-[41<./images/fig1-13.png>]
+[39<./images/fig1-13.png>]
 
-[42]
+[40]
 第8章
 (./section/7_future.tex)
 
-[43
+[41
 
 ]
 第9章
 (./section/9_conclusion.tex)
 
-[44
+[42
 
 ]
 
-[45
+[43
 
 
 ](load cache: extra_lmroman10-italic.luc)
@@ -1577,27 +1566,27 @@ LaTeX Font Info:    Kanji font shape `JY3/HaranoAjiMincho-Regular.otf(0)/m/it' u
 (Font)              No change on input line 131.
 
 
-[46
+[44
 
 
 ]
 
-[47
+[45
 
 ]
 付録A
 (./section/appendix_weight_patterns.tex)
 
-[48
+[46
 
 
 ]
 
-[49]
+[47]
 付録B
 
 
-[50
+[48
 
 ] (./out/main.aux)
  ***********
@@ -1605,23 +1594,23 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2FBA6BAFB176C9DAADAE24E78C335FDA;7417.
+(rerunfilecheck)             Checksum: 3F4912418CC1A4ECD103C7D1493A2E98;7816.
 )
 
 Here is how much of LuaTeX's memory you used:
- 29532 strings out of 475506
- 597237,1144653 words of node,token memory allocated
+ 29520 strings out of 475506
+ 597244,1144653 words of node,token memory allocated
  3165 words of node memory still in use:
    26 hlist, 2 vlist, 13 rule, 2 glue, 4 kern, 1 glyph, 948 attribute, 63 glue_spec, 110 attribute_list, 2 write, 29 user_defined, 16 pdf_literal, 4 pdf_action, 16 pdf_colorstack nodes
-   avail lists: 1:44,2:213655,3:1498,4:1111,5:253,6:292,7:14174,8:39,9:4773,10:39,11:50
- 51355 multiletter control sequences out of 65536+600000
+   avail lists: 1:43,2:213655,3:1498,4:1111,5:253,6:292,7:14174,8:39,9:4773,10:34,11:50
+ 51351 multiletter control sequences out of 65536+600000
  177 fonts using 162258839 bytes
  130i,12n,131p,1928b,716s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmromandemi10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans17-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (56 pages, 7128752 bytes).
+Output written on main.pdf (54 pages, 6649279 bytes).
 
-PDF statistics: 9591 PDF objects out of 10688 (max. 8388607)
- 3411 compressed objects within 35 object streams
- 221 named destinations out of 1000 (max. 131072)
- 536 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 8872 PDF objects out of 8907 (max. 8388607)
+ 3197 compressed objects within 32 object streams
+ 216 named destinations out of 1000 (max. 131072)
+ 552 words of extra memory for PDF output out of 10000 (max. 100000000)
 
