@@ -533,6 +533,7 @@ INPUT ./section/table_exp1_learning_curve_title_only_20workers.tex
 INPUT ./section/table_exp1_learning_curve_title_only_excluding_top10.tex
 INPUT ./section/table_exp1_learning_curve_content_only_20workers.tex
 INPUT ./section/table_exp1_learning_curve_content_only_excluding_top10.tex
+INPUT ./section/appendix_exp4_time_auto_details.tex
 INPUT ./out/main.aux
 INPUT ./out/main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

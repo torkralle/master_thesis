@@ -11,31 +11,34 @@
 \contentsline {table}{\numberline {4.7}{\ignorespaces 時間重み付け比較（特徴量配分=\texttt {equal}, 複合スコア比較）}}{27}{table.caption.46}%
 \contentsline {table}{\numberline {4.8}{\ignorespaces 時間重み付け上位パターン（特徴量配分=\texttt {equal}, 学習20件）}}{27}{table.caption.47}%
 \contentsline {table}{\numberline {4.9}{\ignorespaces ステップ別平均複合スコア（特徴量配分=\texttt {equal}, 有効ワーカー平均）}}{27}{table.caption.48}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み自動判別の実装結果（18名, 平均Top-K）}}{29}{table.caption.53}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces 18名データの時間パターン上位（平均Top-K, 全重み付け平均）}}{29}{table.caption.56}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み自動判別の実装結果（18名, 平均Top-K）}}{28}{table.caption.53}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / 時間重み自動判別）}}{37}{table.caption.70}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces 4条件同時比較の平均精度（10名, \texttt {equal}）}}{39}{table.caption.79}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces 4条件同時比較の平均精度（18名, \texttt {equal}）}}{39}{table.caption.80}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces 4条件同時比較の平均精度（学習15件, 18名, \texttt {equal}）}}{40}{table.caption.81}%
+\contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / 時間重み付け無し / 学習20件）}}{39}{table.caption.69}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces 4条件同時比較の平均精度（学習20件, 18名, \texttt {equal}）}}{41}{table.caption.80}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces 4条件同時比較の平均精度（学習15件, 18名, \texttt {equal}）}}{41}{table.caption.81}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {A.1}{\ignorespaces 項目別重み付けパターン一覧（全体）}}{46}{table.A.1}%
-\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン（代表例）}}{47}{table.caption.86}%
-\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{47}{table.caption.87}%
-\contentsline {table}{\numberline {A.4}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{47}{table.caption.88}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces 項目別重み付けパターン一覧（全体）}}{48}{table.A.1}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン（代表例）}}{49}{table.caption.86}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{49}{table.caption.87}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{49}{table.caption.88}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {C.1}{\ignorespaces 時間重み付け比較（全特徴量配分平均, 複合スコア比較）}}{49}{table.caption.89}%
-\contentsline {table}{\numberline {C.2}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{49}{table.caption.90}%
-\contentsline {table}{\numberline {C.3}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{50}{table.caption.91}%
-\contentsline {table}{\numberline {C.4}{\ignorespaces 時間重み付け上位パターン（学習30件, 全特徴量配分）}}{51}{table.caption.92}%
+\contentsline {table}{\numberline {C.1}{\ignorespaces 時間重み付け比較（全特徴量配分平均, 複合スコア比較）}}{51}{table.caption.89}%
+\contentsline {table}{\numberline {C.2}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{51}{table.caption.90}%
+\contentsline {table}{\numberline {C.3}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{52}{table.caption.91}%
+\contentsline {table}{\numberline {C.4}{\ignorespaces 時間重み付け上位パターン（学習30件, 全特徴量配分）}}{53}{table.caption.92}%
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {D.1}{\ignorespaces ワーカー別の推薦精度（求人タイトルのみ、30件学習、10件テスト）}}{52}{table.caption.93}%
-\contentsline {table}{\numberline {D.2}{\ignorespaces 学習件数別の精度推移（求人タイトルのみ、18名）}}{52}{table.caption.94}%
-\contentsline {table}{\numberline {D.3}{\ignorespaces 就業回数上位10名を除いた場合の精度推移（求人タイトルのみ）}}{53}{table.caption.95}%
-\contentsline {table}{\numberline {D.4}{\ignorespaces 学習件数別の精度推移（業務内容のみ、18名）}}{53}{table.caption.96}%
-\contentsline {table}{\numberline {D.5}{\ignorespaces 就業回数上位10名を除いた場合の精度推移（業務内容のみ）}}{53}{table.caption.97}%
+\contentsline {table}{\numberline {D.1}{\ignorespaces ワーカー別の推薦精度（求人タイトルのみ、30件学習、10件テスト）}}{54}{table.caption.93}%
+\contentsline {table}{\numberline {D.2}{\ignorespaces 学習件数別の精度推移（求人タイトルのみ、18名）}}{54}{table.caption.94}%
+\contentsline {table}{\numberline {D.3}{\ignorespaces 就業回数上位10名を除いた場合の精度推移（求人タイトルのみ）}}{55}{table.caption.95}%
+\contentsline {table}{\numberline {D.4}{\ignorespaces 学習件数別の精度推移（業務内容のみ、18名）}}{55}{table.caption.96}%
+\contentsline {table}{\numberline {D.5}{\ignorespaces 就業回数上位10名を除いた場合の精度推移（業務内容のみ）}}{55}{table.caption.97}%
+\addvspace {10\jsc@mpt }
+\contentsline {table}{\numberline {E.1}{\ignorespaces 18名データの時間パターン上位（学習20件, 平均Top-K, 全重み付け平均）}}{56}{table.caption.99}%
+\contentsline {table}{\numberline {E.2}{\ignorespaces 20名データにおける時間重み自動判別（\texttt {equal}）の学習ステップ別平均Top-K（drift 閾値 0.5/0.7）}}{57}{table.caption.102}%
+\contentsline {table}{\numberline {E.3}{\ignorespaces 20名データにおける時間重み自動判別（\texttt {equal}）の学習ステップ別平均Top-K（drift 閾値 0.05）}}{57}{table.caption.104}%
+\contentsline {table}{\numberline {E.4}{\ignorespaces 20名データにおける時間重み自動判別（\texttt {equal}）の学習ステップ別平均Top-K（drift 閾値 0.03）}}{58}{table.caption.106}%
