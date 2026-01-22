@@ -28,6 +28,8 @@ $makeindex = 'mendex %O -o %D %S';
 $ENV{'TZ'} = 'Asia/Tokyo';
 $ENV{OPENTYPEFONTS} = '/usr/share/fonts//:';
 $ENV{TTFONTS} = '/usr/share/fonts//:';
+$ENV{'TEXMFVAR'} = 'out/texmf-var';
+$ENV{'TEXMFCACHE'} = 'out/texmf-var';
 
 # ====================
 # Preview Settings

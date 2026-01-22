@@ -2,38 +2,38 @@
 \hline
 特徴量配分 & 時間重み & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
 \hline
-業務内容重視（\texttt{content\_focused}） & セッション順線形10件（\texttt{time\_session\_linear\_10}） & 0.5111 & 0.7000 & 0.7500 \\
-業務内容重視（\texttt{content\_focused}） & 直近7日指数減衰（\texttt{time\_recent\_exp\_7d}） & 0.5111 & 0.6889 & 0.7500 \\
-均等配分（\texttt{equal}） & セッション順線形20件（\texttt{time\_session\_linear\_20}） & 0.5111 & 0.6333 & 0.7444 \\
-業務内容重視（\texttt{content\_focused}） & Softmax 7日（\texttt{time\_softmax\_7d}） & 0.4778 & 0.6889 & 0.7444 \\
-業務内容重視（\texttt{content\_focused}） & 直近30日線形減衰（\texttt{time\_recent\_linear\_30d}） & 0.5278 & 0.7000 & 0.7389 \\
-時給重視（\texttt{salary\_focused}） & セッション順線形20件（\texttt{time\_session\_linear\_20}） & 0.5167 & 0.6389 & 0.7389 \\
-勤務時間重視（\texttt{work\_time\_focused}） & セッション順線形20件（\texttt{time\_session\_linear\_20}） & 0.5222 & 0.6222 & 0.7389 \\
-均等配分（\texttt{equal}） & セッション順線形10件（\texttt{time\_session\_linear\_10}） & 0.5389 & 0.6667 & 0.7389 \\
-均等配分（\texttt{equal}） & 直近7日指数減衰（\texttt{time\_recent\_exp\_7d}） & 0.5556 & 0.6944 & 0.7389 \\
-均等配分（\texttt{equal}） & 直近90日線形減衰（\texttt{time\_recent\_linear\_90d}） & 0.5278 & 0.6611 & 0.7333 \\
-均等配分（\texttt{equal}） & セッション順指数（半減期5）（\texttt{time\_session\_exp\_5}） & 0.5222 & 0.6611 & 0.7333 \\
-業務内容重視（\texttt{content\_focused}） & 直近5件ステップ（\texttt{time\_step\_k\_5}） & 0.5333 & 0.7056 & 0.7333 \\
-業務内容重視（\texttt{content\_focused}） & セッション順ステップ5件（\texttt{time\_session\_step\_k\_5}） & 0.5333 & 0.7056 & 0.7333 \\
-介護項目重視（\texttt{care\_focused}） & 直近7日指数減衰（\texttt{time\_recent\_exp\_7d}） & 0.5500 & 0.6944 & 0.7333 \\
-勤務時間重視（\texttt{work\_time\_focused}） & セッション順線形10件（\texttt{time\_session\_linear\_10}） & 0.5389 & 0.6611 & 0.7278 \\
-時給重視（\texttt{salary\_focused}） & 直近30日指数減衰（\texttt{time\_recent\_exp\_30d}） & 0.5278 & 0.6556 & 0.7278 \\
-時給重視（\texttt{salary\_focused}） & セッション順指数（半減期10）（\texttt{time\_session\_exp\_10}） & 0.5056 & 0.6444 & 0.7278 \\
-業務内容重視（\texttt{content\_focused}） & 直近30日指数減衰（\texttt{time\_recent\_exp\_30d}） & 0.5278 & 0.6667 & 0.7278 \\
-業務内容重視（\texttt{content\_focused}） & Softmax 30日（\texttt{time\_softmax\_30d}） & 0.5222 & 0.6667 & 0.7278 \\
-均等配分（\texttt{equal}） & 直近30日指数減衰（\texttt{time\_recent\_exp\_30d}） & 0.5389 & 0.6556 & 0.7278 \\
-均等配分（\texttt{equal}） & \texttt{time\_bi\_level\_10} & 0.5000 & 0.6333 & 0.7278 \\
-均等配分（\texttt{equal}） & \texttt{time\_session\_bi\_level\_10} & 0.5000 & 0.6333 & 0.7278 \\
-勤務時間重視（\texttt{work\_time\_focused}） & セッション順指数（半減期10）（\texttt{time\_session\_exp\_10}） & 0.5111 & 0.6278 & 0.7278 \\
-介護項目重視（\texttt{care\_focused}） & 直近30日線形減衰（\texttt{time\_recent\_linear\_30d}） & 0.5389 & 0.6889 & 0.7278 \\
-均等配分（\texttt{equal}） & 直近30日線形減衰（\texttt{time\_recent\_linear\_30d}） & 0.5333 & 0.6722 & 0.7278 \\
+業務内容重視（\texttt{content\_focused}） & セッション順線形10件 & 0.5111 & 0.7000 & 0.7500 \\
+業務内容重視（\texttt{content\_focused}） & 直近7日指数減衰 & 0.5111 & 0.6889 & 0.7500 \\
+均等配分（\texttt{equal}） & セッション順線形20件 & 0.5111 & 0.6333 & 0.7444 \\
+業務内容重視（\texttt{content\_focused}） & Softmax 7日 & 0.4778 & 0.6889 & 0.7444 \\
+業務内容重視（\texttt{content\_focused}） & 直近30日線形減衰 & 0.5278 & 0.7000 & 0.7389 \\
+時給重視（\texttt{salary\_focused}） & セッション順線形20件 & 0.5167 & 0.6389 & 0.7389 \\
+勤務時間重視（\texttt{work\_time\_focused}） & セッション順線形20件 & 0.5222 & 0.6222 & 0.7389 \\
+均等配分（\texttt{equal}） & セッション順線形10件 & 0.5389 & 0.6667 & 0.7389 \\
+均等配分（\texttt{equal}） & 直近7日指数減衰 & 0.5556 & 0.6944 & 0.7389 \\
+均等配分（\texttt{equal}） & 直近90日線形減衰 & 0.5278 & 0.6611 & 0.7333 \\
+均等配分（\texttt{equal}） & セッション順指数（半減期5） & 0.5222 & 0.6611 & 0.7333 \\
+業務内容重視（\texttt{content\_focused}） & 直近5件ステップ & 0.5333 & 0.7056 & 0.7333 \\
+業務内容重視（\texttt{content\_focused}） & セッション順ステップ5件 & 0.5333 & 0.7056 & 0.7333 \\
+介護項目重視（\texttt{care\_focused}） & 直近7日指数減衰 & 0.5500 & 0.6944 & 0.7333 \\
+勤務時間重視（\texttt{work\_time\_focused}） & セッション順線形10件 & 0.5389 & 0.6611 & 0.7278 \\
+時給重視（\texttt{salary\_focused}） & 直近30日指数減衰 & 0.5278 & 0.6556 & 0.7278 \\
+時給重視（\texttt{salary\_focused}） & セッション順指数（半減期10） & 0.5056 & 0.6444 & 0.7278 \\
+業務内容重視（\texttt{content\_focused}） & 直近30日指数減衰 & 0.5278 & 0.6667 & 0.7278 \\
+業務内容重視（\texttt{content\_focused}） & Softmax 30日 & 0.5222 & 0.6667 & 0.7278 \\
+均等配分（\texttt{equal}） & 直近30日指数減衰 & 0.5389 & 0.6556 & 0.7278 \\
+均等配分（\texttt{equal}） & 2段階重み（直近重視） & 0.5000 & 0.6333 & 0.7278 \\
+均等配分（\texttt{equal}） & セッション順の2段階重み（直近重視） & 0.5000 & 0.6333 & 0.7278 \\
+勤務時間重視（\texttt{work\_time\_focused}） & セッション順指数（半減期10） & 0.5111 & 0.6278 & 0.7278 \\
+介護項目重視（\texttt{care\_focused}） & 直近30日線形減衰 & 0.5389 & 0.6889 & 0.7278 \\
+均等配分（\texttt{equal}） & 直近30日線形減衰 & 0.5333 & 0.6722 & 0.7278 \\
 \hline
-\multicolumn{5}{l}{（参考）直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}）の結果}\\
-業務内容重視（\texttt{content\_focused}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.4944 & 0.6500 & 0.7167 \\
-均等配分（\texttt{equal}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.4944 & 0.6500 & 0.7056 \\
-時給重視（\texttt{salary\_focused}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.4889 & 0.6500 & 0.7056 \\
-求人タイトル重視（\texttt{job\_title\_focused}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.4278 & 0.6444 & 0.6889 \\
-介護項目重視（\texttt{care\_focused}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.5111 & 0.6556 & 0.6778 \\
-勤務時間重視（\texttt{work\_time\_focused}） & 直近90日ウィンドウ（\texttt{time\_window\_uniform\_90d}） & 0.5056 & 0.6556 & 0.6944 \\
+\multicolumn{5}{l}{（参考）直近90日ウィンドウの結果}\\
+業務内容重視（\texttt{content\_focused}） & 直近90日ウィンドウ & 0.4944 & 0.6500 & 0.7167 \\
+均等配分（\texttt{equal}） & 直近90日ウィンドウ & 0.4944 & 0.6500 & 0.7056 \\
+時給重視（\texttt{salary\_focused}） & 直近90日ウィンドウ & 0.4889 & 0.6500 & 0.7056 \\
+求人タイトル重視（\texttt{job\_title\_focused}） & 直近90日ウィンドウ & 0.4278 & 0.6444 & 0.6889 \\
+介護項目重視（\texttt{care\_focused}） & 直近90日ウィンドウ & 0.5111 & 0.6556 & 0.6778 \\
+勤務時間重視（\texttt{work\_time\_focused}） & 直近90日ウィンドウ & 0.5056 & 0.6556 & 0.6944 \\
 \hline
 \end{tabularx}

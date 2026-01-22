@@ -1,10 +1,10 @@
-本実験2・3で使用した重み付けパターンの全一覧を示す。
+本付録では、本文の本実験で用いた重み付けパターンの一覧を示す。前半は\textbf{項目別重み付け}（職種・業務内容などの配分）、後半は\textbf{時間重み付け}（履歴の新しさを反映）である。
 
 {\scriptsize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
 \begin{longtable}{>{\raggedright\arraybackslash\ttfamily\tiny}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedright\arraybackslash}p{0.35\linewidth}}
-\caption{本実験2の重み付けパターン一覧（全体）} \\
+\caption{項目別重み付けパターン一覧（全体）} \\
 \hline
 パターンID & GUI表示名 & 重み & 意図 \\
 \hline
@@ -47,6 +47,27 @@
 \setlength{\tabcolsep}{6pt}
 \renewcommand{\arraystretch}{1.0}
 }
+
+本論文中で言及する主要な時間重み付けの代表例を示す。
+\begin{table}[htbp]
+\centering
+\caption{時間重み付けパターン（代表例）}
+\label{tab:time-weighting-core}
+\scriptsize
+\begin{tabularx}{\linewidth}{l X}
+\hline
+パターン & 意味 \\
+\hline
+\texttt{time\_equal} & 時間減衰なし（全履歴を同一重み）。 \\
+\texttt{time\_recent\_exp\_7d} & 直近ほど重視する指数減衰（半減期7日）。 \\
+\texttt{time\_recent\_linear\_30d} & 直近ほど重視する線形減衰（30日で0）。 \\
+\texttt{time\_softmax\_7d} & 直近ほど重視するソフトマックス型（温度7日相当）。 \\
+\texttt{time\_window\_uniform\_90d} & 直近90日を同一重み（それより古い履歴は0）。 \\
+\texttt{time\_session\_linear\_10} & セッション順の線形減衰（直近10件で0）。 \\
+\texttt{time\_session\_linear\_20} & セッション順の線形減衰（直近20件で0）。 \\
+\hline
+\end{tabularx}
+\end{table}
 
 \begin{table}[htbp]
 \centering
@@ -99,8 +120,8 @@
 \texttt{time\_inverse\_age\_1} & 反比例減衰（$1/(age+1)$）。 \\
 \texttt{time\_sigmoid\_30d\_10d} & シグモイド減衰（中心30日、幅10日）。 \\
 \texttt{time\_decay\_then\_flat\_30d} & 30日までは指数減衰、それ以降は0.2固定。 \\
-\texttt{time\_softmax\_30d} & Softmax減衰（温度30日）。 \\
-\texttt{time\_softmax\_7d} & Softmax減衰（温度7日）。 \\
+\texttt{time\_softmax\_30d} & ソフトマックス減衰（温度30日）。 \\
+\texttt{time\_softmax\_7d} & ソフトマックス減衰（温度7日）。 \\
 \texttt{time\_session\_power\_1} & セッションパワー減衰（$1/(k+1)$）。 \\
 \hline
 \end{tabularx}
