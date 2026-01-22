@@ -5,16 +5,16 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces 予備実験2の評価データ（アンカーと類似/非類似職種の例）}}{20}{table.caption.36}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces 均等重みにおける学習データ数別の精度推移}}{21}{table.caption.39}%
 \contentsline {table}{\numberline {4.3}{\ignorespaces 本実験2の主要重み付けパターン}}{22}{table.caption.40}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（20件学習）の上位パターン}}{22}{table.caption.41}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（30件学習）の上位パターン}}{22}{table.caption.42}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 学習データ数による精度推移（Top-5精度）}}{23}{table.caption.43}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces 特徴量配分パターン（本実験3）}}{24}{table.caption.45}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 本実験2（20件学習）の上位パターン}}{23}{table.caption.41}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces 本実験2（30件学習）の上位パターン}}{23}{table.caption.42}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces 学習データ数による精度推移（上位5件一致率）}}{24}{table.caption.43}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces 特徴量配分パターン（本実験3）}}{25}{table.caption.45}%
 \contentsline {table}{\numberline {4.8}{\ignorespaces 時間重み付け比較（20名, 平均Top-5）}}{25}{table.caption.46}%
 \contentsline {table}{\numberline {4.9}{\ignorespaces 時間重み付け上位パターン（20名, 平均Top-5）}}{25}{table.caption.47}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付け上位パターン（学習20件, 20名（有効18名））}}{25}{table.caption.48}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces 時間重み付け上位パターン（学習30件, 20名（有効11名））}}{26}{table.caption.49}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces ステップ別平均Top-5（20名, 有効ワーカー平均）}}{26}{table.caption.50}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces 時間重み自動判別の実装結果（20名（有効18名）, 平均Top-K）}}{27}{table.caption.51}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces 時間重み付け上位パターン（学習20件, 20名（有効18名））}}{26}{table.caption.48}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces 時間重み付け上位パターン（学習30件, 20名（有効11名））}}{27}{table.caption.49}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces ステップ別平均Top-5（20名, 有効ワーカー平均）}}{27}{table.caption.50}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces 時間重み自動判別の実装結果（20名（有効18名）, 平均Top-K）}}{28}{table.caption.51}%
 \contentsline {table}{\numberline {4.14}{\ignorespaces 20名データの時間パターン上位（平均Top-K, 全重み付け平均）}}{28}{table.caption.54}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

@@ -1,12 +1,12 @@
 \contentsline {chapter}{\numberline {第1章}序論}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}介護人材不足の量的課題}{1}{section.1.1}%
 \contentsline {paragraph}{潜在介護福祉士の存在と再就業障壁}{1}{section*.5}%
-\contentsline {paragraph}{国の施策における位置づけ}{2}{section*.7}%
+\contentsline {paragraph}{国の施策における位置づけ}{3}{section*.7}%
 \contentsline {paragraph}{総合的な人材確保戦略}{3}{section*.9}%
 \contentsline {section}{\numberline {1.2}介護業界が直面する課題}{3}{section.1.2}%
 \contentsline {paragraph}{人材ミスマッチと経営危機}{3}{section*.10}%
 \contentsline {paragraph}{北海道の特殊事情}{4}{section*.12}%
-\contentsline {section}{\numberline {1.3}介護マッチングアプリの仕組み}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.3}介護マッチングアプリの仕組み}{6}{section.1.3}%
 \contentsline {section}{\numberline {1.4}アーキテクチャとビジネスモデル}{6}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}ビジネスモデル}{6}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}現在のアプリのアーキテクチャ}{6}{subsection.1.4.2}%
@@ -30,9 +30,9 @@
 \contentsline {section}{\numberline {4.2}予備実験1：日本語BERTモデルによる単語間類似度測定}{19}{section.4.2}%
 \contentsline {section}{\numberline {4.3}予備実験2：BERTモデルの横断評価}{19}{section.4.3}%
 \contentsline {section}{\numberline {4.4}本実験1：均等重みによる統合推薦}{21}{section.4.4}%
-\contentsline {section}{\numberline {4.5}本実験2：複数項目の重み付けによる精度向上}{21}{section.4.5}%
-\contentsline {section}{\numberline {4.6}本実験3：時間重み付け比較}{24}{section.4.6}%
-\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{27}{section.4.7}%
+\contentsline {section}{\numberline {4.5}本実験2：複数項目の重み付けによる精度向上}{22}{section.4.5}%
+\contentsline {section}{\numberline {4.6}本実験3：時間重み付け比較}{23}{section.4.6}%
+\contentsline {section}{\numberline {4.7}本実験4：時間重み自動選択の実装と結果}{26}{section.4.7}%
 \contentsline {chapter}{\numberline {第5章}考察}{29}{chapter.5}%
 \contentsline {chapter}{\numberline {第6章}ユーザースタディ}{31}{chapter.6}%
 \contentsline {section}{\numberline {6.1}インタビュー対象者}{31}{section.6.1}%
