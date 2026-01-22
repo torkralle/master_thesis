@@ -1,0 +1,48 @@
+% 本実験3（時間重み付け比較）の詳細（equal以外を含む）
+
+本文（本実験3）では、議論を明確にするため特徴量配分を \texttt{equal} に固定した結果のみを示した。
+本付録では、\textbf{他の特徴量配分を含む}時間重み付け比較の結果をまとめる。
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け比較（全特徴量配分平均, 複合スコア比較）}
+\scriptsize
+\begin{tabular}{l r r r r l}
+\hline
+代表パターン & 複合スコア & 平均Top-1 & 平均Top-3 & 平均Top-5 & 備考 \\
+\hline
+直近重視の指数減衰 & 0.6199 & 0.5352 & 0.6880 & 0.7296 & 全重み付け平均で最良 \\
+直近30日線形減衰 & 0.6131 & 0.5278 & 0.6824 & 0.7222 & 線形に直近を重視 \\
+時間減衰なし & 0.5734 & 0.4917 & 0.6278 & 0.6963 & ベースライン \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（学習20件, 全特徴量配分）}
+\scriptsize
+\begin{tabularx}{\linewidth}{X X r r r}
+\hline
+特徴量配分 & 時間重み & 平均Top-1 & 平均Top-3 & 平均Top-5 \\
+\hline
+業務内容重視（\texttt{content\_focused}） & 直近重視の指数減衰 & 0.5111 & 0.6889 & 0.7500 \\
+業務内容重視（\texttt{content\_focused}） & セッション順の線形減衰（短期） & 0.5111 & 0.7000 & 0.7500 \\
+均等配分（\texttt{equal}） & セッション順の線形減衰（中期） & 0.5111 & 0.6333 & 0.7444 \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（学習20件, 全特徴量配分）}
+\scriptsize
+\input{section/table_exp3_top_patterns_step20}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{時間重み付け上位パターン（学習30件, 全特徴量配分）}
+\scriptsize
+\input{section/table_exp3_top_patterns_step30}
+\end{table}

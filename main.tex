@@ -14,6 +14,8 @@
 \usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows, backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{bm}
 \usepackage{indentfirst}
 \usepackage{amsmath}
@@ -167,6 +169,10 @@ pdfauthor={星子祐哉}
 	\item \textbf{analyze\_real\_data}: 実データ分析・推薦評価の実験環境。Sentence-BERTを用いた推薦エンジンと評価器、職種ベース/介護項目ベースの軽量ベースライン、インタビュー知見を統合したハイブリッド推薦、FastAPIによるWeb GUI、単一分析/バッチ分析スクリプト、可視化・結果出力機能などを実装している。
 	\item \textbf{master\_thesis}: 本論文のソース一式（\LaTeX{}）。
 \end{itemize}
+
+\chapter{本実験3：時間重み付け比較（特徴量配分別の詳細）}
+\label{app:exp3-time-weighting-details}
+\input{./section/appendix_exp3_time_weighting_details.tex}
 
 \chapter{基礎ベースライン（求人タイトルのみ・業務内容のみ）}
 \label{app:baselines}

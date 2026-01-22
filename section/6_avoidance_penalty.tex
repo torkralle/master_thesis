@@ -31,12 +31,12 @@ GUIには「業務回避ペナルティを有効化」のチェックボック�
 重み付けパターン比較をベースに、\textbf{ペナルティ無し}と\textbf{ペナルティ有り}を同一条件で評価する。出力はTop-1/Top-3/Top-5の精度比較と回避項目の一覧を提示し、回避傾向が強いワーカーほど順位変化が大きいかを確認する。
 
 \subsubsection*{結果}
-20名データのうち、時間重み自動判別の比較結果が揃った18名を対象に平均精度を算出した。ペナルティ有りはTop-1/Top-3/Top-5の全てで改善し、回避傾向が推薦結果に反映されることが確認できた。
+18名データのうち、時間重み自動判別の比較結果が揃った18名を対象に平均精度を算出した。ペナルティ有りはTop-1/Top-3/Top-5の全てで改善し、回避傾向が推薦結果に反映されることが確認できた。
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{images/fig1-12.png}
-\caption{20名データの重み付けパターン比較（概観）}
+\caption{18名データの重み付けパターン比較（概観）}
 \label{fig:20people-patterns}
 \end{figure}
 
@@ -110,14 +110,14 @@ GUIでは「ペナルティ有無 + 時間重み自動判別 比較」を用意�
 
 \begin{table}[htbp]
 \centering
-\caption{4条件同時比較の平均精度（20名（有効18名）, \texttt{equal}）}
+\caption{4条件同時比較の平均精度（18名, \texttt{equal}）}
 \label{tab:avoidance-timeauto-20workers-equal}
 \input{section/table_ch7_penalty_timeauto_20workers_equal}
 \end{table}
 
 \begin{table}[htbp]
 \centering
-\caption{4条件同時比較の平均精度（学習15件, 20名（有効18名）, \texttt{equal}）}
+\caption{4条件同時比較の平均精度（学習15件, 18名, \texttt{equal}）}
 \label{tab:avoidance-timeauto-20workers-equal-step15}
 \input{section/table_ch7_penalty_timeauto_20workers_equal_step15}
 \end{table}

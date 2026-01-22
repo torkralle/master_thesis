@@ -10,6 +10,9 @@ $max_repeat = 10;
 # PDF モードを LuaLaTeX に設定
 $pdf_mode = 4;
 
+# Build artifacts go under ./out so cross-references stabilize across runs.
+$out_dir = 'out';
+
 # ====================
 # Bibliography Settings
 # ====================
@@ -28,8 +31,8 @@ $makeindex = 'mendex %O -o %D %S';
 $ENV{'TZ'} = 'Asia/Tokyo';
 $ENV{OPENTYPEFONTS} = '/usr/share/fonts//:';
 $ENV{TTFONTS} = '/usr/share/fonts//:';
-$ENV{'TEXMFVAR'} = 'out/texmf-var';
-$ENV{'TEXMFCACHE'} = 'out/texmf-var';
+$ENV{'TEXMFVAR'} = "$out_dir/texmf-var";
+$ENV{'TEXMFCACHE'} = "$out_dir/texmf-cache";
 
 # ====================
 # Preview Settings
