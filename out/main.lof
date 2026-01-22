@@ -14,15 +14,12 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces 推薦システム設計の全体像}}{14}{figure.caption.19}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 技術スタックとディレクトリ構成}}{15}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces 実験システムのWeb GUI画面例}}{16}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces BERTモデル別の分離度スコア}}{21}{figure.caption.39}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 本実験2における主要パターンのスコア比較}}{25}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces BERTモデル別の分離度スコア}}{21}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 本実験2における主要パターンのスコア比較}}{25}{figure.caption.44}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces 18名データの重み付けパターン比較（概観）}}{38}{figure.caption.68}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{41}{figure.caption.78}%
-\addvspace {10\jsc@mpt }
-\addvspace {10\jsc@mpt }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces ペナルティ有無 + 時間重み自動判別の同時評価結果}}{40}{figure.caption.72}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }

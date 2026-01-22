@@ -37,27 +37,20 @@
 \contentsline {chapter}{\numberline {第6章}ユーザースタディ}{32}{chapter.6}%
 \contentsline {section}{\numberline {6.1}インタビュー対象者}{32}{section.6.1}%
 \contentsline {section}{\numberline {6.2}求人選択の実態}{32}{section.6.2}%
-\contentsline {paragraph}{リピート志向の強さ}{32}{section*.55}%
-\contentsline {paragraph}{駐車場の重要性}{33}{section*.56}%
-\contentsline {paragraph}{業務内容の選好}{33}{section*.57}%
-\contentsline {paragraph}{給与の基準}{33}{section*.58}%
+\contentsline {paragraph}{リピート志向の強さ}{32}{section*.54}%
+\contentsline {paragraph}{駐車場の重要性}{33}{section*.55}%
+\contentsline {paragraph}{業務内容の選好}{33}{section*.56}%
+\contentsline {paragraph}{給与の基準}{33}{section*.57}%
 \contentsline {section}{\numberline {6.3}情報収集の実態}{33}{section.6.3}%
 \contentsline {section}{\numberline {6.4}ユーザースタディから得られた示唆}{33}{section.6.4}%
 \contentsline {chapter}{\numberline {第7章}回避業務ペナルティと時間志向の実験}{35}{chapter.7}%
 \contentsline {section}{\numberline {7.1}追加実験1：回避業務ペナルティの検証}{35}{section.7.1}%
 \contentsline {section}{\numberline {7.2}追加実験2：時間志向を同時に扱った場合}{39}{section.7.2}%
-\contentsline {chapter}{\numberline {第8章}今後の展望}{43}{chapter.8}%
+\contentsline {chapter}{\numberline {第8章}今後の展望}{42}{chapter.8}%
 \contentsline {chapter}{\numberline {第9章}結論}{44}{chapter.9}%
-\contentsline {chapter}{謝辞}{45}{chapter*.83}%
-\contentsline {chapter}{参考文献}{46}{chapter*.84}%
-\contentsline {chapter}{研究業績}{47}{chapter*.85}%
+\contentsline {chapter}{謝辞}{45}{chapter*.77}%
+\contentsline {chapter}{参考文献}{46}{chapter*.78}%
+\contentsline {chapter}{研究業績}{47}{chapter*.79}%
 \contentsline {chapter}{\numberline {付録A}重み付けパターン一覧（本実験1〜4）}{48}{appendix.A}%
 \contentsline {chapter}{\numberline {付録B}システム構成概要（ディレクトリベース）}{50}{appendix.B}%
 \contentsline {chapter}{\numberline {付録C}本実験3：時間重み付け比較（特徴量配分別の詳細）}{51}{appendix.C}%
-\contentsline {chapter}{\numberline {付録D}基礎ベースライン（求人タイトルのみ・業務内容のみ）}{54}{appendix.D}%
-\contentsline {section}{\numberline {D.1}求人タイトルのみ}{54}{section.D.1}%
-\contentsline {section}{\numberline {D.2}業務内容のみ}{55}{section.D.2}%
-\contentsline {chapter}{\numberline {付録E}本実験4補足：時間重み自動判別の詳細結果}{56}{appendix.E}%
-\contentsline {paragraph}{drift 閾値 0.5 / 0.7}{57}{section*.101}%
-\contentsline {paragraph}{drift 閾値 0.05}{57}{section*.103}%
-\contentsline {paragraph}{drift 閾値 0.03}{57}{section*.105}%

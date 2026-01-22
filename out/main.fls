@@ -1,6 +1,6 @@
 PWD /Users/torkralle/WorkSpace/monsuke/master_thesis
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /Users/torkralle/WorkSpace/monsuke/master_thesis/main.tex
+INPUT ./main.tex
 OUTPUT out/main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
@@ -511,10 +511,6 @@ INPUT out/texmf-var/luatexja/extra_lmmonolt10-bold.luc
 INPUT ./section/5_considerations.tex
 INPUT ./section/6_user_study.tex
 INPUT ./section/6_avoidance_penalty.tex
-INPUT ./images/fig1-12.png
-INPUT ./images/fig1-12.png
-INPUT out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono8-regular.luc
-INPUT out/texmf-var/luatexja/extra_lmmono8-regular.luc
 INPUT ./images/fig1-13.png
 INPUT ./images/fig1-13.png
 INPUT ./section/table_ch7_penalty_timeauto_20workers_equal.tex
@@ -524,16 +520,11 @@ INPUT ./section/9_conclusion.tex
 INPUT out/texmf-cache/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT out/texmf-var/luatexja/extra_lmroman10-italic.luc
 INPUT ./section/appendix_weight_patterns.tex
+INPUT out/texmf-cache/luatex-cache/generic/fonts/otl/lmmono8-regular.luc
+INPUT out/texmf-var/luatexja/extra_lmmono8-regular.luc
 INPUT ./section/appendix_exp3_time_weighting_details.tex
 INPUT ./section/table_exp3_top_patterns_step20.tex
 INPUT ./section/table_exp3_top_patterns_step30.tex
-INPUT ./section/appendix_exp1_baselines.tex
-INPUT ./section/table_exp1_worker_accuracy_title_only.tex
-INPUT ./section/table_exp1_learning_curve_title_only_20workers.tex
-INPUT ./section/table_exp1_learning_curve_title_only_excluding_top10.tex
-INPUT ./section/table_exp1_learning_curve_content_only_20workers.tex
-INPUT ./section/table_exp1_learning_curve_content_only_excluding_top10.tex
-INPUT ./section/appendix_exp4_time_auto_details.tex
 INPUT ./out/main.aux
 INPUT ./out/main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
