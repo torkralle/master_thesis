@@ -16,18 +16,18 @@
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \contentsline {table}{\numberline {7.1}{\ignorespaces 回避ペナルティ有無の平均精度（18名, \texttt {equal} / 時間重み付け無し / 学習20件）}}{38}{table.caption.67}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces 5条件同時比較の平均精度（学習20件, 19名, \texttt {equal}）}}{40}{table.caption.74}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces 5条件同時比較の平均精度（学習15件, 19名, \texttt {equal}）}}{40}{table.caption.75}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces 5条件同時比較の平均精度（学習20件, 19名, \texttt {equal}）}}{40}{table.caption.73}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces 5条件同時比較の平均精度（学習15件, 19名, \texttt {equal}）}}{40}{table.caption.74}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
 \contentsline {table}{\numberline {A.1}{\ignorespaces 項目別重み付けパターン一覧（全体）}}{48}{table.A.1}%
-\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン（代表例）}}{49}{table.caption.80}%
-\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{49}{table.caption.81}%
-\contentsline {table}{\numberline {A.4}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{49}{table.caption.82}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces 時間重み付けパターン（代表例）}}{49}{table.caption.79}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces 時間重み付けパターン一覧（1/2）}}{49}{table.caption.80}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces 時間重み付けパターン一覧（2/2）}}{49}{table.caption.81}%
 \addvspace {10\jsc@mpt }
 \addvspace {10\jsc@mpt }
-\contentsline {table}{\numberline {C.1}{\ignorespaces 時間重み付け比較（全特徴量配分平均, 複合スコア比較）}}{51}{table.caption.83}%
-\contentsline {table}{\numberline {C.2}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{51}{table.caption.84}%
-\contentsline {table}{\numberline {C.3}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{52}{table.caption.85}%
-\contentsline {table}{\numberline {C.4}{\ignorespaces 時間重み付け上位パターン（学習30件, 全特徴量配分）}}{53}{table.caption.86}%
+\contentsline {table}{\numberline {C.1}{\ignorespaces 時間重み付け比較（全特徴量配分平均, 複合スコア比較）}}{51}{table.caption.82}%
+\contentsline {table}{\numberline {C.2}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{51}{table.caption.83}%
+\contentsline {table}{\numberline {C.3}{\ignorespaces 時間重み付け上位パターン（学習20件, 全特徴量配分）}}{52}{table.caption.84}%
+\contentsline {table}{\numberline {C.4}{\ignorespaces 時間重み付け上位パターン（学習30件, 全特徴量配分）}}{53}{table.caption.85}%

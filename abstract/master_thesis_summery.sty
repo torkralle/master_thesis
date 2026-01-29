@@ -1,0 +1,55 @@
+%用紙サイズの調整
+\setlength{\textheight}{265mm}
+\setlength{\textwidth}{170mm}
+\setlength{\unitlength}{1mm}
+\addtolength{\topmargin}{-12mm}
+\setlength{\oddsidemargin}{-5.4mm}
+\setlength{\evensidemargin}{-10.4mm}
+
+\pagestyle{empty}
+%\maketitleコマンドの調整
+\def\labname#1{\gdef\@labname{#1}}
+\def\maketitle{
+\begin{center}
+\begin{tabular}{|l|c|c|} \hline
+\makebox[54mm]{\bf 修士論文提出者氏名} &
+\makebox[48mm]{\bf \@author} &
+\makebox[54mm]{\bf \@labname}\\ \hline
+\multicolumn{3}{|l|}{\rule{8mm}{0mm}{\bf 修士論文題名}}\\
+\multicolumn{3}{|c|}{ {\large {\bf \@title}}}\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+%\baselineskip=12pt
+%\baselineskip=12.5pt
+%\abovedisplayskip 3pt plus 1pt minus 2pt
+%\belowdisplayskip 3pt plus 1pt minus 2pt
+%\abovedisplayshortskip 1pt plus 1pt
+%\abovedisplayskip 2pt plus 1pt minus 1pt
+
+%
+% thebibliography環境のラベルを丸括弧にする。
+\def\@biblabel#1{(#1)\hfill}
+% \citeコマンドで上付き丸括弧が印字されるようにする。
+% 上付きにする
+%\def\@cite#1{\raise1ex\hbox{\scriptsize (#1)}}
+\def\@cite#1{\raise1ex\hbox{\scriptsize [#1]}}
+% 丸括弧がでるだけにした。
+%\def\@cite#1{(#1)}
+
+% \section などの再定義。文字を小さくし、スペースを少なくした。
+\def\section{\@startsection {section}{1}{\z@}{1ex plus .1ex minus .4ex}{.3ex plus .1ex}{\large\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{.5ex plus .1ex minus .2ex}{.2ex plus .1ex}{\normalsize\bf}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{.3ex plus .1ex minus .2ex}{.1ex plus .2ex}{\normalsize\sf}}
+
+\def\thebibliography#1{\vspace{.5em}\noindent{\bf 参考文献\markboth
+{参 考 文 献}{参 考 文 献}\vspace{-.5em}}\list
+{[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+\advance\leftmargin\labelsep
+\usecounter{enumi}}
+\def\newblock{\hskip .8em plus .3em minus .05em}
+\sloppy
+\sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
